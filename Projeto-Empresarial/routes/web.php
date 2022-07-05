@@ -26,7 +26,7 @@ Route::prefix('usuario')->group(function () {
 	Route::post('/request', [UserController::class, 'request']);
     Route::get('/cadastro',[UserController::class, 'create']);
     Route::post('/cadastro',[UserController::class, 'store']);
-    Route::post('/editar',[UserController::class, 'edit']);
+    Route::get('/editar',[UserController::class, 'edit']);
     Route::post('/editar',[UserController::class, 'update']);
     Route::post('/delete/{id}',[UserController::class, 'destroy']);
     Route::get('/carrinho',[ClientController::class, 'cart']);
@@ -37,7 +37,7 @@ Route::prefix('produtos')->group(function () {
     Route::get('/',[ProductController::class, 'index']);
     Route::get('/cadastro',[ProductController::class, 'create']);
     Route::post('/cadastro',[ProductController::class, 'stored']);
-    Route::post('/editar/{id}',[ProductController::class, 'edit']);
+    Route::get('/editar/{id}',[ProductController::class, 'edit']);
     Route::post('/editar/{id}',[ProductController::class, 'update']);
     Route::post('/delete/{id}',[ProductController::class, 'destroy']);
 });
@@ -45,7 +45,7 @@ Route::prefix('produtos')->group(function () {
 Route::prefix('/pedidos')->group(function () {
     Route::get('/',[OrderController::class, 'index']);
     Route::get('/cadastro',[OrderController::class, 'create']);
-    Route::post('/cadastro',[OrderController::class, 'store']);
+    Route::get('/cadastro',[OrderController::class, 'store']);
     Route::post('/editar/{id}',[OrderController::class, 'edit']);
     Route::post('/editar/{id}',[OrderControllerer::class, 'update']);
     Route::post('/delete/{id}',[OrderControllerer::class, 'destroy']);
