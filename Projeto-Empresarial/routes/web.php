@@ -11,7 +11,7 @@ use App\Http\Controllers\{
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/produto/{id}', [ProductController::class, 'show'])->name('product');
+Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('usuario')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');

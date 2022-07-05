@@ -1,4 +1,4 @@
-<header class="bg-indigo-500 mb-16">
+<header class="bg-indigo-500">
     <div class="container mx-auto flex justify-between p-5 items-center">
         <a href="@if(Route::currentRouteName() === 'home') # @else / @endif"
             class="flex title-font font-medium items-center text-gray-900">

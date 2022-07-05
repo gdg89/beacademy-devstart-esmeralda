@@ -2,10 +2,10 @@
 @section('title', 'Home')
 @section('content')
 
-@include('shared.search')
 
-<section class="text-gray-600">
-    <div class="container px-5 py-6 mx-auto">
+<section class="text-gray-600 py-24">
+    @include('shared.search')
+    <div class="container px-5 mx-auto">
         <div class="flex flex-wrap -m-4">
             @foreach ($products as $product)
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -19,7 +19,8 @@
                     </h2>
                     <p class="mt-1">${{ $product->price_sell }}</p>
                 </div>
-                <a href="{{ route('product', $product->id) }}" class="mt-3 text-indigo-500 inline-flex items-center">Ver
+                <a href="{{ route('product.show', $product->id) }}"
+                    class="mt-3 text-indigo-500 inline-flex items-center">Ver
                     mais
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">

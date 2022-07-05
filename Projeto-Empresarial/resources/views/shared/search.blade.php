@@ -1,5 +1,5 @@
 <section class="w-full">
-    <div class="container mx-auto px-5 pb-10 flex justify-between items-center">
+    <div class="container mx-auto px-5 pb-12 flex justify-between items-center">
         <form method="GET" action="/" class="flex w-full space-x-5">
             <input placeholder="Pesquisar produto" type="text" id="search" name="search" value="{{ request()->search }}"
                 class="
