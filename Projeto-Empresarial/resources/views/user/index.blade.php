@@ -2,5 +2,5 @@
 @section('title', 'Home')
 
 @section('content')
-<h1>product edit</h1>
+<h1>Iformações do Usuário</h1>
 @endsection
