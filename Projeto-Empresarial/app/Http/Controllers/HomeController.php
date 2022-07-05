@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $products = Product::query();
+
+        $products->when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        });
+
+        $products = $products->get();
+
+        return view('home', [
+            'products' => $products
+        ]);
     }
 }

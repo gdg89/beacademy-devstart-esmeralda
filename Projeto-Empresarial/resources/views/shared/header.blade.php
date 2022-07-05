@@ -1,6 +1,7 @@
-<header class="bg-indigo-500">
+<header class="bg-indigo-500 mb-16">
     <div class="container mx-auto flex justify-between p-5 items-center">
-        <a href="#" class="flex title-font font-medium items-center text-gray-900">
+        <a href="@if(Route::currentRouteName() === 'home') # @else / @endif"
+            class="flex title-font font-medium items-center text-gray-900">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
                 stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-indigo-500 p-2 bg-white rounded-full"
                 viewBox="0 0 24 24">
