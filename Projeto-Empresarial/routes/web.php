@@ -36,7 +36,7 @@ Route::prefix('usuario')->group(function () {
 Route::prefix('produtos')->group(function () {
     Route::get('/',[ProductController::class, 'index']);
     Route::get('/cadastro',[ProductController::class, 'create']);
-    Route::post('/cadastro',[ProductController::class, 'store']);
+    Route::post('/cadastro',[ProductController::class, 'stored']);
     Route::post('/editar/{id}',[ProductController::class, 'edit']);
     Route::post('/editar/{id}',[ProductController::class, 'update']);
     Route::post('/delete/{id}',[ProductController::class, 'destroy']);
