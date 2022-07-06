@@ -4,9 +4,20 @@
 
 
 <section class="text-gray-600 py-24">
+
     @include('shared.search')
+
     <div class="container px-5 mx-auto">
         <div class="flex flex-wrap -m-4">
+            @if($products->isEmpty())
+
+            <div class="p-4 w-full">
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+                    Nenhum produto encontrado 🥲
+                </h1>
+            </div>
+
+            @else
             @foreach ($products as $product)
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a class="block relative h-48 rounded overflow-hidden">
@@ -29,6 +40,7 @@
                 </a>
             </div>
             @endforeach
+            @endif
         </div>
     </div>
 </section>
