@@ -1,0 +1,72 @@
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 15px;
+}
+
+.box_login{
+  height: 500px;
+  width: 500px;
+  background: #6d4bfc;
+  border: 0;
+  border-radius: 10px;
+}
+
+.box_login .capa{
+  height: 180px;
+  background: url(../img/capa-mobile.jpg) no-repeat; 
+  background-size: 100% 100%;
+  border: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+h1{
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  text-align: left;
+  margin: 15px 0px 20px 15px;
+}
+
+form input{
+  margin: 0 20px;
+  width: 460px;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: grey;
+}
+
+form .btn-login{
+  margin: 0 20px;
+  width: 460px;
+  background: #3ceb88;
+  color: #fff;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: grey;
+}
+
+.msg_error{
+  color: #ff6d6d;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width:480px){
+  .box_login .capa{
+    height: 230px;
+    background: url(../img/capa.jpg) no-repeat;
+    background-size: 100% 100%;
+  }
+}
