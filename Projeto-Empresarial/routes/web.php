@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    AdminController,
+    AdminProductController,
     HomeController,
     UserController,
     ProductController,
@@ -34,15 +34,15 @@ Route::prefix('usuario')->group(function () {
 });
 
 Route::prefix('admin/produtos')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [AdminProductController::class, 'index'])->name('admin.index');
 
-    Route::get('/cadastro', [AdminController::class, 'create'])->name('admin.products.create');
-    Route::post('/cadastro', [AdminController::class, 'store'])->name('admin.products.store');
+    Route::get('/cadastro', [AdminProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/cadastro', [AdminProductController::class, 'store'])->name('admin.products.store');
 
-    Route::get('/editar/{id}', [AdminController::class, 'edit'])->name('admin.products.edit');
-    Route::post('/editar/{id}', [AdminController::class, 'update'])->name('admin.products.update');
+    Route::get('/editar/{id}', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+    Route::post('/editar/{id}', [AdminProductController::class, 'update'])->name('admin.products.update');
 
-    Route::post('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.products.destroy');
+    Route::post('/delete/{id}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 });
 
 Route::prefix('/pedidos')->group(function () {
