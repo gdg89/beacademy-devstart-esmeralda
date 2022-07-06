@@ -7,6 +7,7 @@
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="EstanteDev" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title') | EstanteDev</title>
 </head>
 
