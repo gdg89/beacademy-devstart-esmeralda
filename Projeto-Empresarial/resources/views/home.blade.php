@@ -3,7 +3,7 @@
 @section('content')
 
 
-<section class="text-gray-600 py-24">
+<section class="text-gray-600 py-16">
 
     @include('shared.search')
 
