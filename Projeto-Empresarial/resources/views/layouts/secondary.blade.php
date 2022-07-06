@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/css/style-login.css'])
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
     @stack('styles')
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,13 +20,7 @@
 
 <body>
 
-    @include('shared.header')
-
-    <main class="grow">
-        @yield('content')
-    </main>
-
-    @include('shared.footer')
+    @yield('content')
 </body>
 
 </html>
