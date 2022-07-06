@@ -2,5 +2,5 @@
 @section('title', 'Home')
 
 @section('content')
-<h1>order register</h1>
+<h1>client register</h1>
 @endsection
