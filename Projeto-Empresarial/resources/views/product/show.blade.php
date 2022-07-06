@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex border-t-2 border-gray-100 mt-6 pt-6">
                     <span class="title-font font-medium text-2xl text-gray-900">
-                        ${{ $product->price_sell }}
+                        R${{ $product->price_sell }}
                     </span>
 
                     @php

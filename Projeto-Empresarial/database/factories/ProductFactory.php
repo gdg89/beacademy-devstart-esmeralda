@@ -27,7 +27,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(),
             'cover' => $this->faker->imageUrl(640, 480),
             'price_cost' => $priceCost,
-            'price_sell' => $priceCost + 10,
+            'price_sell' => $priceCost + 0.1 * $priceCost,
             'stock' => $this->faker->randomDigit(),
         ];
     }

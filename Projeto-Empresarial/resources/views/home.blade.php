@@ -17,7 +17,7 @@
                     <h2 class="text-gray-900 title-font text-lg font-medium">
                         {{ $product->name }}
                     </h2>
-                    <p class="mt-1">${{ $product->price_sell }}</p>
+                    <p class="mt-1">R${{ $product->price_sell }}</p>
                 </div>
                 <a href="{{ route('product.show', $product->id) }}"
                     class="mt-3 text-indigo-500 inline-flex items-center">Ver
