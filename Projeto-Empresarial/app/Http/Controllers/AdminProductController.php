@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductFormRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
 {
-    public function __construct(Product $product)
-    {
-        $this->model = $product;
-    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function index()
     {
         $products = Product::all();
-        return view('admin.index', compact('products'));
+
+        foreach ($products as $product) {
+            $product->price_cost = Product::format_price($product->price_cost);
+            $product->price_sell = Product::format_price($product->price_sell);
+        }
+
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -31,16 +33,16 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new Product on products table.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreProductFormRequest $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(StoreProductFormRequest $request)
     {
         //
     }

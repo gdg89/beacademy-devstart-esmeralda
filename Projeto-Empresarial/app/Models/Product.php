@@ -20,4 +20,15 @@ class Product extends Model
         'stock',
         'description'
     ];
+
+    /**
+     * Format price to pt-BR format.
+     *
+     * @param string|float|null $price
+     * @return string
+     */
+    static public function format_price(string|float|null $price): string
+    {
+        return number_format(!empty($price) ? $price : 0, 2, ",", ".");
+    }
 }

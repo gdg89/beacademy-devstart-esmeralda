@@ -27,7 +27,7 @@ Route::prefix('usuario')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminProductController::class, 'index'])->name('admin.index');
+    Route::get('/', [AdminProductController::class, 'index'])->name('admin.product.index');
 
     Route::prefix('produto')->group(function () {
         Route::get('/cadastro', [AdminProductController::class, 'create'])->name('admin.product.create');
