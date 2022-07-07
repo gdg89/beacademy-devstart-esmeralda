@@ -17,9 +17,11 @@ Route::get('/logoff', [UserController::class, 'logoff'])->name('logoff');
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 
-Route::get('/produto/{id}', [ProductController::class, 'show'])->name('product');
+Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product');
 
 Route::prefix('usuario')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('user.index');
+    
     Route::get('/editar', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/editar', [UserController::class, 'update'])->name('user.update');
 
@@ -41,11 +43,15 @@ Route::prefix('admin/produtos')->group(function () {
     Route::post('/delete/{id}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 });
 
-Route::prefix('/pedidos')->group(function () {
+Route::prefix('pedidos')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
 
     Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
+});
+
+Route::prefix('admin/pedidos')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
 
     Route::get('/editar/{id}', [OrderController::class, 'edit'])->name('orders.edit');
     Route::post('/editar/{id}', [OrderControllerer::class, 'update'])->name('orders.update');

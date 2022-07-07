@@ -1,6 +1,28 @@
 # Projeto EstanteDev - Squad Esmeralda
 
-E-commerce de livros sobre programação
+E-commerce básico de livros sobre programação, feito com Laravel 9 e MySQL.
+
+## Instalação
+
+Dentro da pasta `Projeto-Empresarial`,crie um arquivo `.env` igual ao `.env.example`, ajustando as configurações conforme o seu ambiente, após isso instale as dependências com os seguintes comandos:
+
+```bash
+# Instale as dependências do composer e npm
+composer install
+npm install
+```
+
+## Execução
+
+```bash
+# Sirva o projeto na porta 8000
+php artisan serve
+
+# Execute o vite
+npm run dev
+# ou
+yarn dev
+```
 
 ## Especificações
 

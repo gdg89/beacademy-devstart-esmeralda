@@ -16,4 +16,13 @@ class Product extends Model
         'cost_price',
         'price_sell'
     ];
+
+    /**
+     * @param string $price
+     * @return string
+     */
+    static public function format_price(?string $price): string
+    {
+        return number_format(!empty($price) ? $price : 0, 2, ",", ".");
+    }
 }
