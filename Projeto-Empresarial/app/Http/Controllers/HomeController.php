@@ -19,6 +19,7 @@ class HomeController extends Controller
 
         foreach ($products as $product) {
             $product->price_sell = Product::format_price($product->price_sell);
+            $product->cover = Product::getProductCoverPath($product);
         }
 
         return view('home', [
