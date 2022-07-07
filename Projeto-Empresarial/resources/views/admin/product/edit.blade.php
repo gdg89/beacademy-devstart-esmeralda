@@ -80,10 +80,11 @@
                         <img src="{{ $product->cover }}" alt="{{ $product->name }}"
                             class="object-cover object-center w-full block" />
 
-                        <a href="{{ route('admin.product.destroy.image', $product->id) }}"
-                            class="my-2 inline-flex items-center bg-red-500 border-0 py-1 px-3 focus:outline-none hover:bg-red-600 rounded text-white">
-                            Deletar Imagem
-                        </a>
+                        {{-- <a href="{{ route('admin.product.destroy.image', $product->id) }}"
+                        class="my-2 inline-flex items-center bg-red-500 border-0 py-1 px-3 focus:outline-none
+                        hover:bg-red-600 rounded text-white">
+                        Deletar Imagem
+                        </a> --}}
                     </div>
                     @endif
 
