@@ -31,7 +31,7 @@ class StoreProductFormRequest extends FormRequest
             'stock' => 'required|integer',
             'description' => 'required|string|min:4',
             'cover' => [
-                'nullable',
+                'required',
                 'file',
                 'mimes:jpg,png'
             ],

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductFormRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+
 
 class AdminProductController extends Controller
 {
@@ -21,6 +24,7 @@ class AdminProductController extends Controller
         foreach ($products as $product) {
             $product->price_cost = Product::format_price($product->price_cost);
             $product->price_sell = Product::format_price($product->price_sell);
+            $product->cover = Product::getProductCoverPath($product);
         }
 
         return view('admin.product.index', compact('products'));
@@ -44,7 +48,20 @@ class AdminProductController extends Controller
      */
     public function store(StoreProductFormRequest $request)
     {
-        dd($request->all());
+        $input = $request->all();
+
+        $input['slug'] = Str::slug($input['name']);
+
+        if ($input['cover']->isValid()) {
+            $path = $input['cover']->store('products_covers', 'public');
+            $input['cover'] = $path;
+        }
+
+        // dd($input);
+
+        Product::create($input);
+
+        return Redirect::route('admin.product.index');
     }
 
     /**
