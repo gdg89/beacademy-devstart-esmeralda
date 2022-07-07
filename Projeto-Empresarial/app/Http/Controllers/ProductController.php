@@ -15,6 +15,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product->price_sell = Product::format_price($product->price_sell);
+
         return view('product.show', compact('product'));
     }
 }
