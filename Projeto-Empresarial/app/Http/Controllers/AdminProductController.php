@@ -10,9 +10,9 @@ class AdminProductController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * List all products in the database.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
@@ -27,7 +27,7 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a product.
      *
      * @return \Illuminate\Http\Response
      */
@@ -37,37 +37,39 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Store a new Product on products table.
+     * Store a new Product on database.
      *
      * @param StoreProductFormRequest $request
      * @return void
      */
     public function store(StoreProductFormRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a product.
      *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return void
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a product on database.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @param StoreProductFormRequest $request
+     * @param Product $product
+     * @return void
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreProductFormRequest $request, Product $product)
     {
-        //
+        $input = $request->validated();
+
+        dd($request->all());
     }
 
     /**
@@ -77,6 +79,16 @@ class AdminProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
+    {
+    }
+
+    /**
+     * Remove the specified resource from storage folder
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyImage(Product $product)
     {
     }
 }
