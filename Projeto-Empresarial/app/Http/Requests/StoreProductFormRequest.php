@@ -37,7 +37,7 @@ class StoreProductFormRequest extends FormRequest
             ],
         ];
 
-        if ($this->method('PUT') && $this->product->cover) {
+        if ($this->method('PUT') && isset($this->product->cover)) {
             $rules['cover'] = [
                 'nullable',
                 'file',
