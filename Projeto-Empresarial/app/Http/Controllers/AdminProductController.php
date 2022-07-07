@@ -7,14 +7,21 @@ use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
 {
+    public function __construct(Product $product)
+    {
+        $this->model =$product;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
-    {
-        //
+    { 
+        $products=Product::all();
+       return view('admin.products.index',compact('products'));
     }
 
     /**
