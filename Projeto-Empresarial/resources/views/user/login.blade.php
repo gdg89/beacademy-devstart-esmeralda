@@ -23,6 +23,13 @@
             </a>
         </div>
         <h3 class="text-2xl font-bold text-center">Fazer login</h3>
+
+        <span class="my-4 block">Ainda não tem conta?
+            <a href="/cadastro" class="text-indigo-500 hover:underline">
+                Cadastre-se
+            </a>
+        </span>
+
         <form action="">
             <div class="mt-8">
                 <div>
