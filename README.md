@@ -1,6 +1,6 @@
 # Projeto EstanteDev - Squad Esmeralda
 
-E-commerce básico de livros sobre programação, feito com Laravel 9 e MySQL.
+E-commerce de livros sobre programação, feito com Laravel 9 e MySQL.
 
 ## Instalação
 
@@ -26,6 +26,61 @@ npm run dev
 # ou
 yarn dev
 ```
+
+## Squad Members
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/figmateus">
+        <img src="https://github.com/figmateus.png" width="100px;" alt="Mateus Figueredo"/><br>
+        <sub>
+          <b>Mateus Figueredo</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/fTz997">
+        <img src="https://github.com/fTz997.png" width="100px;" alt="Victor Feitoza"/><br>
+        <sub>
+          <b>Victor Feitoza</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/gdg89">
+        <img src="https://github.com/gdg89.png" width="100px;" alt="Giuliano García"/><br>
+        <sub>
+          <b>Giuliano García</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/gersondevpro">
+        <img src="https://github.com/gersondevpro.png" width="100px;" alt="Gerson Gonçalves"/><br>
+        <sub>
+          <b>Gerson Gonçalves</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/vinic-alves">
+        <img src="https://github.com/vinic-alves.png" width="100px;" alt="Vinicius Alves"/><br>
+        <sub>
+          <b>Vinicius Alves</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/capelaum">
+        <img src="https://github.com/capelaum.png" width="100px;" alt="Luís V. Capelletto"/><br>
+        <sub>
+          <b>Luís V. <br/> Capelletto</br>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Especificações
 
