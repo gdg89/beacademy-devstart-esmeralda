@@ -15,6 +15,9 @@ npm install
 ## Execução
 
 ```bash
+## Cri um link simbolico de storage para public
+php artisan storage:link
+
 # Sirva o projeto na porta 8000
 php artisan serve
 
