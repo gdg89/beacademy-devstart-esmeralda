@@ -23,12 +23,6 @@ Route::get('/produto/{product}', [ProductController::class, 'show'])->name('prod
 Route::prefix('usuario')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
 
-    Route::get('/login', [UserController::class, 'login'])->name('user.login');
-    Route::get('/logoff', [UserController::class, 'logoff'])->name('user.logoff');
-
-    Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
-    Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
-
     Route::get('/carrinho', [ClientController::class, 'cart'])->name('user.cart');
     Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.index');
 });
