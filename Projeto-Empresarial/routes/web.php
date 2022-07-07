@@ -11,16 +11,21 @@ use App\Http\Controllers\{
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/logoff', [UserController::class, 'logoff'])->name('logoff');
+
+Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
+Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
+
+Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product');
 
 Route::prefix('usuario')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
+    
+    Route::get('/editar', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/editar', [UserController::class, 'update'])->name('user.update');
 
-    Route::get('/login', [UserController::class, 'login'])->name('user.login');
-    Route::get('/logoff', [UserController::class, 'logoff'])->name('user.logoff');
-
-    Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
-    Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
+    Route::post('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('/carrinho', [ClientController::class, 'cart'])->name('user.cart');
     Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.index');
