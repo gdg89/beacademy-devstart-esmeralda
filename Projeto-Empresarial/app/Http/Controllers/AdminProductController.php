@@ -9,7 +9,7 @@ class AdminProductController extends Controller
 {
     public function __construct(Product $product)
     {
-        $this->model =$product;
+        $this->model = $product;
     }
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ class AdminProductController extends Controller
 
 
     public function index()
-    { 
-        $products=Product::all();
-       return view('admin.products.index',compact('products'));
+    {
+        $products = Product::all();
+        return view('admin.index', compact('products'));
     }
 
     /**
