@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone', 15);
-            $table->string('address');
-            $table->date('birthday');
-            $table->string('cpf', 11);
-            $table->string('password');
+            $table->string('slug');
+            $table->text('description');
+            $table->string('cover')->nullable();
+            $table->decimal('price_cost')->default(0);
+            $table->decimal('price_sell')->default(0);
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('products');
     }
 };
