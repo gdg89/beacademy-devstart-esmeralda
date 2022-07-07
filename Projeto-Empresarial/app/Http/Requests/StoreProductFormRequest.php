@@ -37,6 +37,14 @@ class StoreProductFormRequest extends FormRequest
             ],
         ];
 
+        if ($this->method('PUT') && $this->product->cover) {
+            $rules['cover'] = [
+                'nullable',
+                'file',
+                'mimes:jpg,png'
+            ];
+        }
+
         return $rules;
     }
 }

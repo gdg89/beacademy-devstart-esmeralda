@@ -57,8 +57,6 @@ class AdminProductController extends Controller
             $input['cover'] = $path;
         }
 
-        // dd($input);
-
         Product::create($input);
 
         return Redirect::route('admin.product.index');
@@ -72,6 +70,8 @@ class AdminProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $product->cover = Product::getProductCoverPath($product);
+
         return view('admin.product.edit', compact('product'));
     }
 
@@ -86,7 +86,16 @@ class AdminProductController extends Controller
     {
         $input = $request->validated();
 
-        dd($request->all());
+        if (!empty($input['cover']) && $input['cover']->isValid()) {
+            Storage::delete("public/{$product->cover}" ?? '');
+            $path = $input['cover']->store('products_covers', 'public');
+            $input['cover'] = $path;
+        }
+
+        $product->fill($input);
+        $product->save();
+
+        return Redirect::route('admin.product.index');
     }
 
     /**
@@ -107,5 +116,10 @@ class AdminProductController extends Controller
      */
     public function destroyImage(Product $product)
     {
+        Storage::delete("public/{$product->cover}" ?? '');
+        $product->cover = null;
+        $product->save();
+
+        return Redirect::back();
     }
 }
