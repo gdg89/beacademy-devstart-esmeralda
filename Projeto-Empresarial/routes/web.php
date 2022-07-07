@@ -11,6 +11,13 @@ use App\Http\Controllers\{
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/logoff', [UserController::class, 'logoff'])->name('logoff');
+
+Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
+Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
+
 Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('usuario')->group(function () {
