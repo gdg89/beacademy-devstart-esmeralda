@@ -10,23 +10,18 @@
             <span class="ml-3 text-xl text-white">EstanteDev</span>
         </a>
         <nav class="md:ml-auto flex flex-wrap items-center text-indigo-700 justify-center">
-            <a href="#"
+            <a href="/login"
                 class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0">
                 Login
             </a>
+            <a href="/admin"
+                class="inline-flex items-center bg-white border-0 py-1 px-3 ml-4 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0">
+                Admin
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
         </nav>
-        <button class="
-            inline-flex items-center
-          bg-white text-indigo-700 text-base
-            md:ml-4 mt-4 md:mt-0 py-1 px-3
-            focus:outline-none hover:bg-gray-100
-            rounded border-0
-        ">
-            Admin
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-        </button>
     </div>
 </header>
