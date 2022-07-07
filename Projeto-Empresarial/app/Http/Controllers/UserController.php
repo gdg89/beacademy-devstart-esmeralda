@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():View
     {
         return view('user.index');
     }
@@ -22,9 +23,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create():View
     {
-        //
+        return view('user.register');
     }
 
     /**
