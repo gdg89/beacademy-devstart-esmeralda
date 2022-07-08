@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductFormRequest;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProductFormRequest;
 
 
 class AdminProductController extends Controller
@@ -17,14 +18,23 @@ class AdminProductController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $products = Product::query();
+
+        $products->when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        });
+
+        $products = $products->paginate(12);
 
         foreach ($products as $product) {
-            $product->price_cost = Product::format_price($product->price_cost);
             $product->price_sell = Product::format_price($product->price_sell);
             $product->cover = Product::getProductCoverPath($product);
+        }
+
+        if ($request->search) {
+            $products->appends('search', $request->search);
         }
 
         return view('admin.product.index', compact('products'));

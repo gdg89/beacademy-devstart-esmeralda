@@ -2,8 +2,18 @@
 @section('title', 'Admin Produtos')
 @section('content')
 
-<section class="text-gray-600">
-    <div class="container px-5 py-24 mx-auto w-full">
+<section class="text-gray-600 py-16">
+
+    @include('shared.search')
+
+
+    <div class="container px-5 py-2 mx-auto w-full">
+        {{ $products->links() }}
+    </div>
+
+    <div class="container px-5 pt-8 pb-24 mx-auto w-full">
+
+
         <div class="w-full mx-auto overflow-auto">
             <div class="flex items-center justify-between mb-2">
                 <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
