@@ -13,4 +13,16 @@ class Order extends Model
         'user_id',
         'status',
     ];
+
+    protected $with = ['user'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }
