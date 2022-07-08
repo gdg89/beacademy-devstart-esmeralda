@@ -64,26 +64,13 @@
                         <td class="px-4 py-3">{{ $order->profit }}</td>
                         <td class="px-4 py-3">{{ $order->user->email }}</td>
                         <td class="px-4 py-3 h-full">
-
-                            <span class="
-                                px-3 py-1
-                                inline-flex items-center justify-center
-                                rounded-full text-sm font-medium
-                                @if ($order->status == 'Processando')
-                                    bg-yellow-200 text-yellow-800
-                                @elseif ($order->status == 'Recusado')
-                                    bg-red-200 text-red-700
-                                @elseif ($order->status == 'Aprovado')
-                                    bg-green-200 text-green-800
-                                @else
-                                    bg-indigo-200 text-indigo-800
-                                @endif
-                            ">
-                                {{ $order->status }}
-                            </span>
+                            @include('shared.status')
                         </td>
                         <td class="px-4 py-3 text-sm text-right space-x-3">
-                            <a href="#" class="text-indigo-500 inline-flex items-center">Visualizar</a>
+                            <a href="{{ route('admin.orders.show', $order->id) }}"
+                                class="text-indigo-500 inline-flex items-center">
+                                Visualizar
+                            </a>
                         </td>
                     </tr>
                     @endforeach

@@ -8,8 +8,8 @@
             </svg>
             <span class="ml-3 text-xl">EstanteDev</span>
         </a>
-        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020
-            Devstart - Squad Esmeralda
+        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022
+            DevStart - Squad Esmeralda
         </p>
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
             <a class="ml-3 text-indigo-500" href="https://github.com/gdg89/beacademy-devstart-esmeralda" target="_blank"
