@@ -2,11 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
-use App\Models\order_product;
 use App\Models\OrderProduct;
-use App\Models\Product;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,11 +15,13 @@ class OrderProductSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i < 11; $i++) {
             DB::table('order_product')->insert([
-                'order_id' => Order::all()->random()->id,
-                'product_id' => Product::all()->random()->id,
+                'order_id' => $i,
+                'product_id' => $i,
             ]);
         }
+
+        OrderProduct::factory(10)->create();
     }
 }

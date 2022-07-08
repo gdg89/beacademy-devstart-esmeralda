@@ -14,7 +14,7 @@ class Order extends Model
         'status',
     ];
 
-    protected $with = ['user'];
+    protected $with = ['user', 'products'];
 
     public function user()
     {
