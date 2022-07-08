@@ -14,7 +14,7 @@
                 class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0">
                 Login
             </a>
-            <a href="/admin"
+            <a href="@if(Route::currentRouteName() === 'admin.product.index') # @else /admin/produtos @endif"
                 class="inline-flex items-center bg-white border-0 py-1 px-3 ml-4 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0">
                 Admin
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

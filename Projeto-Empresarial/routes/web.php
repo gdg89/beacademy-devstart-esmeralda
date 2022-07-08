@@ -27,19 +27,27 @@ Route::prefix('usuario')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminProductController::class, 'index'])->name('admin.product.index');
+    Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.product.index');
+    Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.order.index');
+});
 
-    Route::prefix('produto')->group(function () {
-        Route::get('/cadastro', [AdminProductController::class, 'create'])->name('admin.product.create');
-        Route::post('/cadastro', [AdminProductController::class, 'store'])->name('admin.product.store');
+Route::prefix('admin/produto')->group(function () {
+    Route::get('/cadastro', [AdminProductController::class, 'create'])->name('admin.product.create');
+    Route::post('/cadastro', [AdminProductController::class, 'store'])->name('admin.product.store');
 
-        Route::get('/editar/{product}', [AdminProductController::class, 'edit'])->name('admin.product.edit');
-        Route::put('/editar/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
+    Route::get('/editar/{product}', [AdminProductController::class, 'edit'])->name('admin.product.edit');
+    Route::put('/editar/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
 
-        Route::delete('/delete/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
+    Route::delete('/delete/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
 
-        Route::get('/delete/image/{product}', [AdminProductController::class, 'destroyImage'])->name('admin.product.destroy.image');
-    });
+    Route::get('/delete/image/{product}', [AdminProductController::class, 'destroyImage'])->name('admin.product.destroy.image');
+});
+
+Route::prefix('admin/pedido')->group(function () {
+    Route::get('/editar/{order}', [AdminOrderController::class, 'create'])->name('admin.order.edit');
+    Route::put('/editar/{order}', [AdminOrderController::class, 'store'])->name('admin.order.update');
+
+    Route::delete('/delete/{order}', [AdminOrderController::class, 'destroy'])->name('admin.order.destroy');
 });
 
 Route::prefix('pedidos')->group(function () {
@@ -47,13 +55,4 @@ Route::prefix('pedidos')->group(function () {
 
     Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
-});
-
-Route::prefix('admin/pedidos')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
-
-    Route::get('/editar/{id}', [OrderController::class, 'edit'])->name('orders.edit');
-    Route::post('/editar/{id}', [OrderControllerer::class, 'update'])->name('orders.update');
-
-    Route::post('/delete/{id}', [OrderControllerer::class, 'destroy'])->name('orders.destroy');
 });

@@ -12,7 +12,6 @@ use App\Http\Requests\StoreProductFormRequest;
 
 class AdminProductController extends Controller
 {
-
     /**
      * List all products in the database.
      *

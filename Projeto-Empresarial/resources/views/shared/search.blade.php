@@ -1,6 +1,6 @@
 <section class="w-full">
     <div class="container mx-auto px-5 pb-12 flex justify-between items-center">
-        <form method="GET" action="@if(Route::currentRouteName() === 'home') / @else /admin @endif"
+        <form method="GET" action="@if(Route::currentRouteName() === 'home') / @else /admin/produtos @endif"
             class="flex w-full space-x-5">
             <input placeholder="Pesquisar produto" type="text" id="search" name="search" value="{{ request()->search }}"
                 class="
@@ -15,7 +15,7 @@
                 class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Pesquisar
             </button>
-            <a href="@if (request()->search && Route::currentRouteName() === 'home') / @else /admin @endif"
+            <a href="@if (request()->search && Route::currentRouteName() === 'home') / @else /admin/produtos @endif"
                 class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Limpar
             </a>
