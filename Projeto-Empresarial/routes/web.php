@@ -27,6 +27,8 @@ Route::prefix('usuario')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+
+    Route::get('/pedido/{order}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
 });
 
 Route::prefix('admin/produto')->group(function () {

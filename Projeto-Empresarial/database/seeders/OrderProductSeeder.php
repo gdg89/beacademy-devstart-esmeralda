@@ -22,6 +22,13 @@ class OrderProductSeeder extends Seeder
             ]);
         }
 
+        for ($i = 1; $i < 11; $i++) {
+            DB::table('order_product')->insert([
+                'order_id' => $i,
+                'product_id' => $i,
+            ]);
+        }
+
         OrderProduct::factory(10)->create();
     }
 }
