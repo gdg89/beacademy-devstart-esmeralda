@@ -19,7 +19,7 @@
                 <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
                     Produtos
                 </h1>
-                <a href="{{ route('admin.product.create') }}" class="flex ml-auto text-white bg-indigo-500 border-0 py-1.5 px-3 text-sm focus:outline-none
+                <a href="{{ route('admin.products.create') }}" class="flex ml-auto text-white bg-indigo-500 border-0 py-1.5 px-3 text-sm focus:outline-none
                 hover:bg-indigo-600 rounded">
                     Adicionar
                 </a>
@@ -66,9 +66,9 @@
                         <td class="px-4 py-3">R${{ $product->price_sell }}</td>
                         <td class="px-4 py-3">{{ $product->stock }}</td>
                         <td class="px-4 py-3 text-sm text-right space-x-3 text-gray-900">
-                            <a href="{{ route('admin.product.edit', $product->id) }}"
+                            <a href="{{ route('admin.products.edit', $product->id) }}"
                                 class="mt-3 text-indigo-500 inline-flex items-center">Editar</a>
-                            <form method="POST" action="{{ route('admin.product.destroy', $product->id) }}">
+                            <form method="POST" action="{{ route('admin.products.destroy', $product->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

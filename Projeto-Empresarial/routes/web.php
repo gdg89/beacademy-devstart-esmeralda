@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+    AdminOrderController,
     AdminProductController,
     HomeController,
     UserController,
@@ -20,34 +21,31 @@ Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('usuario')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('user.index');
-
-    Route::get('/carrinho', [ClientController::class, 'cart'])->name('user.cart');
-    Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.index');
+    Route::get('/carrinho', [ClientController::class, 'cart'])->name('users.cart.index');
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.product.index');
-    Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.order.index');
+    Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
 });
 
 Route::prefix('admin/produto')->group(function () {
-    Route::get('/cadastro', [AdminProductController::class, 'create'])->name('admin.product.create');
-    Route::post('/cadastro', [AdminProductController::class, 'store'])->name('admin.product.store');
+    Route::get('/cadastro', [AdminProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/cadastro', [AdminProductController::class, 'store'])->name('admin.products.store');
 
-    Route::get('/editar/{product}', [AdminProductController::class, 'edit'])->name('admin.product.edit');
-    Route::put('/editar/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
+    Route::get('/editar/{product}', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+    Route::put('/editar/{product}', [AdminProductController::class, 'update'])->name('admin.products.update');
 
-    Route::delete('/delete/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
+    Route::delete('/delete/{product}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 
-    Route::get('/delete/image/{product}', [AdminProductController::class, 'destroyImage'])->name('admin.product.destroy.image');
+    Route::get('/delete/image/{product}', [AdminProductController::class, 'destroyImage'])->name('admin.products.destroy.image');
 });
 
 Route::prefix('admin/pedido')->group(function () {
-    Route::get('/editar/{order}', [AdminOrderController::class, 'create'])->name('admin.order.edit');
-    Route::put('/editar/{order}', [AdminOrderController::class, 'store'])->name('admin.order.update');
+    Route::get('/editar/{order}', [AdminOrderController::class, 'create'])->name('admin.orders.edit');
+    Route::put('/editar/{order}', [AdminOrderController::class, 'store'])->name('admin.orders.update');
 
-    Route::delete('/delete/{order}', [AdminOrderController::class, 'destroy'])->name('admin.order.destroy');
+    Route::delete('/delete/{order}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
 });
 
 Route::prefix('pedidos')->group(function () {
