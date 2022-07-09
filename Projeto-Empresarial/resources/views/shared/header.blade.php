@@ -9,19 +9,12 @@
             </svg>
             <span class="ml-3 text-xl text-white">EstanteDev</span>
         </a>
-        <nav class="md:ml-auto flex flex-wrap items-center text-indigo-700 justify-center">
-            <a href="/login"
-                class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0">
-                Login
-            </a>
-            <a href="@if(Route::currentRouteName() === 'admin.products.index') # @else /admin/produtos @endif"
-                class="inline-flex items-center bg-white border-0 py-1 px-3 ml-4 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0">
-                Admin
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
+        <nav class="md:ml-auto flex flex-wrap gap-4 items-center text-indigo-700 justify-center">
+            @if(str_contains(Route::currentRouteName(), 'admin'))
+            @include('shared.admin-links')
+            @else
+            @include('shared.home-links')
+            @endif
         </nav>
     </div>
 </header>
