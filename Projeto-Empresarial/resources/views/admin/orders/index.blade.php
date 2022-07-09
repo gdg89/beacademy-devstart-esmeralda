@@ -1,83 +1,85 @@
 @extends('layouts.default')
 @section('title', 'Admin Pedidos')
+
 @section('content')
 
-<section class="text-gray-600 py-16">
+<section class="section-container">
+    @include('shared.search')
 
-    {{-- @include('shared.search') --}}
-
-    <div class="container px-5 py-2 mx-auto w-full">
+    <div class="pt-16 pb-12">
         {{ $orders->links() }}
     </div>
 
-    <div class="container px-5 pt-8 pb-24 mx-auto w-full">
+    <div class="flex items-center justify-between mb-8">
+        <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
+            Pedidos
+        </h1>
+        <a href="#" class="btn-primary">
+            Adicionar
+        </a>
+    </div>
 
+    <div class="w-full mx-auto overflow-auto">
 
-        <div class="w-full mx-auto overflow-auto">
-            <div class="flex items-center justify-between mb-2">
-                <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
-                    Pedidos
-                </h1>
-                <a href="#" class="flex ml-auto text-white bg-indigo-500 border-0 py-1.5 px-3 text-sm focus:outline-none
-                hover:bg-indigo-600 rounded">
-                    Adicionar
-                </a>
-            </div>
-            <table class="table-auto w-full text-left whitespace-no-wrap">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            #
-                        </th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Qtd
-                        </th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Total (R$)
-                        </th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Custo (R$)
-                        </th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Lucro (R$)
-                        </th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Email do Cliente
-                        </th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                            Status
-                        </th>
-                        <th
-                            class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 text-right">
-                            Ações
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y">
+        <table class="table-auto w-full text-left whitespace-no-wrap">
+            <thead>
+                <tr>
+                    <th class="table-th">
+                        #
+                    </th>
+                    <th class="table-th">
+                        Qtd
+                    </th>
+                    <th class="table-th">
+                        Total (R$)
+                    </th>
+                    <th class="table-th">
+                        Custo (R$)
+                    </th>
+                    <th class="table-th">
+                        Lucro (R$)
+                    </th>
+                    <th class="table-th">
+                        Cliente
+                    </th>
+                    <th class="table-th">
+                        Status
+                    </th>
+                    <th class="table-th text-center">
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="divide-y">
 
-                    @foreach ($orders as $order)
-                    <tr class="even:bg-gray-100 odd:bg-white">
-                        <td class="px-4 py-3">{{ $order->id }}</td>
-                        <td class="px-4 py-3">{{ $order->quantity }}</td>
-                        <td class="px-4 py-3">{{ $order->total }}</td>
-                        <td class="px-4 py-3">{{ $order->cost }}</td>
-                        <td class="px-4 py-3">{{ $order->profit }}</td>
-                        <td class="px-4 py-3">{{ $order->user->email }}</td>
-                        <td class="px-4 py-3 h-full">
-                            @include('shared.status')
-                        </td>
-                        <td class="px-4 py-3 text-sm text-right space-x-3">
-                            <a href="{{ route('admin.orders.show', $order->id) }}"
-                                class="text-indigo-500 inline-flex items-center">
-                                Visualizar
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($orders as $order)
+                <tr class="even:bg-gray-100 odd:bg-white">
+                    <td class="px-4 py-3">{{ $order->id }}</td>
+                    <td class="px-4 py-3">{{ $order->quantity }}</td>
+                    <td class="px-4 py-3">{{ $order->total }}</td>
+                    <td class="px-4 py-3">{{ $order->cost }}</td>
+                    <td class="px-4 py-3">{{ $order->profit }}</td>
+                    <td class="px-4 py-3">{{ $order->user->email }}</td>
+                    <td class="px-4 py-3 h-full">
+                        @include('shared.status')
+                    </td>
+                    <td class="px-4 py-3 text-sm text-center">
+                        <a href="{{ route('admin.orders.show', $order->id) }}"
+                            class="text-indigo-500 hover:text-indigo-600 inline-flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                <path fill-rule="evenodd"
+                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                @endforeach
 
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
 </section>
 

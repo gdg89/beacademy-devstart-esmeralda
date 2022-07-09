@@ -25,7 +25,7 @@ class AdminProductController extends Controller
             return $query->where('name', 'like', "%{$search}%");
         });
 
-        $products = $products->paginate(12);
+        $products = $products->paginate(10);
 
         foreach ($products as $product) {
             $product->price_sell = Product::format_price($product->price_sell);

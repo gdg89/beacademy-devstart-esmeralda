@@ -13,5 +13,25 @@ body {
     display: flex;
     flex-direction: column;
 
+    background-color: #fafafa;
+    color: theme("colors.gray.900");
+
     font-family: "Roboto", sans-serif;
+}
+
+.table-th {
+    @apply px-4 py-3 tracking-wider font-medium text-gray-900 text-sm bg-gray-100;
+}
+
+.header-nav-link {
+    @apply inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0;
+}
+
+.btn-primary {
+    @apply flex items-center justify-center py-1.5 px-3 text-white bg-indigo-500 hover:bg-indigo-600 border-0 rounded focus:outline-none;
+    @layer text-md;
+}
+
+.section-container {
+    @apply container px-5 mx-auto w-full;
 }

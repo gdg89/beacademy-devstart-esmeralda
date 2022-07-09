@@ -2,9 +2,9 @@
 @section('title', "Pedido #{$order->id}")
 @section('content')
 
-<div class="container px-5 pt-16 pb-24 mx-auto w-full">
+<section class="section-container">
     <div class="flex items-center mb-2">
-        <h1 class="text-2xl font-medium title-font text-gray-900">
+        <h1 class="text-3xl font-medium title-font text-gray-900">
             Pedido #{{ $order->id }}
         </h1>
         <div class="ml-4">
@@ -55,7 +55,7 @@
                 Detalhes
             </h1>
             <p>
-                <strong class="uppercase">Itens:</strong>
+                <strong class="uppercase">Quantidade:</strong>
                 <span>{{ $order->quantity }}</span>
             </p>
 
@@ -88,42 +88,35 @@
         <table class="table-auto w-full text-left whitespace-no-wrap">
             <thead>
                 <tr>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th">
                         #
                     </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-                        style="width: 150px">
+                    <th class="table-th" style="width: 150px">
                         Imagem
                     </th>
-                    <th
-                        class="text-center px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th text-center">
                         Qtd
                     </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th">
                         Nome
                     </th>
-                    <th
-                        class="text-center px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th text-center">
                         Custo (R$)
                     </th>
 
-                    <th
-                        class="text-center px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th text-center">
                         Preço (R$)
                     </th>
 
-                    <th
-                        class="text-center px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                        CUSTO_TOTAL (R$)
+                    <th class="table-th text-center">
+                        CUSTO TOTAL (R$)
                     </th>
 
-                    <th
-                        class="text-center px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th text-center">
                         TOTAL (R$)
                     </th>
 
-                    <th
-                        class="text-center px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th class="table-th text-center">
                         LUCRO (R$)
                     </th>
 
@@ -152,6 +145,6 @@
         </table>
     </div>
 
-</div>
+</section>
 
 @endsection
