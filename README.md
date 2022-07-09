@@ -1,6 +1,6 @@
 # Projeto EstanteDev - Squad Esmeralda
 
-E-commerce de livros sobre programação, feito com Laravel 9 e MySQL.
+E-commerce de livros sobre programação, feito com Laravel 9, TailwindCSS e MySQL.
 
 ## Instalação
 
@@ -10,14 +10,17 @@ Dentro da pasta `Projeto-Empresarial`,crie um arquivo `.env` igual ao `.env.exam
 # Instale as dependências do composer e npm
 composer install
 npm install
+
+# Crie um link simbolico para o storage/app/public
+php artisan storage:link
+
+# Instale os estilos para a paginação
+php artisan vendor:publish --tag=laravel-pagination
 ```
 
 ## Execução
 
 ```bash
-## Cri um link simbolico de storage para public
-php artisan storage:link
-
 # Sirva o projeto na porta 8000
 php artisan serve
 
@@ -26,6 +29,12 @@ npm run dev
 # ou
 yarn dev
 ```
+
+## Tech
+
+- [Laravel 9][laravel]
+- [TailwindCSS][tailwind]
+- [MySQL][mysql]
 
 ## Squad Members
 
@@ -159,3 +168,7 @@ Utilizaremos o serviço de webhook da Paylivre.
 
 - O cliente recebe um e-mail toda vez que um novo pedido é realizado
 - O cliente recebe um e-mail toda vez que algum pedido sofre alteração de status
+
+[laravel]: https://laravel.com
+[tailwind]: https://tailwindcss.com
+[mysql]: https://www.mysql.com
