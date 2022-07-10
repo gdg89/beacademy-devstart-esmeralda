@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AdminProductController,
+    AdminUsersController,
     HomeController,
     UserController,
     ProductController,
@@ -39,6 +40,19 @@ Route::prefix('admin')->group(function () {
         Route::delete('/delete/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
 
         Route::get('/delete/image/{product}', [AdminProductController::class, 'destroyImage'])->name('admin.product.destroy.image');
+    });
+
+    Route::prefix('usuarios')->group(function(){
+        Route::get('/',[AdminUsersController::class, 'index'])->name('admin.users.index');
+
+        Route::get('/cadastro',[AdminUsersController::class, 'create'])->name('admin.users.create'); 
+        Route::post('/cadastro',[AdminUsersController::class, 'store'])->name('admin.users.store');
+
+        Route::get('/{id}/editar',[AdminUsersController::class, 'edit'])->name('admin.users.edit');
+        Route::put('/{id}/editar',[AdminUserscontroller::class, 'update'])->name('admin.users.update');
+
+        Route::delete('users/{id}',[AdminUsersController::class, 'destroy'])->name('admin.users.destroy');
+
     });
 });
 
