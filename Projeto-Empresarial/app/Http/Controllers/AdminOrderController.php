@@ -12,19 +12,24 @@ class AdminOrderController extends Controller
     {
         $orders = Order::query();
 
-
-        // find users with searched email
         $orders = $orders->when($request->search, function ($query, $search) {
             return $query->whereHas('user', function ($query) use ($search) {
                 $query->where('email', 'like', "%{$search}%");
             });
         });
 
+        $orders = $orders->when($request->status, function ($query, $status) {
+            return $query->where('status', $status);
+        });
+
+
         $orders = $orders->paginate(5);
 
         foreach ($orders as $order) {
             Order::setOrderInfo($order);
         }
+
+        $orders->statusList = Order::getStatusList();
 
         if ($request->search) {
             $orders->appends('search', $request->search);

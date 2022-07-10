@@ -14,7 +14,7 @@ body {
     flex-direction: column;
 
     background-color: #fafafa;
-    color: theme("colors.gray.900");
+    /* color: theme("colors.gray.900"); */
 
     font-family: "Roboto", sans-serif;
 }
@@ -28,7 +28,7 @@ body {
 }
 
 .btn-primary {
-    @apply flex items-center justify-center py-1.5 px-3 text-white bg-indigo-500 hover:bg-indigo-600 border-0 rounded focus:outline-none;
+    @apply flex items-center justify-center py-2 px-3 text-white bg-indigo-500 hover:bg-indigo-600 border-0 rounded focus:outline-none;
     @layer text-md;
 }
 

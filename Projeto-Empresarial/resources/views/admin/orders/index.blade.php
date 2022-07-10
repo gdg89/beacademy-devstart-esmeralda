@@ -6,12 +6,12 @@
 <section class="section-container">
     @include('shared.search')
 
-    <div class="pt-16 pb-12">
+    <div class=" pt-16 pb-12">
         {{ $orders->links() }}
     </div>
 
-    <div class="flex items-center justify-between mb-8">
-        <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
+    <div class="flex items-start justify-between mb-8">
+        <h1 class="text-2xl font-medium title-font text-gray-900">
             Pedidos
         </h1>
         <a href="#" class="btn-primary">

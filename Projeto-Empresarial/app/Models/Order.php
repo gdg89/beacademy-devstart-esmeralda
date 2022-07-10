@@ -27,6 +27,21 @@ class Order extends Model
         return $this->belongsToMany(Product::class);
     }
 
+    static public function getStatusList()
+    {
+        $orders = Order::all();
+
+        $statusList = [];
+
+        foreach ($orders as $order) {
+            if (!in_array($order->status, $statusList)) {
+                $statusList[] = $order->status;
+            }
+        }
+
+        return $statusList;
+    }
+
     /**
      * Get the total, cost, and profit  of the order.
      *
