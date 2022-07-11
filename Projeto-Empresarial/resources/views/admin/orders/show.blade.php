@@ -108,16 +108,9 @@
                     <th class="table-th">
                         Nome
                     </th>
-                    <th class="table-th text-center">
-                        Custo (R$)
-                    </th>
 
                     <th class="table-th text-center">
-                        Preço (R$)
-                    </th>
-
-                    <th class="table-th text-center">
-                        CUSTO TOTAL (R$)
+                        CUSTO (R$)
                     </th>
 
                     <th class="table-th text-center">
@@ -141,8 +134,6 @@
                     </td>
                     <td class="text-center px-4 py-3">{{ $product->quantity }}</td>
                     <td class="px-4 py-3">{{ $product->name }}</td>
-                    <td class="text-center px-4 py-3">{{ $product->price_cost }}</td>
-                    <td class="text-center px-4 py-3">{{ $product->price_sell }}</td>
                     <td class="text-center px-4 py-3">{{ $product->total_cost }}</td>
                     <td class="text-center px-4 py-3">{{ $product->total }}</td>
                     <td class="text-center px-4 py-3">{{ $product->profit }}</td>

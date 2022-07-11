@@ -1,9 +1,7 @@
-// get all the products data-id elements
 const products = document.querySelectorAll("[data-id]");
 
 const removeProductIds = [];
 
-// add click event listener to all products
 products.forEach((product) => {
     product.addEventListener("click", () => {
         const productRow = document.querySelector(

@@ -22,24 +22,23 @@
                     <th class="table-th">
                         #
                     </th>
-                    <th class="table-th">
-                        Qtd
-                    </th>
-                    <th class="table-th">
-                        Total (R$)
-                    </th>
-                    <th class="table-th">
-                        Custo (R$)
-                    </th>
-                    <th class="table-th">
-                        Lucro (R$)
-                    </th>
+
                     <th class="table-th">
                         Cliente
                     </th>
+
+                    <th class="table-th text-center">
+                        Qtd
+                    </th>
+
+                    <th class="table-th text-center">
+                        Total (R$)
+                    </th>
+
                     <th class="table-th">
                         Status
                     </th>
+
                     <th class="table-th text-center">
                         Ações
                     </th>
@@ -50,16 +49,15 @@
                 @foreach ($orders as $order)
                 <tr class="even:bg-gray-100 odd:bg-white">
                     <td class="px-4 py-3">{{ $order->id }}</td>
-                    <td class="px-4 py-3">{{ $order->quantity }}</td>
-                    <td class="px-4 py-3">{{ $order->total }}</td>
-                    <td class="px-4 py-3">{{ $order->cost }}</td>
-                    <td class="px-4 py-3">{{ $order->profit }}</td>
                     <td class="px-4 py-3">{{ $order->user->email }}</td>
-                    <td class="px-4 py-3 h-full">
+                    <td class="text-center px-4 py-3">{{ $order->quantity }}</td>
+                    <td class="text-center px-4 py-3">{{ $order->total }}</td>
+                    <td class="px-4 py-3">
                         @include('shared.status')
                     </td>
                     <td class="px-4 py-3 text-sm text-center">
                         <a href="{{ route('admin.orders.show', $order->id) }}"
+                            title="Visualizar pedido {{ $order->id }}"
                             class="text-indigo-500 hover:text-indigo-600 inline-flex items-center justify-center">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
