@@ -22,7 +22,6 @@
 
     <div class="w-full mx-auto overflow-auto">
 
-
         <table class="table-auto w-full text-left whitespace-no-wrap">
             <thead>
                 <tr>
@@ -56,7 +55,7 @@
                     <td class="px-4 py-3">{{ $product->id }}</td>
                     <td class="px-4 py-3">
                         <img alt="{{ $product->name }}" class="object-cover object-center w-full h-[80px] block"
-                            src="{{ $product->cover }}" style="min-width: 100px" />
+                            src="{{ $product->cover }}" style="width: 150px; min-width: 150px;" />
                     </td>
                     <td class="px-4 py-3">{{ $product->name }}</td>
                     <td class="px-4 py-3">R${{ $product->price_cost }}</td>
