@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateOrderFormRequest;
 
 class AdminOrderController extends Controller
 {
@@ -21,7 +21,6 @@ class AdminOrderController extends Controller
         $orders = $orders->when($request->status, function ($query, $status) {
             return $query->where('status', $status);
         });
-
 
         $orders = $orders->paginate(5);
 
@@ -45,5 +44,22 @@ class AdminOrderController extends Controller
         $order->uniqueProducts = Order::getUniqueProducts($order);
 
         return view('admin.orders.show', compact('order'));
+    }
+
+    public function edit(Order $order)
+    {
+        $order->statusList = Order::getStatusList();
+
+        return view('admin.orders.edit', compact('order'));
+    }
+
+    public function update(UpdateOrderFormRequest $request, Order $order)
+    {
+        $input = $request->validated();
+
+        $order->fill($input);
+        $order->save();
+
+        return redirect()->route('admin.orders.show', $order);
     }
 }

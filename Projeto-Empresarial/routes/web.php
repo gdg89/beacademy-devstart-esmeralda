@@ -27,8 +27,6 @@ Route::prefix('usuario')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
-
-    Route::get('/pedido/{order}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
 });
 
 Route::prefix('admin/produto')->group(function () {
@@ -44,8 +42,10 @@ Route::prefix('admin/produto')->group(function () {
 });
 
 Route::prefix('admin/pedido')->group(function () {
-    Route::get('/editar/{order}', [AdminOrderController::class, 'create'])->name('admin.orders.edit');
-    Route::put('/editar/{order}', [AdminOrderController::class, 'store'])->name('admin.orders.update');
+    Route::get('/{order}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
+
+    Route::get('/editar/{order}', [AdminOrderController::class, 'edit'])->name('admin.orders.edit');
+    Route::put('/editar/{order}', [AdminOrderController::class, 'update'])->name('admin.orders.update');
 
     Route::delete('/delete/{order}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
 });

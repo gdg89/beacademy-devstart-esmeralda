@@ -70,6 +70,7 @@ class Order extends Model
      */
     static public function setProductInfo(Product $product, int $productQuantity)
     {
+        $product->cover = Product::getProductCoverPath($product);
         $product->quantity = $productQuantity;
 
         $product->total_cost = $product->quantity * $product->price_cost;
