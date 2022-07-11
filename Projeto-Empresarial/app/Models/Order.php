@@ -93,23 +93,25 @@ class Order extends Model
      */
     static public function getUniqueProducts(Order $order): Collection
     {
+        $quantities = [];
+
         foreach ($order->products as $product) {
 
             $productId = $product->id;
 
-            if (isset($order->$productId)) {
-                $order->$productId += 1;
+            if (isset($quantities[$productId])) {
+                $quantities[$productId] += 1;
             }
 
-            if (!isset($order->$productId)) {
-                $order->$productId = 1;
+            if (!isset($quantities[$productId])) {
+                $quantities[$productId] = 1;
             }
         }
 
         $uniqueProducts = $order->products->unique();
 
         foreach ($uniqueProducts as $product) {
-            self::setProductInfo($product, $order[$product->id]);
+            self::setProductInfo($product, $quantities[$product->id]);
         }
 
         return $uniqueProducts;

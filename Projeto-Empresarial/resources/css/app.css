@@ -70,6 +70,14 @@ body {
     @apply px-4 py-3 tracking-wider font-medium text-gray-900 text-sm bg-gray-100;
 }
 
+.tr-remove {
+    @apply bg-red-300 text-red-700 !important;
+}
+
+.btn-remove {
+    @apply bg-red-300 text-red-700 !important;
+}
+
 .msg-error {
     @apply text-red-400 text-sm;
 }

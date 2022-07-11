@@ -17,6 +17,13 @@ class UpdateOrderFormRequest extends FormRequest
         return true;
     }
 
+    public function messages()
+    {
+        return [
+            'products.required' => 'Pelo menos 1 produto é obrigatório.',
+        ];
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,11 +31,27 @@ class UpdateOrderFormRequest extends FormRequest
      */
     public function rules()
     {
-
         $statusList = implode(',', Order::getStatusList());
 
-        return [
+        $rules = [
             'status' => 'required|in:' . $statusList,
         ];
+
+        $order = $this->route('order');
+        $uniqueProducts = Order::getUniqueProducts($order);
+
+        // get product ids from uniqueProducts Collection
+        $productIds = $uniqueProducts->pluck('id')->toArray();
+
+        $requestKeys = array_keys($this->request->all());
+
+        $validate = array_intersect($requestKeys, $productIds);
+
+        // check if size o validate is equal to size of productIds
+        if (count($validate) === count($productIds)) {
+            $rules['products'] = 'required';
+        }
+
+        return $rules;
     }
 }
