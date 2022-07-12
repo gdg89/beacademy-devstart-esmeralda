@@ -1,10 +1,6 @@
 @extends('layouts.secondary')
 @section('title', 'Login')
 
-@push('styles')
-@vite(['resources/css/login.css'])
-@endpush
-
 @section('content')
 <div
     class="relative grow flex items-center justify-center  bg-[url('https://source.unsplash.com/random')] bg-no-repeat bg-cover bg-center">
