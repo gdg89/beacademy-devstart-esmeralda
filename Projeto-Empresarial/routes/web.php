@@ -17,7 +17,7 @@ Route::get('/logoff', [UserController::class, 'logoff'])->name('logoff');
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 
-Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product');
+Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('usuario')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');

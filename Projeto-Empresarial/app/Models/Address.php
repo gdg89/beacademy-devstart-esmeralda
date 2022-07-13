@@ -10,4 +10,19 @@ class Address extends Model
     use HasFactory;
 
     protected $table = 'addresses';
+
+    protected $fillable = [
+        'user_id',
+        'street',
+        'number',
+        'neighbor',
+        'city',
+        'state',
+        'complement'
+    ];
+
+    public function address()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

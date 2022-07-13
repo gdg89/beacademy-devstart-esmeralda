@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserFormRequest;
+use App\Models\Address;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -39,10 +40,28 @@ class UserController extends Controller
     public function store(UserFormRequest $request)
     {
         $validated = $request->validated();
-        User::create($validated);
-        dd($validated);
+        // dd($validated);
+        // dd($validated);
+        $user = User::create([
+            'name' => $request->validated('name'),
+            'email' => $request->validated('email'),
+            'phone' => $request->validated('phone'),
+            'birthday' => $request->validated('birthday'),
+            'cpf' => $request->validated('cpf'),
+            'password' => bcrypt($request->validated('password'))
+        ]);
 
-        // return redirect()
+        $Address = Address::create([
+            'user_id' => $user->id,
+            'street' => $request->validated('street'),
+            'number' => $request->validated('number'),
+            'neighbor' => $request->validated('neighbor'),
+            'city' => $request->validated('city'),
+            'state' => $request->validated('state'),
+            'complement' => $request->validated('complement'),
+        ]);
+
+        return redirect()->route('home');
     }
 
     public function show(User $user)

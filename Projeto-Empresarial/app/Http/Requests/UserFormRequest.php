@@ -25,15 +25,17 @@ class UserFormRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:4|max:200',
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|email:rfc,dns|unique:users,email',
             'password' => 'required|min:6',
-            'cpf' => 'required|numeric|min:11',
+            'cpf' => 'required|numeric|min:11|unique:users,cpf',
             'birthday' => 'required',
             'phone' => 'required|numeric|min:11',
             'street' => 'required|string|min:3',
             'neighbor' => 'required|string|min:4',
+            'number' => 'required|numeric',
             'city' => 'required|string|min:3',
-            'state' => 'required|string'
+            'state' => 'required|string',
+            'complement' => 'nullable|string|max:40'
         ];
     }
 }
