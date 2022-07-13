@@ -21,7 +21,12 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->cellphoneNumber(),
-            // 'address' => $this->faker->address(),
+            'street' => $this->faker->streetName(),
+            'number' => $this->faker->randomNumber(3),
+            'neighbor' => $this->faker->text(10),
+            'city' => $this->faker->city(),
+            'state' => $this->faker->state(),
+            'complement' => $this->faker->text('40'),
             'birthday' => $this->faker->date(),
             'cpf' => $this->faker->cpf(false),
             'password' => bcrypt(now()), // password

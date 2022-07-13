@@ -21,6 +21,12 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('cpf', 11);
             $table->string('password');
+            $table->string('street');
+            $table->string('neighbor');
+            $table->string('number');
+            $table->string('city');
+            $table->string('state');
+            $table->string('complement');
             $table->timestamps();
         });
     }
