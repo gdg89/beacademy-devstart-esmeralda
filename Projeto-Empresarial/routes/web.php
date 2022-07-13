@@ -28,7 +28,7 @@ Route::prefix('usuario')->group(function () {
     Route::post('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('/carrinho', [ClientController::class, 'cart'])->name('user.cart');
-    Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.index');
+    Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.finish');
 });
 
 Route::prefix('admin/produtos')->group(function () {

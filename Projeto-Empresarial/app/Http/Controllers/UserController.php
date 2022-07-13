@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserFormRequest;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -18,7 +20,7 @@ class UserController extends Controller
         return view('user.index');
     }
 
-    public function login()
+    public function login():View
     {
         return view('user.login');
     }
@@ -30,26 +32,19 @@ class UserController extends Controller
      */
     public function create():View
     {
-        return view('user.register');
+        $states = User::state();
+        return view('user.register',compact('states'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+        User::create($validated);
+        dd($validated);
+
+        // return redirect()
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function show(User $user)
     {
         //
