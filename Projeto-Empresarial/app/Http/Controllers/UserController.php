@@ -40,8 +40,6 @@ class UserController extends Controller
     public function store(StoreUsersFormRequest $request)
     {
         $validated = $request->validated();
-        // dd($validated);
-        // dd($validated);
         $user = User::create([
             'name' => $request->validated('name'),
             'email' => $request->validated('email'),
