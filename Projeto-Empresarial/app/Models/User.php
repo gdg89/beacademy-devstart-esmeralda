@@ -15,15 +15,20 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'phone',
-        'address',
         'birthday',
         'cpf',
+        'street',
+        'number',
+        'neighbor',
+        'city',
+        'state',
+        'complement',
         'password'
     ];
 
@@ -45,4 +50,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function state(){
+		return [
+			'AC' => "acre",
+			"AL" => "alagoas",
+			"AM" => "Amazonas",
+			"AP" => "Amapá",
+			"BA" => "Bahia",
+			"CE" => "Ceará",
+			"DF" => "Distrito Federal",
+			"ES" => "Espírito Santo",
+			"GO" => "Goiás",
+			"MA" => "Maranhão",
+			"MG" => "Minas Gerais",
+			"MS" => "Mato Grosso do Sul",
+			"MT" => "Mato Grosso",
+			"PA" => "Pará",
+			"PB" => "Paraíba ",
+			"PE" => "Pernambuco",
+			"PI" => "Piauí",
+			"PR" => "Paraná",
+			"RJ" => "Rio de Janeiro",
+			"RN" => "Rio Grande do Norte",
+			"RS" => "Rio Grande do Sul",
+			"RO" => "Rondônia",
+			"RR" => "Roraima",
+			"SC"=> "Santa Catarina",
+			"SE" => "Sergipe",
+			"SP" => "São Paulo",
+			"TO" => "Tocantins"
+		];
+	}
 }

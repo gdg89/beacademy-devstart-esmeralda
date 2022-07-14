@@ -24,7 +24,7 @@ Route::prefix('usuario')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
 
     Route::get('/carrinho', [ClientController::class, 'cart'])->name('user.cart');
-    Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.index');
+    Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.finish');
 });
 
 Route::prefix('admin')->group(function () {
