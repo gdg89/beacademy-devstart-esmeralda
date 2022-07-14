@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserFormRequest;
+use App\Http\Requests\StoreUsersFormRequest;
 use App\Models\Address;
 use Illuminate\View\View;
 
@@ -37,7 +37,7 @@ class UserController extends Controller
         return view('user.register',compact('states'));
     }
 
-    public function store(UserFormRequest $request)
+    public function store(StoreUsersFormRequest $request)
     {
         $validated = $request->validated();
         // dd($validated);

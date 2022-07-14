@@ -15,10 +15,15 @@ class HomeController extends Controller
             return $query->where('name', 'like', "%{$search}%");
         });
 
-        $products = $products->get();
+        $products = $products->paginate(12);
 
         foreach ($products as $product) {
             $product->price_sell = Product::format_price($product->price_sell);
+            $product->cover = Product::getProductCoverPath($product);
+        }
+
+        if ($request->search) {
+            $products->appends('search', $request->search);
         }
 
         return view('home', [
