@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUsersFormRequest;
+use App\Models\Address;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -12,12 +16,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():View
     {
         return view('user.index');
     }
 
-    public function login()
+    public function login():View
     {
         return view('user.login');
     }
@@ -27,28 +31,33 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create():View
     {
-        //
+        $states = User::state();
+        return view('user.register',compact('states'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(StoreUsersFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $user = User::create([
+            'name' => $request->validated('name'),
+            'email' => $request->validated('email'),
+            'phone' => $request->validated('phone'),
+            'birthday' => $request->validated('birthday'),
+            'cpf' => $request->validated('cpf'),
+            'street' => $request->validated('street'),
+            'number' => $request->validated('number'),
+            'neighbor' => $request->validated('neighbor'),
+            'city' => $request->validated('city'),
+            'state' => $request->validated('state'),
+            'complement' => $request->validated('complement'),
+            'password' => bcrypt($request->validated('password'))
+        ]);
+
+        return redirect()->route('home');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function show(User $user)
     {
         //

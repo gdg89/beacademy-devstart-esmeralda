@@ -18,10 +18,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone', 15);
-            $table->string('address');
             $table->date('birthday');
             $table->string('cpf', 11)->unique();
             $table->string('password');
+            $table->string('street');
+            $table->string('neighbor');
+            $table->string('number');
+            $table->string('city');
+            $table->string('state');
+            $table->string('complement');
             $table->timestamps();
         });
     }
