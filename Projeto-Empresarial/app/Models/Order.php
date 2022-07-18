@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Http\Requests\UpdateOrderFormRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Http\Request;
 
 class Order extends Model
 {
@@ -25,6 +27,35 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    static public function getAllFormatted(Request $request)
+    {
+        $orders = Order::query();
+
+        $orders = $orders->when($request->search, function ($query, $search) {
+            return $query->whereHas('user', function ($query) use ($search) {
+                $query->where('email', 'like', "%{$search}%");
+            });
+        });
+
+        $orders = $orders->when($request->status, function ($query, $status) {
+            return $query->where('status', $status);
+        });
+
+        $orders = $orders->paginate(10);
+
+        foreach ($orders as $order) {
+            Order::setOrderInfo($order);
+        }
+
+        $orders->statusList = Order::getStatusList();
+
+        if ($request->search) {
+            $orders->appends('search', $request->search);
+        }
+
+        return $orders;
     }
 
     static public function getStatusList()
@@ -115,5 +146,23 @@ class Order extends Model
         }
 
         return $uniqueProducts;
+    }
+
+    static public function updateProductsAndStatus(UpdateOrderFormRequest $request, Order $order)
+    {
+        $removeProductIds = array_keys($request->except(['_token', '_method', 'status']));
+
+        // all order products
+        $products = $order->products;
+
+        // if removeProductIds is not empty, remove products from order with the same id in removeProductIds
+        if (!empty($removeProductIds)) {
+            $products = $products->whereNotIn('id', $removeProductIds);
+        }
+
+        $order->products()->sync($products);
+
+        $order->status = $request->status;
+        $order->save();
     }
 }
