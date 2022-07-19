@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone', 15);
             $table->date('birthday');
-            $table->string('cpf', 11);
+            $table->string('cpf', 11)->unique();
             $table->string('password');
             $table->string('street');
             $table->string('neighbor');

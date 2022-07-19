@@ -24,6 +24,11 @@ class Product extends Model
         'description'
     ];
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
     /**
      * Format price to pt-BR format.
      *

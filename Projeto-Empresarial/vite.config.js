@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
     plugins: [
-        laravel(["resources/css/app.css", "resources/js/app.js"]),
+        laravel(["resources/css/app.css", "resources/**/*.{js,ts,vue}"]),
         {
             name: "blade",
             handleHotUpdate({ file, server }) {

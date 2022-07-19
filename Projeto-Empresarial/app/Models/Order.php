@@ -2,16 +2,167 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Requests\UpdateOrderFormRequest;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Http\Request;
 
 class Order extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'status',
-        'total',
-        'payment'
     ];
+
+    protected $with = ['user', 'products'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
+    static public function getAllFormatted(Request $request)
+    {
+        $orders = Order::query();
+
+        $orders = $orders->when($request->search, function ($query, $search) {
+            return $query->whereHas('user', function ($query) use ($search) {
+                $query->where('email', 'like', "%{$search}%");
+            });
+        });
+
+        $orders = $orders->when($request->status, function ($query, $status) {
+            return $query->where('status', $status);
+        });
+
+        $orders = $orders->paginate(10);
+
+        foreach ($orders as $order) {
+            Order::setOrderInfo($order);
+        }
+
+        $orders->statusList = Order::getStatusList();
+
+        if ($request->search) {
+            $orders->appends('search', $request->search);
+        }
+
+        return $orders;
+    }
+
+    static public function getStatusList()
+    {
+        $orders = Order::all();
+
+        $statusList = [];
+
+        foreach ($orders as $order) {
+            if (!in_array($order->status, $statusList)) {
+                $statusList[] = $order->status;
+            }
+        }
+
+        return $statusList;
+    }
+
+    /**
+     * Get the total, cost, and profit  of the order.
+     *
+     * @param Order $order
+     * @return void
+     */
+    static public function setOrderInfo(Order $order)
+    {
+        $order->quantity = $order->products->count();
+
+        $order->cost = $order->products->sum('price_cost');
+        $order->total = $order->products->sum('price_sell');
+        $order->profit = $order->total - $order->cost;
+
+        $order->cost = Product::format_price($order->cost);
+        $order->total = Product::format_price($order->total);
+        $order->profit = Product::format_price($order->profit);
+    }
+
+    /**
+     * Set unique product information in the order.
+     *
+     * @param Product $product
+     * @param int $productQuantity
+     * @return Collection
+     */
+    static public function setProductInfo(Product $product, int $productQuantity)
+    {
+        $product->cover = Product::getProductCoverPath($product);
+        $product->quantity = $productQuantity;
+
+        $product->total_cost = $product->quantity * $product->price_cost;
+        $product->total = $product->quantity * $product->price_sell;
+        $product->profit = $product->total - $product->total_cost;
+
+        $product->total_cost = Product::format_price($product->total_cost);
+        $product->total = Product::format_price($product->total);
+        $product->profit = Product::format_price($product->profit);
+
+        $product->price_cost = Product::format_price($product->price_cost);
+        $product->price_sell = Product::format_price($product->price_sell);
+    }
+
+    /**
+     * Get unique products in the order.
+     *
+     * @param Order $order
+     * @return Collection
+     */
+    static public function getUniqueProducts(Order $order): Collection
+    {
+        $quantities = [];
+
+        foreach ($order->products as $product) {
+
+            $productId = $product->id;
+
+            if (isset($quantities[$productId])) {
+                $quantities[$productId] += 1;
+            }
+
+            if (!isset($quantities[$productId])) {
+                $quantities[$productId] = 1;
+            }
+        }
+
+        $uniqueProducts = $order->products->unique();
+
+        foreach ($uniqueProducts as $product) {
+            self::setProductInfo($product, $quantities[$product->id]);
+        }
+
+        return $uniqueProducts;
+    }
+
+    static public function updateProductsAndStatus(UpdateOrderFormRequest $request, Order $order)
+    {
+        $removeProductIds = array_keys($request->except(['_token', '_method', 'status']));
+
+        // all order products
+        $products = $order->products;
+
+        // if removeProductIds is not empty, remove products from order with the same id in removeProductIds
+        if (!empty($removeProductIds)) {
+            $products = $products->whereNotIn('id', $removeProductIds);
+        }
+
+        $order->products()->sync($products);
+
+        $order->status = $request->status;
+        $order->save();
+    }
 }

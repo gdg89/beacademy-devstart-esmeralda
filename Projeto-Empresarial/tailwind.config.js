@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
-    ],
+    mode: "jit",
+    content: ["./resources/**/*.blade.php", "./resources/**/*.{js,ts,vue}"],
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [require("daisyui")],
+    daisyui: {
+        themes: ["light", "dark", "corporate"],
+    },
 };

@@ -12,7 +12,6 @@ use App\Http\Requests\StoreProductFormRequest;
 
 class AdminProductController extends Controller
 {
-
     /**
      * List all products in the database.
      *
@@ -26,7 +25,7 @@ class AdminProductController extends Controller
             return $query->where('name', 'like', "%{$search}%");
         });
 
-        $products = $products->paginate(12);
+        $products = $products->paginate(10);
 
         foreach ($products as $product) {
             $product->price_sell = Product::format_price($product->price_sell);
@@ -37,7 +36,7 @@ class AdminProductController extends Controller
             $products->appends('search', $request->search);
         }
 
-        return view('admin.product.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -47,7 +46,7 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -69,7 +68,7 @@ class AdminProductController extends Controller
 
         Product::create($input);
 
-        return Redirect::route('admin.product.index');
+        return Redirect::route('admin.products.index');
     }
 
     /**
@@ -82,7 +81,7 @@ class AdminProductController extends Controller
     {
         $product->cover = Product::getProductCoverPath($product);
 
-        return view('admin.product.edit', compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -105,7 +104,7 @@ class AdminProductController extends Controller
         $product->fill($input);
         $product->save();
 
-        return Redirect::route('admin.product.index');
+        return Redirect::route('admin.products.index');
     }
 
     /**
@@ -119,7 +118,7 @@ class AdminProductController extends Controller
         Storage::delete("public/{$product->cover}" ?? '');
         $product->delete();
 
-        return Redirect::route('admin.product.index');
+        return Redirect::route('admin.products.index');
     }
 
     /**
