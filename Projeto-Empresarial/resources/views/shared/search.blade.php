@@ -9,7 +9,7 @@ $routes = [
 $dataTypes = [
 'home' => 'produto',
 'admin.products.index' => 'produto',
-'admin.orders.index' => 'usuário',
+'admin.orders.index' => 'cliente',
 'admin.users.index' => 'usuário',
 ];
 

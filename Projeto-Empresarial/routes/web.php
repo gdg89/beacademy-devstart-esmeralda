@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AdminOrderController,
     AdminProductController,
-    AdminUsersController,
+    AdminUserController,
     HomeController,
     UserController,
     ProductController,
@@ -39,7 +39,7 @@ Route::prefix('pedidos')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/usuarios', [AdminUsersController::class, 'index'])->name('admin.users.index');
+    Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
 

@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreUsersFormRequest;
 use Illuminate\View\View;
 
-class AdminUsersController extends Controller
+class AdminUserController extends Controller
 {
     public function __construct(User $user)
     {
