@@ -79,8 +79,8 @@ class User extends Authenticatable
     public static function getStates()
     {
         return [
-            'AC' => "acre",
-            "AL" => "alagoas",
+            'AC' => "Acre",
+            "AL" => "Alagoas",
             "AM" => "Amazonas",
             "AP" => "Amapá",
             "BA" => "Bahia",

@@ -39,7 +39,6 @@ class UserController extends Controller
     public function store(StoreUserFormRequest $request)
     {
         $input = $request->validated();
-        // dd($input);
 
         User::create($input);
 
