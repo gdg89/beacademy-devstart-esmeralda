@@ -6,11 +6,7 @@
 <section class="section-container">
     @include('shared.search')
 
-    <div class=" pt-16 pb-12">
-        {{ $orders->links() }}
-    </div>
-
-    <h1 class="title">
+    <h1 class="title mt-12 mb-8">
         Pedidos
     </h1>
 
@@ -67,6 +63,10 @@
 
             </tbody>
         </table>
+    </div>
+
+    <div class="py-12">
+        {{ $orders->links() }}
     </div>
 </section>
 
