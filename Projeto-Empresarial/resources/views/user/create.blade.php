@@ -4,7 +4,8 @@
 @section('content')
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">Cadastre-se</h1>
+        <h1 class="title">{{ Route::currentRouteName() === 'admin.users.create' ? 'Criar Usuário' : 'Cadastre-se' }}
+        </h1>
 
         <form class="flex flex-col gap-4" method="POST" action="{{ route("user.store") }}">
             @csrf
