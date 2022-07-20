@@ -76,7 +76,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function state()
+    public static function getStates()
     {
         return [
             'AC' => "acre",

@@ -28,6 +28,13 @@ Route::prefix('usuario')->group(function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
+Route::prefix('pedidos')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+
+    Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
+});
+
 Route::prefix('admin')->group(function () {
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
@@ -55,7 +62,7 @@ Route::prefix('admin/pedido')->group(function () {
     Route::delete('/delete/{order}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
 });
 
-Route::prefix('usuarios')->group(function () {
+Route::prefix('admin/usuario')->group(function () {
     Route::get('/cadastro', [AdminUsersController::class, 'create'])->name('admin.users.create');
     Route::post('/cadastro', [AdminUsersController::class, 'store'])->name('admin.users.store');
 
@@ -63,11 +70,4 @@ Route::prefix('usuarios')->group(function () {
     Route::put('/{id}/editar', [AdminUserscontroller::class, 'update'])->name('admin.users.update');
 
     Route::delete('users/{id}', [AdminUsersController::class, 'destroy'])->name('admin.users.destroy');
-});
-
-Route::prefix('pedidos')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
-
-    Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
 });

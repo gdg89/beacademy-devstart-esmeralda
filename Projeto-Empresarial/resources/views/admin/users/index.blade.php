@@ -54,8 +54,6 @@
                     <td class="px-4 py-3 text-sm text-right space-x-3 text-gray-900">
                         <a href="{{ route('admin.users.edit', $user->id) }}"
                             class="mt-3 text-indigo-500 inline-flex items-center">Editar</a>
-                        <a href="{{ route('admin.users.edit', $user->id) }}"
-                            class="mt-3 text-indigo-500 inline-flex items-center">Visualizar</a>
                         <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
                             @csrf
                             @method('DELETE')
