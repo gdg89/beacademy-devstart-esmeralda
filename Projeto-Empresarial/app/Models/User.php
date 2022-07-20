@@ -48,7 +48,10 @@ class User extends Authenticatable
                 ->orWhere('email', 'like', "%{$search}%");
         });
 
-        $users = $users->paginate(5);
+        // paginate and order users by id desc
+        $users = $users
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
         if ($request->search) {
             $users->appends('search', $request->search);

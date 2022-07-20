@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreUserFormRequest extends FormRequest
 {
@@ -47,9 +48,32 @@ class StoreUserFormRequest extends FormRequest
             'birthday' => 'required',
             'password' => [
                 'required',
-                'min:4',
+                'min:6',
+                'max:30'
             ]
         ];
+
+        if ($this->method('PUT')) {
+            $rules['password'] = [
+                'nullable',
+                'min:6',
+                'max:30'
+            ];
+
+            $rules['email'] = [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($this->id)
+            ];
+
+            $rules['cpf'] = [
+                'required',
+                'string',
+                'min:11',
+                'max:11',
+                Rule::unique('users')->ignore($this->id)
+            ];
+        }
 
         return $rules;
     }

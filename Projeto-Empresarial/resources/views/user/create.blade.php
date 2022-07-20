@@ -1,13 +1,19 @@
 @extends('layouts.default')
 @section('title', 'Cadastro de usuario')
 
+@php
+$title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuário' : 'Cadastre-se';
+@endphp
+
 @section('content')
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">{{ Route::currentRouteName() === 'admin.users.create' ? 'Criar Usuário' : 'Cadastre-se' }}
+        <h1 class="title">
+            {{ $title }}
         </h1>
 
-        <form class="flex flex-col gap-4" method="POST" action="{{ route("user.store") }}">
+        <form class="flex flex-col gap-4" method="POST"
+            action="{{ route("user.store", ["origin" => Route::currentRouteName()]) }}">
             @csrf
 
             <div class="input-container">
