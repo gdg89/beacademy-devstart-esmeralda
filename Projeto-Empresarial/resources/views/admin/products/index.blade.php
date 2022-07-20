@@ -6,7 +6,6 @@
 <section class="section-container">
     @include('shared.search')
 
-
     <div class="pt-16 pb-12">
         {{ $products->links() }}
     </div>

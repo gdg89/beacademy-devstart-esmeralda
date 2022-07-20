@@ -22,16 +22,16 @@ Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('usuario')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('user.index');
+    Route::get('/{user}', [UserController::class, 'index'])->name('user.show');
 
-    Route::get('/carrinho', [ClientController::class, 'cart'])->name('user.cart');
-    Route::post('/carrinho', [ClientController::class, 'finish'])->name('user.finish');
-
+    Route::get('/carrinho', [UserController::class, 'cart'])->name('user.cart');
+    Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
 Route::prefix('admin')->group(function () {
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/usuarios', [AdminUsersController::class, 'index'])->name('admin.users.index');
 });
 
 Route::prefix('admin/produto')->group(function () {
@@ -55,17 +55,14 @@ Route::prefix('admin/pedido')->group(function () {
     Route::delete('/delete/{order}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
 });
 
-Route::prefix('usuarios')->group(function(){
-    Route::get('/',[AdminUsersController::class, 'index'])->name('admin.users.index');
+Route::prefix('usuarios')->group(function () {
+    Route::get('/cadastro', [AdminUsersController::class, 'create'])->name('admin.users.create');
+    Route::post('/cadastro', [AdminUsersController::class, 'store'])->name('admin.users.store');
 
-    Route::get('/cadastro',[AdminUsersController::class, 'create'])->name('admin.users.create'); 
-    Route::post('/cadastro',[AdminUsersController::class, 'store'])->name('admin.users.store');
+    Route::get('/{id}/editar', [AdminUsersController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/{id}/editar', [AdminUserscontroller::class, 'update'])->name('admin.users.update');
 
-    Route::get('/{id}/editar',[AdminUsersController::class, 'edit'])->name('admin.users.edit');
-    Route::put('/{id}/editar',[AdminUserscontroller::class, 'update'])->name('admin.users.update');
-
-    Route::delete('users/{id}',[AdminUsersController::class, 'destroy'])->name('admin.users.destroy');
-
+    Route::delete('users/{id}', [AdminUsersController::class, 'destroy'])->name('admin.users.destroy');
 });
 
 Route::prefix('pedidos')->group(function () {
