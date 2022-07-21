@@ -50,7 +50,7 @@ class Order extends Model
             return $query->where('status', $status);
         });
 
-        $orders = $orders->paginate(10);
+        $orders = $orders->orderBy('id', 'desc')->paginate(10);
 
         foreach ($orders as $order) {
             Order::setOrderInfo($order);
