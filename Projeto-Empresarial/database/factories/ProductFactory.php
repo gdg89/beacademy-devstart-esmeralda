@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 /**
@@ -21,11 +22,13 @@ class ProductFactory extends Factory
 
         $priceCost = $this->faker->randomFloat(2, 1, 100);
 
+        $cover = Http::get('https://source.unsplash.com/640x480/?books')->handlerStats()["url"];
+
         return [
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->text(),
-            'cover' => $this->faker->imageUrl(640, 480, 'books'),
+            'cover' => $cover,
             'price_cost' => $priceCost,
             'price_sell' => $priceCost + 0.1 * $priceCost,
             'stock' => $this->faker->randomDigit(),
