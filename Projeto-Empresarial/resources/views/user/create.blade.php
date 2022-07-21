@@ -53,7 +53,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
             </div>
 
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="cpf" class="form-label">CPF</label>
                     <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" class="form-input" />
@@ -74,7 +74,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 
             </div>
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="birthday" class="form-label">Data de nascimento</label>
                     <input type="date" id="birthday" name="birthday" value="{{ old('birthday') }}" class="form-input" />
@@ -107,7 +107,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
                 @enderror
             </div>
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="city" class="form-label">Cidade</label>
                     <input type="text" id="city" name="city" value="{{ old('city') }}" class="form-input" />
@@ -127,7 +127,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
                 </div>
             </div>
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="number" class="form-label">Número</label>
                     <input type="text" id="number" name="number" value="{{ old('number') }}" class="form-input" />

@@ -1,8 +1,7 @@
 @extends('layouts.default')
-@section('title', 'Usuarios')
+@section('title', 'Admin Usuarios')
 
 @section('content')
-
 
 <section class="section-container">
 
@@ -48,8 +47,8 @@
                 <tr class="even:bg-gray-100 odd:bg-white">
                     <td class="px-4 py-3">{{ $user->id }}</td>
                     <td class="px-4 py-3">
-                        <img alt="{{ $user->name }}" class="object-cover object-center w-12 h-12 rounded-full block"
-                            src="{{ $user->avatar }}" style="width: 48px; min-width: 48px;" />
+                        <img alt="{{ $user->name }}" class="avatar w-12 h-12" src="{{ $user->avatar }}"
+                            style="width: 48px; min-width: 48px;" />
                     </td>
                     <td class="px-4 py-3">{{ $user->name }}</td>
                     <td class="px-4 py-3">{{ $user->email }}</td>

@@ -43,7 +43,7 @@ body {
     @layer text-md;
     @apply w-full py-1 px-3 leading-8
     text-gray-700 bg-gray-100 bg-opacity-50
-    border border-gray-300 rounded outline-none
+    border border-gray-300 rounded-md outline-none
     focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200
     transition-colors duration-200 ease-in-out;
 }
@@ -91,4 +91,12 @@ body {
 
 .select-option-status {
     @apply text-gray-700 bg-white hover:bg-indigo-500;
+}
+
+.avatar {
+    @apply object-cover object-center rounded-full block;
+}
+
+.input-group {
+    @apply w-full flex flex-col sm:flex-row gap-2 sm:gap-4;
 }

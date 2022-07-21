@@ -13,7 +13,7 @@
             class="flex flex-col gap-4">
             @csrf
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
 
                 <div class="input-container sm:w-1/2">
                     <label for="name" class="form-label">Nome do produto</label>
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
 
                 <div class="input-container sm:w-1/2">
                     <label for="price_sell" class="form-label">Preço de custo</label>
