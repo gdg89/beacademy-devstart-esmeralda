@@ -122,11 +122,11 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Editar Usuário' 
                 </div>
 
                 <div class="input-container sm:w-1/2">
-                    <label for="neighbor" class="form-label">Bairro</label>
-                    <input type="text" id="neighbor" name="neighbor" value="{{ old('neighbor', $user->neighbor) }}"
+                    <label for="district" class="form-label">Bairro</label>
+                    <input type="text" id="district" name="district" value="{{ old('district', $user->district) }}"
                         class="form-input" />
 
-                    @error('neighbor')
+                    @error('district')
                     <p class="msg-error">{{ $message }}</p>
                     @enderror
                 </div>

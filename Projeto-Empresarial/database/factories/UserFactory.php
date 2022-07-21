@@ -20,10 +20,11 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'avatar' => $this->faker->imageUrl(100, 100),
             'phone' => $this->faker->cellphoneNumber(),
             'street' => $this->faker->streetName(),
             'number' => $this->faker->randomNumber(3),
-            'neighbor' => $this->faker->text(10),
+            'district' => $this->faker->text(10),
             'city' => $this->faker->city(),
             'state' => $this->faker->state(),
             'complement' => $this->faker->text('40'),

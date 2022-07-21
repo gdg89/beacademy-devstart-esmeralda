@@ -58,8 +58,8 @@
             </div>
 
             <div class="input-container">
-                <label for="name" class="form-label">Imagem</label>
-                <input type="file" id="cover" name="cover" alue="{{ old('cover') }}" class="form-input" />
+                <label for="cover" class="form-label">Imagem</label>
+                <input type="file" id="cover" name="cover" value="{{ old('cover') }}" class="form-input" />
 
                 @error('cover')
                 <p class="msg-error">{{ $message }}</p>

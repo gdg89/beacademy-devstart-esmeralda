@@ -26,6 +26,9 @@
                         #
                     </th>
                     <th class="table-th">
+                        Avatar
+                    </th>
+                    <th class="table-th">
                         Nome
                     </th>
                     <th class="table-th">
@@ -44,6 +47,10 @@
                 @foreach ($users as $user)
                 <tr class="even:bg-gray-100 odd:bg-white">
                     <td class="px-4 py-3">{{ $user->id }}</td>
+                    <td class="px-4 py-3">
+                        <img alt="{{ $user->name }}" class="object-cover object-center w-12 h-12 rounded-full block"
+                            src="{{ $user->avatar }}" style="width: 48px; min-width: 48px;" />
+                    </td>
                     <td class="px-4 py-3">{{ $user->name }}</td>
                     <td class="px-4 py-3">{{ $user->email }}</td>
                     <td class="px-4 py-3">{{ $user->cpf }}</td>

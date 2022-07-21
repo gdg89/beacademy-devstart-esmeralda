@@ -31,6 +31,11 @@ class StoreUserFormRequest extends FormRequest
                 'email',
                 'unique:users,email,{$id},id',
             ],
+            'avatar' => [
+                'required',
+                'file',
+                'mimes:jpg,png'
+            ],
             'cpf' => [
                 'required',
                 'string',
@@ -42,7 +47,7 @@ class StoreUserFormRequest extends FormRequest
             'state' => 'required|string',
             'street' => 'required|string',
             'city' => 'required|string',
-            'neighbor' => 'required|string',
+            'district' => 'required|string',
             'number' => 'required|string',
             'complement' => 'required|string',
             'birthday' => 'required',
@@ -54,16 +59,16 @@ class StoreUserFormRequest extends FormRequest
         ];
 
         if ($this->method('PUT')) {
-            $rules['password'] = [
-                'nullable',
-                'min:6',
-                'max:30'
-            ];
-
             $rules['email'] = [
                 'required',
                 'email',
                 Rule::unique('users')->ignore($this->id)
+            ];
+
+            $rules['avatar'] = [
+                'nullable',
+                'file',
+                'mimes:jpg,png'
             ];
 
             $rules['cpf'] = [
@@ -72,6 +77,12 @@ class StoreUserFormRequest extends FormRequest
                 'min:11',
                 'max:11',
                 Rule::unique('users')->ignore($this->id)
+            ];
+
+            $rules['password'] = [
+                'nullable',
+                'min:6',
+                'max:30'
             ];
         }
 

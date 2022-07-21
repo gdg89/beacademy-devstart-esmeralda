@@ -12,9 +12,18 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
             {{ $title }}
         </h1>
 
-        <form class="flex flex-col gap-4" method="POST"
+        <form class="flex flex-col gap-4" method="POST" enctype="multipart/form-data"
             action="{{ route("user.store", ["origin" => Route::currentRouteName()]) }}">
             @csrf
+
+            <div class="input-container">
+                <label for="avatar" class="form-label">Imagem de Perfil</label>
+                <input type="file" id="avatar" name="avatar" value="{{ old('avatar') }}" class="form-input" />
+
+                @error('avatar')
+                <p class="msg-error">{{ $message }}</p>
+                @enderror
+            </div>
 
             <div class="input-container">
                 <label for="name" class="form-label">Nome</label>
@@ -109,10 +118,10 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
                 </div>
 
                 <div class="input-container sm:w-1/2">
-                    <label for="neighbor" class="form-label">Bairro</label>
-                    <input type="text" id="neighbor" name="neighbor" value="{{ old('neighbor') }}" class="form-input" />
+                    <label for="district" class="form-label">Bairro</label>
+                    <input type="text" id="district" name="district" value="{{ old('district') }}" class="form-input" />
 
-                    @error('neighbor')
+                    @error('district')
                     <p class="msg-error">{{ $message }}</p>
                     @enderror
                 </div>

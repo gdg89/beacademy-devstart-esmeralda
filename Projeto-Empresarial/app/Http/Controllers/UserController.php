@@ -38,9 +38,16 @@ class UserController extends Controller
 
     public function store(StoreUserFormRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
 
         $data['password'] = bcrypt($data['password']);
+
+        if ($data['avatar']->isValid()) {
+            $path = $data['avatar']->store('users_avatars', 'public');
+            $data['avatar'] = $path;
+        }
+
+        // dd($data);
 
         User::create($data);
 
