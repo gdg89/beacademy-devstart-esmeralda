@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Http\Request;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
@@ -20,13 +25,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'avatar',
         'email',
         'phone',
         'birthday',
         'cpf',
         'street',
         'number',
-        'neighbor',
+        'district',
         'city',
         'state',
         'complement',
@@ -38,7 +44,13 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    static public function getAllFormatted(Request $request)
+    /**
+     * Return users array with avatar path and pagination.
+     *
+     * @param Request $request
+     * @return LengthAwarePaginator $users
+     */
+    static public function getAllFormatted(Request $request): LengthAwarePaginator
     {
         $users = User::query();
 
@@ -48,16 +60,36 @@ class User extends Authenticatable
                 ->orWhere('email', 'like', "%{$search}%");
         });
 
-        // paginate and order users by id desc
         $users = $users
             ->orderBy('id', 'desc')
             ->paginate(10);
+
+        foreach ($users as $user) {
+            $user->avatar = User::getUserAvatarPath($user);
+        }
 
         if ($request->search) {
             $users->appends('search', $request->search);
         }
 
         return $users;
+    }
+
+    static public function getUserAvatarPath(User|Builder $user)
+    {
+        if ($user->avatar) {
+            $isPlaceholder = Str::contains($user->avatar, 'https://via.placeholder.com');
+
+            $avatar = $isPlaceholder ?
+                $user->avatar :
+                Storage::url($user->avatar);
+        }
+
+        if (!$user->avatar) {
+            $avatar = Storage::url('users_avatars/avatar.png');
+        }
+
+        return $avatar;
     }
 
     /**

@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -27,6 +29,37 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class);
+    }
+
+    /**
+     * Return products array with formatted prices, cover path and pagination.
+     *
+     * @param Request $request
+     * @return LengthAwarePaginator $products
+     */
+    static public function getAllFormatted(Request $request): LengthAwarePaginator
+    {
+        $products = Product::query();
+
+        $products->when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        });
+
+        $products = $products
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        foreach ($products as $product) {
+            $product->price_sell = Product::format_price($product->price_sell);
+            $product->price_cost = Product::format_price($product->price_cost);
+            $product->cover = Product::getProductCoverPath($product);
+        }
+
+        if ($request->search) {
+            $products->appends('search', $request->search);
+        }
+
+        return $products;
     }
 
     /**
