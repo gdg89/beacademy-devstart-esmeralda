@@ -58,12 +58,12 @@
                     <td class="px-4 py-3">{{ $product->stock }}</td>
                     <td class="px-4 py-3 text-sm text-right space-x-3 text-gray-900">
                         <a href="{{ route('admin.products.edit', $product->id) }}"
-                            class="mt-3 text-emerald-500 inline-flex items-center">Editar</a>
+                            class="mt-3 text-emerald-400 inline-flex items-center">Editar</a>
                         <form method="POST" action="{{ route('admin.products.destroy', $product->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                class="mt-3 text-emerald-500 inline-flex items-center">Deletar</button>
+                                class="mt-3 text-emerald-400 inline-flex items-center">Deletar</button>
                         </form>
                     </td>
                 </tr>

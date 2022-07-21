@@ -55,12 +55,12 @@
                     <td class="px-4 py-3">{{ $user->cpf }}</td>
                     <td class="px-4 py-3 text-sm text-right space-x-3 text-gray-900">
                         <a href="{{ route('admin.users.edit', $user->id) }}"
-                            class="mt-3 text-emerald-500 inline-flex items-center">Editar</a>
+                            class="mt-3 text-emerald-400 inline-flex items-center">Editar</a>
                         <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                class="mt-3 text-emerald-500 inline-flex items-center">Deletar</button>
+                                class="mt-3 text-emerald-400 inline-flex items-center">Deletar</button>
                         </form>
                     </td>
                 </tr>

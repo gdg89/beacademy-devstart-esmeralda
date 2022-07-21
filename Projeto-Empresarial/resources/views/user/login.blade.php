@@ -13,7 +13,7 @@
             <h3 class="text-2xl font-bold">Fazer login</h3>
 
             <span class="">Ainda não tem conta?
-                <a href="/cadastro" class="text-emerald-500 hover:underline">
+                <a href="/cadastro" class="text-emerald-400 hover:underline">
                     Cadastre-se
                 </a>
             </span>
@@ -40,7 +40,7 @@
         </form>
     </div>
 
-    <a href="/" class="mt-8 flex justify-center items-center text-emerald-500 hover:underline">
+    <a href="/" class="mt-8 flex justify-center items-center text-emerald-400 hover:underline">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-emerald-800" fill="none" viewBox="0 0 24 24"
             stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"

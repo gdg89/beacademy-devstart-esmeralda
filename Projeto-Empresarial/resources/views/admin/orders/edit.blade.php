@@ -93,7 +93,7 @@
                         <td class="px-4 py-3 text-sm text-center">
 
                             <span
-                                class="inline-flex items-center justify-center text-emerald-500 hover:text-emerald-600 hover:cursor-pointer"
+                                class="inline-flex items-center justify-center text-emerald-400 hover:text-emerald-600 hover:cursor-pointer"
                                 data-id="{{ $product->id }}">
 
 

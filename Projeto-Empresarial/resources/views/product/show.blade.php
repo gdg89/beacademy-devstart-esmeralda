@@ -39,7 +39,7 @@
 
                     @php
                     $btnStyles = $product->stock > 0 ?
-                    "bg-emerald-500 hover:bg-emerald-600 cursor-pointer" :
+                    "bg-emerald-400 hover:bg-emerald-600 cursor-pointer" :
                     "bg-gray-500 hover:bg-gray-600 cursor-not-allowed";
                     @endphp
 

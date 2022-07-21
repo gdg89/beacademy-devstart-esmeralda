@@ -1,7 +1,7 @@
 <footer class="text-gray-600 body-font bg-gray-100">
     <div class="container px-5 py-4 mx-auto flex items-center sm:flex-row flex-col">
         <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white p-2 bg-emerald-500 rounded-full"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white p-2 bg-emerald-400 rounded-full"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -12,7 +12,7 @@
             DevStart - Squad Esmeralda
         </p>
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-            <a class="ml-3 text-emerald-500" href="https://github.com/gdg89/beacademy-devstart-esmeralda"
+            <a class="ml-3 text-emerald-400" href="https://github.com/gdg89/beacademy-devstart-esmeralda"
                 target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-8 h-8"
                     viewBox="0 0 16 16">
