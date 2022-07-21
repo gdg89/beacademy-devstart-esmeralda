@@ -16,6 +16,8 @@ class UserController extends Controller
      */
     public function show(User $user): View
     {
+        $user->avatar = User::getUserAvatarPath($user);
+
         return view('user.show', compact('user'));
     }
 
@@ -25,9 +27,9 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create(): View
     {
@@ -89,7 +91,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index');
         }
 
-        return redirect()->route('user.index', $user->id);
+        return redirect()->route('user.show', $user->id);
     }
 
     public function destroy(User $user)

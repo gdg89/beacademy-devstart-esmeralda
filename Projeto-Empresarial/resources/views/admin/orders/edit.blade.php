@@ -8,7 +8,7 @@
 @section('content')
 
 <section class="section-container">
-    <h1 class="title">
+    <h1 class="title mb-4">
         Editar pedido #{{ $order->id }}
     </h1>
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="mt-8 w-full mx-auto overflow-auto">
-            <h1 class="title">
+            <h1 class="title mb-4">
                 Produtos
             </h1>
 

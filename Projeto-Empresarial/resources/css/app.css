@@ -36,7 +36,7 @@ body {
 }
 
 .title {
-    @apply mb-4 text-2xl font-medium text-gray-900;
+    @apply text-2xl font-medium text-gray-900;
 }
 
 .form-input {

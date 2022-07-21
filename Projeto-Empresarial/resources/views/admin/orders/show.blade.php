@@ -89,7 +89,7 @@
 
 
     <div class="mt-12 w-full mx-auto overflow-auto">
-        <h1 class="title">
+        <h1 class="title mb-8">
             Produtos
         </h1>
 
