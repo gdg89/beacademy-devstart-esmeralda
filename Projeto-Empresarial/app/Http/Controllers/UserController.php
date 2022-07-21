@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserFormRequest;
 use App\Models\User;
-use Illuminate\Routing\Route;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreUserFormRequest;
 
 class UserController extends Controller
 {
@@ -47,8 +47,6 @@ class UserController extends Controller
             $data['avatar'] = $path;
         }
 
-        // dd($data);
-
         User::create($data);
 
         if ($request->origin === 'admin.users.create') {
@@ -62,12 +60,20 @@ class UserController extends Controller
     {
         $states = User::getStates();
 
+        $user->avatar = User::getUserAvatarPath($user);
+
         return view('user.edit', compact('user', 'states'));
     }
 
     public function update(StoreUserFormRequest $request, User $user)
     {
         $data = $request->validated();
+
+        if (!empty($data['avatar']) && $data['avatar']->isValid()) {
+            Storage::delete("public/{$user->avatar}" ?? '');
+            $path = $data['avatar']->store('users_avatars', 'public');
+            $data['avatar'] = $path;
+        }
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);

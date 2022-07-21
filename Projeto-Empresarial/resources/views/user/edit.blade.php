@@ -14,10 +14,25 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Editar Usuário' 
             {{ $title }}
         </h1>
 
-        <form class="flex flex-col gap-4" method="POST"
+        <form class="flex flex-col gap-4" method="POST" enctype="multipart/form-data"
             action="{{ route("user.update", ["user" => $user, "id" => $user->id, "origin" => Route::currentRouteName()]) }}">
             @csrf
             @method('PUT')
+
+            <div class="flex items-center justify-center">
+                <img src="{{ $user->avatar }}" alt="{{ $user->name }}"
+                    class="w-60 h-60 py-2 object-cover object-center block rounded-full" />
+            </div>
+
+            <div class="input-container">
+                <label for="avatar" class="form-label">Imagem de Perfil</label>
+                <input type="file" id="avatar" name="avatar" value="{{ old('avatar', $user->avatar) }}"
+                    class="form-input" />
+
+                @error('avatar')
+                <p class="msg-error">{{ $message }}</p>
+                @enderror
+            </div>
 
             <div class="input-container">
                 <label for="name" class="form-label">Nome</label>

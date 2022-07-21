@@ -86,7 +86,7 @@ class User extends Authenticatable
         }
 
         if (!$user->avatar) {
-            $avatar = Storage::url('users_avatars/avatar.png');
+            $avatar = asset('images/avatar.png');
         }
 
         return $avatar;
