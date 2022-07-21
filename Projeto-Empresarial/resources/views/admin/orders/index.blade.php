@@ -54,7 +54,7 @@
                     <td class="px-4 py-3 text-sm text-right">
                         <a href="{{ route('admin.orders.show', $order->id) }}"
                             title="Visualizar pedido {{ $order->id }}"
-                            class="text-indigo-500 hover:text-indigo-600 inline-flex items-center justify-center">
+                            class="text-emerald-500 hover:text-emerald-600 inline-flex items-center justify-center">
                             Visualizar
                         </a>
                     </td>
