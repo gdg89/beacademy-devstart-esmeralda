@@ -10,8 +10,8 @@
             <img class="avatar w-20 h-20" src="{{ $user->avatar }}" alt="{{ $user->name }}">
 
             <div class="pl-4 flex flex-col gap-2">
-                <h1 class="title">{{ $user->name }}</h1>
-                <span class="text-sm">Criado em {{  $user->created_at->format('d/m/Y - H:i:s') }}</span>
+                <h1 class="title">{{  Auth::user()->name }}</h1>
+                <span class="text-sm">Criado em {{  Auth::user()->created_at->format('d/m/Y - H:i:s') }}</span>
             </div>
         </div>
 
@@ -24,47 +24,47 @@
     <div class="flex flex-col gap-4 mt-8">
         <p>
             <strong>Nome:</strong>
-            <span>{{ $user->name }}</span>
+            <span>{{ Auth::user()->name }}</span>
         </p>
         <p>
             <strong>Email:</strong>
-            <span>{{ $user->email }}</span>
+            <span>{{ Auth::user()->email }}</span>
         </p>
         <p>
             <strong>CPF:</strong>
-            <span>{{ $user->cpf }}</span>
+            <span>{{  Auth::user()->cpf }}</span>
         </p>
         <p>
             <strong>Data de Nascimento:</strong>
-            <span>{{ date('d/m/Y', strtotime($user->birthday)) }}</span>
+            <span>{{ date('d/m/Y', strtotime( Auth::user()->birthday)) }}</span>
         </p>
         <p>
             <strong>Telefone:</strong>
-            <span>{{ $user->phone }}</span>
+            <span>{{  Auth::user()->phone }}</span>
         </p>
         <p>
             <strong>Cidade:</strong>
-            <span>{{ $user->city }}</span>
+            <span>{{  Auth::user()->city }}</span>
         </p>
         <p>
             <strong>Estado:</strong>
-            <span>{{ $user->state }}</span>
+            <span>{{  Auth::user()->state }}</span>
         </p>
         <p>
             <strong>Bairro:</strong>
-            <span>{{ $user->district }}</span>
+            <span>{{  Auth::user()->district }}</span>
         </p>
         <p>
             <strong>Rua:</strong>
-            <span>{{ $user->street }}</span>
+            <span>{{  Auth::user()->street }}</span>
         </p>
         <p>
             <strong>Número:</strong>
-            <span>{{ $user->number }}</span>
+            <span>{{  Auth::user()->number }}</span>
         </p>
         <p>
             <strong>Complemento:</strong>
-            <span>{{ $user->complement }}</span>
+            <span>{{  Auth::user()->complement }}</span>
         </p>
 
 

@@ -8,13 +8,15 @@ use App\Http\Controllers\{
     HomeController,
     UserController,
     ProductController,
-    OrderController
+    OrderController,
+    LoginController
 };
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::get('/logoff', [UserController::class, 'logoff'])->name('logoff');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/logoff', [LoginController::class, 'logoff'])->name('logoff');
 
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
