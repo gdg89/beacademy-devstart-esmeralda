@@ -78,7 +78,7 @@ class User extends Authenticatable
     static public function getUserAvatarPath(User|Builder $user)
     {
         if ($user->avatar) {
-            $isPlaceholder = Str::contains($user->avatar, 'https://via.placeholder.com');
+            $isPlaceholder = Str::contains($user->avatar, 'https');
 
             $avatar = $isPlaceholder ?
                 $user->avatar :

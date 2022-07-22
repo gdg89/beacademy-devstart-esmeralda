@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreUserFormRequest;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -18,7 +19,21 @@ class UserController extends Controller
     {
         $user->avatar = User::getUserAvatarPath($user);
 
+        foreach ($user->orders as $order) {
+            Order::setOrderInfo($order);
+        }
+
         return view('user.show', compact('user'));
+    }
+
+    public function order(User $user, Order $order)
+    {
+        Order::setOrderInfo($order);
+
+        $order->statusList = Order::getStatusList();
+        $order->uniqueProducts = Order::getUniqueProducts($order);
+
+        return view('user.order', compact('user', 'order'));
     }
 
     public function login(): View

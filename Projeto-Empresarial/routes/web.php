@@ -27,6 +27,8 @@ Route::prefix('usuario')->group(function () {
     Route::get('/editar/{user}', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/editar/{user}', [UserController::class, 'update'])->name('user.update');
 
+    Route::get('/{user}/pedido/{order}', [UserController::class, 'order'])->name('user.order');
+
     Route::get('/carrinho', [UserController::class, 'cart'])->name('user.cart');
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
