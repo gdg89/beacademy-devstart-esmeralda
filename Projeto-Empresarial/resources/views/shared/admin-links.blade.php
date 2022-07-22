@@ -4,3 +4,6 @@
 <a href="/admin/pedidos" class="header-nav-link">
     Pedidos
 </a>
+<a href="/admin/usuarios" class="header-nav-link">
+    Usuários
+</a>

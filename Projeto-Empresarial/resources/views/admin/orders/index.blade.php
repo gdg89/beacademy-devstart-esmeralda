@@ -6,11 +6,7 @@
 <section class="section-container">
     @include('shared.search')
 
-    <div class=" pt-16 pb-12">
-        {{ $orders->links() }}
-    </div>
-
-    <h1 class="title">
+    <h1 class="title mt-12 mb-8">
         Pedidos
     </h1>
 
@@ -58,7 +54,7 @@
                     <td class="px-4 py-3 text-sm text-right">
                         <a href="{{ route('admin.orders.show', $order->id) }}"
                             title="Visualizar pedido {{ $order->id }}"
-                            class="text-indigo-500 hover:text-indigo-600 inline-flex items-center justify-center">
+                            class="text-emerald-400 hover:text-emerald-600 inline-flex items-center justify-center">
                             Visualizar
                         </a>
                     </td>
@@ -67,6 +63,10 @@
 
             </tbody>
         </table>
+    </div>
+
+    <div class="py-12">
+        {{ $orders->links() }}
     </div>
 </section>
 

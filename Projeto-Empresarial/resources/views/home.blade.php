@@ -25,7 +25,7 @@
                 <p class="mt-1">R${{ $product->price_sell }}</p>
             </div>
             <a href="{{ route('product.show', $product->id) }}"
-                class="mt-3 text-indigo-500 inline-flex items-center">Ver
+                class="mt-3 text-emerald-400 inline-flex items-center">Ver
                 mais
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-4 h-4 ml-2" viewBox="0 0 24 24">

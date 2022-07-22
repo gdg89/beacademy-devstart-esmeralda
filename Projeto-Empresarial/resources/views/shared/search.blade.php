@@ -3,20 +3,27 @@ $routes = [
 'home' => route('home'),
 'admin.products.index' => route('admin.products.index'),
 'admin.orders.index' => route('admin.orders.index'),
+'admin.users.index' => route('admin.users.index'),
 ];
 
-$dataType = Route::currentRouteName() === 'admin.orders.index' ? 'cliente' : 'produto';
+$dataTypes = [
+'home' => 'produto',
+'admin.products.index' => 'produto',
+'admin.orders.index' => 'cliente',
+'admin.users.index' => 'usuário',
+];
+
 @endphp
 
 <section class="container mx-auto flex">
 
     <form method="GET" action="{{ $routes[Route::currentRouteName()] }}" class="w-full flex flex-col md:flex-row gap-4">
 
-        <input type="search" id="search" name="search" placeholder="Pesquisar {{ $dataType }}"
-            value="{{ request()->search }}" class="
+        <input type="search" id="search" name="search"
+            placeholder="Pesquisar {{ $dataTypes[Route::currentRouteName()] }}" value="{{ request()->search }}" class="
             w-full md:w-1/2 text-gray-700 bg-gray-100 bg-opacity-50 border border-gray-300
             py-1 px-3 leading-8 rounded
-            focus:ring-2 focus:bg-transparent focus:ring-indigo-200
+            focus:ring-2 focus:bg-transparent focus:ring-emerald-200
             text-base outline-none
             transition-colors duration-200 ease-in-out
         ">

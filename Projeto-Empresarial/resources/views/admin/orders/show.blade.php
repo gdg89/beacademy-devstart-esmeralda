@@ -27,7 +27,7 @@
     </span>
 
     <div class="flex flex-col gap-8 md:flex-row">
-        <div class="inline-flex flex-col gap-2 md:w-1/2 p-5 rounded-lg bg-indigo-50 border border-indigo-200">
+        <div class="inline-flex flex-col gap-2 md:w-1/2 p-5 rounded-lg bg-emerald-50 border border-emerald-200">
             <h1 class="mb-2 text-2xl font-medium title-font text-gray-900">
                 Cliente
             </h1>
@@ -60,7 +60,7 @@
 
         </div>
 
-        <div class="inline-flex flex-col gap-2 md:w-1/2 p-5 rounded-lg bg-indigo-50 border border-indigo-200">
+        <div class="inline-flex flex-col gap-2 md:w-1/2 p-5 rounded-lg bg-emerald-50 border border-emerald-200">
             <h1 class="mb-2 text-2xl font-medium title-font text-gray-900">
                 Pedido
             </h1>
@@ -89,7 +89,7 @@
 
 
     <div class="mt-12 w-full mx-auto overflow-auto">
-        <h1 class="title">
+        <h1 class="title mb-8">
             Produtos
         </h1>
 

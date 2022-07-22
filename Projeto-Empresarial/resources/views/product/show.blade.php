@@ -18,7 +18,7 @@
                     <span class="
                         inline-flex items-center px-3 py-0.5
                         rounded-full text-sm
-                        font-medium bg-indigo-100 text-indigo-800
+                        font-medium bg-emerald-100 text-emerald-800
                     ">
                         {{ $product->stock }} em estoque
                     </span>
@@ -39,7 +39,7 @@
 
                     @php
                     $btnStyles = $product->stock > 0 ?
-                    "bg-indigo-500 hover:bg-indigo-600 cursor-pointer" :
+                    "bg-emerald-400 hover:bg-emerald-600 cursor-pointer" :
                     "bg-gray-500 hover:bg-gray-600 cursor-not-allowed";
                     @endphp
 

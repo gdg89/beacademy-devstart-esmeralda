@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreUsersFormRequest;
-use App\Models\Address;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreUserFormRequest;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -16,50 +15,103 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index():View
+    public function show(User $user): View
     {
-        return view('user.index');
+        $user->avatar = User::getUserAvatarPath($user);
+
+        foreach ($user->orders as $order) {
+            Order::setOrderInfo($order);
+        }
+
+        return view('user.show', compact('user'));
     }
 
-    public function login():View
+    public function order(User $user, Order $order)
+    {
+        Order::setOrderInfo($order);
+
+        $order->statusList = Order::getStatusList();
+        $order->uniqueProducts = Order::getUniqueProducts($order);
+
+        return view('user.order', compact('user', 'order'));
+    }
+
+    public function login(): View
     {
         return view('user.login');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create():View
+    public function create(): View
     {
-        $states = User::state();
-        return view('user.register',compact('states'));
+        $states = config('states');
+        return view('user.create', compact('states'));
     }
 
-    public function store(StoreUsersFormRequest $request)
+    public function store(StoreUserFormRequest $request)
     {
-        $validated = $request->validated();
-        $user = User::create([
-            'name' => $request->validated('name'),
-            'email' => $request->validated('email'),
-            'phone' => $request->validated('phone'),
-            'birthday' => $request->validated('birthday'),
-            'cpf' => $request->validated('cpf'),
-            'street' => $request->validated('street'),
-            'number' => $request->validated('number'),
-            'neighbor' => $request->validated('neighbor'),
-            'city' => $request->validated('city'),
-            'state' => $request->validated('state'),
-            'complement' => $request->validated('complement'),
-            'password' => bcrypt($request->validated('password'))
-        ]);
+        $data = $request->all();
 
-        return redirect()->route('home');
+        $data['password'] = bcrypt($data['password']);
+
+        if ($data['avatar']->isValid()) {
+            $path = $data['avatar']->store('users_avatars', 'public');
+            $data['avatar'] = $path;
+        }
+
+        User::create($data);
+
+        if ($request->origin === 'admin.users.create') {
+            return redirect()->route('admin.users.index');
+        }
+
+        return redirect()->route('login');
     }
 
-    public function show(User $user)
+    public function edit(User $user)
     {
-        //
+        $states = config('states');
+
+        $user->avatar = User::getUserAvatarPath($user);
+
+        return view('user.edit', compact('user', 'states'));
+    }
+
+    public function update(StoreUserFormRequest $request, User $user)
+    {
+        $data = $request->validated();
+
+        if (!empty($data['avatar']) && $data['avatar']->isValid()) {
+            Storage::delete("public/{$user->avatar}" ?? '');
+            $path = $data['avatar']->store('users_avatars', 'public');
+            $data['avatar'] = $path;
+        }
+
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        if (!$request->password) {
+            unset($data['password']);
+        }
+
+        $user->update($data);
+
+        if ($request->origin === 'admin.users.edit') {
+            return redirect()->route('admin.users.index');
+        }
+
+        return redirect()->route('user.show', $user->id);
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('admin.users.index');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Requests\UpdateOrderFormRequest;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,7 +30,13 @@ class Order extends Model
         return $this->belongsToMany(Product::class);
     }
 
-    static public function getAllFormatted(Request $request)
+    /**
+     * Return orders array with status list, and pagination.
+     *
+     * @param Request $request
+     * @return LengthAwarePaginator $orders
+     */
+    static public function getAllFormatted(Request $request): LengthAwarePaginator
     {
         $orders = Order::query();
 
@@ -43,7 +50,7 @@ class Order extends Model
             return $query->where('status', $status);
         });
 
-        $orders = $orders->paginate(10);
+        $orders = $orders->orderBy('id', 'desc')->paginate(10);
 
         foreach ($orders as $order) {
             Order::setOrderInfo($order);

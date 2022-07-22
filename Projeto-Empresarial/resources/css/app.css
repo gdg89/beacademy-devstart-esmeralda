@@ -23,12 +23,12 @@ body {
 }
 
 .header-nav-link {
-    @apply inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-indigo-500 md:mt-0;
+    @apply inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-emerald-400 md:mt-0;
 }
 
 .btn-primary {
     @layer text-md;
-    @apply flex items-center justify-center py-2 px-3 text-white bg-indigo-500 hover:bg-indigo-600 border-0 rounded focus:outline-none;
+    @apply flex items-center justify-center py-2 px-3 text-white bg-emerald-400 hover:bg-emerald-600 border-0 rounded focus:outline-none;
 }
 
 .form-container {
@@ -36,15 +36,15 @@ body {
 }
 
 .title {
-    @apply mb-4 text-2xl font-medium text-gray-900;
+    @apply text-2xl font-medium text-gray-900;
 }
 
 .form-input {
     @layer text-md;
     @apply w-full py-1 px-3 leading-8
     text-gray-700 bg-gray-100 bg-opacity-50
-    border border-gray-300 rounded outline-none
-    focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200
+    border border-gray-300 rounded-md outline-none
+    focus:border-emerald-400 focus:bg-white focus:ring-2 focus:ring-emerald-200
     transition-colors duration-200 ease-in-out;
 }
 
@@ -55,8 +55,8 @@ body {
 
 .form-textarea {
     @apply w-full min-h-[100px] bg-gray-100 bg-opacity-50 rounded
-    border border-gray-300 focus:border-indigo-500
-    focus:bg-white focus:ring-2 focus:ring-indigo-200
+    border border-gray-300 focus:border-emerald-400
+    focus:bg-white focus:ring-2 focus:ring-emerald-200
     text-base outline-none text-gray-700 py-1 px-3
     transition-colors duration-200 ease-in-out;
 }
@@ -85,10 +85,18 @@ body {
     @layer text-md;
     @apply text-gray-700 bg-white border border-gray-300
     py-2 px-2 leading-8 rounded w-full
-    focus:ring-2 focus:bg-transparent focus:ring-indigo-200
+    focus:ring-2 focus:bg-transparent focus:ring-emerald-200
     outline-none transition-colors duration-200 ease-in-out;
 }
 
 .select-option-status {
-    @apply text-gray-700 bg-white hover:bg-indigo-500;
+    @apply text-gray-700 bg-white hover:bg-emerald-400;
+}
+
+.avatar {
+    @apply object-cover object-center rounded-full block;
+}
+
+.input-group {
+    @apply w-full flex flex-col sm:flex-row gap-2 sm:gap-4;
 }

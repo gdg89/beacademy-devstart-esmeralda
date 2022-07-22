@@ -14,7 +14,7 @@
             @csrf
             @method('PUT')
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="name" class="form-label">Nome do produto</label>
                     <input type="text" id="name" name="name" value="{{ old('name', $product->name) }}"
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="price_cost" class="leading-7 text-sm text-gray-600">Preço de custo</label>
                     <input type="text" id="price_cost" name="price_cost"
