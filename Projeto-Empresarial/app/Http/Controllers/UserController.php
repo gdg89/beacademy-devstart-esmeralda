@@ -48,8 +48,7 @@ class UserController extends Controller
      */
     public function create(): View
     {
-        $states = User::getStates();
-
+        $states = config('states');
         return view('user.create', compact('states'));
     }
 
