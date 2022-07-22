@@ -54,7 +54,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $states = User::getStates();
+        $states = config('states');
 
         $user->avatar = User::getUserAvatarPath($user);
 
