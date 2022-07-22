@@ -19,19 +19,27 @@
             </span>
         </div>
 
-        <form action="">
+        <form method="POST">
+            @csrf
             <div class="mt-4">
                 <div>
+                    @error('error')
+                    <p class="msg-error">{{ $message }}</p>
+                    @enderror
                     <label class="block" for="email">Email<label>
-                            <input type="email" placeholder="Email"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-                            <span class="msg-error">Email é obrigatório</span>
+                            <input id="email" type="email" name="email" placeholder="Email"
+                                class="w-full px-4 py-2 mt-2 border @error('email') border-red-500 @enderror rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                                @error('email')
+                                    <span class="msg-error">{{$message}}</span>
+                                @enderror
                 </div>
                 <div class="mt-4">
                     <label class="block">Senha<label>
-                            <input type="password" placeholder="Senha"
-                                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-                            <span class="msg-error">Senha é obrigatória</span>
+                            <input type="password" id="password" name="password" placeholder="Senha"
+                                class="w-full px-4 py-2 mt-2 border @error('password') border-red-500 @enderror rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                                @error('password')
+                                    <span class="msg-error">{{$message}}</span>
+                                @enderror
                 </div>
                 <button class="btn-primary mt-4 w-full">
                     Login

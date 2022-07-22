@@ -7,7 +7,7 @@
 </a>
 
 @php
-$user = App\Models\User::all()->random();
+$user =  Auth::user();
 $user->avatar = App\Models\User::getUserAvatarPath($user);
 @endphp
 

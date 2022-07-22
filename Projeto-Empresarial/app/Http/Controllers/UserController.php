@@ -21,11 +21,6 @@ class UserController extends Controller
         return view('user.show', compact('user'));
     }
 
-    public function login(): View
-    {
-        return view('user.login');
-    }
-
     /**
      * Show the form for creating a new user.
      *
