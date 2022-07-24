@@ -87,7 +87,7 @@ class User extends Authenticatable
         }
 
         if (!$user->avatar) {
-            $avatar = asset('images/avatar.png');
+            $avatar = asset('images/avatar.svg');
         }
 
         return $avatar;
