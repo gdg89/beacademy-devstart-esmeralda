@@ -55,7 +55,8 @@
 
             <p>
                 <strong>Endereço:</strong>
-                <span>{{ $order->user->address }}</span>
+                <span>{{ $order->user->street }}, {{ $order->user->number }}, {{ $order->user->complement }},
+                    {{ $order->user->district }}, {{ $order->user->city }} - {{ $order->user->state }}</span>
             </p>
 
         </div>

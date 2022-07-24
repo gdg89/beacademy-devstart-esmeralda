@@ -17,12 +17,16 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->isAdmin == 1){
-           return $next($request); 
+        if (Auth::user() && Auth::user()->isAdmin == 1) {
+            return $next($request);
         }
 
+<<<<<<< HEAD
         Session::flash('alert', 'Você não tem acesso a essa aréa!');
         return redirect()->route('home');
         // return redirect()->route('home')->with('error', 'Você precisa ser admin para acessar essa aréa!');
+=======
+        return redirect()->route('home')->with('error', 'Você precisa ser admin para acessar essa aréa!');
+>>>>>>> 131cdd8c67872b19060b4f2270a2b25570f2dde3
     }
 }
