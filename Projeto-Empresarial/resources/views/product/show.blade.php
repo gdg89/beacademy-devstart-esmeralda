@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('title', $product->name)
 @section('content')
-<section class="text-gray-600 overflow-hidden">
-    <div class="container px-5 py-24 mx-auto">
+<section class="section-container">
+    <div class="mx-auto">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
             <img alt="{{ $product->name }}" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
                 src="{{ $product->cover }}" />
@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex border-t-2 border-gray-100 mt-6 pt-6">
                     <span class="title-font font-medium text-2xl text-gray-900">
-                        R${{ $product->price_sell }}
+                        R$ {{ $product->price_sell }}
                     </span>
 
                     @php

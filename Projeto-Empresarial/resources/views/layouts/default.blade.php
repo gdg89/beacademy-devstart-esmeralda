@@ -24,7 +24,12 @@
 
     @include('shared.header')
 
-    <main class="grow text-gray-600 py-16">
+    <main class="grow text-gray-600 py-16 relative">
+
+        @if(!str_contains(Route::currentRouteName(), 'admin'))
+        @include('shared.cart')
+        @endif
+
         @yield('content')
     </main>
 
