@@ -36,7 +36,8 @@ class User extends Authenticatable
         'city',
         'state',
         'complement',
-        'password'
+        'password',
+        'isAdmin'
     ];
 
     public function orders()
