@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'district' => $this->faker->text(10),
             'city' => $this->faker->city(),
             'state' => $this->faker->state(),
-            'complement' => $this->faker->text('40'),
+            'complement' => $this->faker->text(10),
             'birthday' => $this->faker->date(),
             'cpf' => $this->faker->cpf(false),
             'password' => bcrypt(now()),

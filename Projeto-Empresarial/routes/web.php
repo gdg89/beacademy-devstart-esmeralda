@@ -35,13 +35,6 @@ Route::prefix('usuario')->group(function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-Route::prefix('pedidos')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
-
-    Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
-});
-
 Route::prefix('admin')->group(function () {
     Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');

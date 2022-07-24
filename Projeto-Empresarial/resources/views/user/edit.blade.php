@@ -54,8 +54,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Editar Usuário' 
 
             <div class="input-container">
                 <label for="password" class="form-label">Senha</label>
-                <input type="password" id="password" name="password" value="{{ old('password', $user->password) }}"
-                    class="form-input" />
+                <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-input" />
 
                 @error('password')
                 <p class="msg-error">{{ $message }}</p>

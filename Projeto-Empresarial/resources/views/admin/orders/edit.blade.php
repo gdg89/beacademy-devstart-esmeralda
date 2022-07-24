@@ -76,8 +76,8 @@
                     @foreach ($order->uniqueProducts as $product)
                     <tr class="even:bg-gray-100 odd:bg-white" id="product-{{ $product->id }}">
 
-                        <input type="checkbox" name="{{ $product->id }}" id="product-checkbox-{{ $product->id }}" hidden
-                            value="remove">
+                        <input type="checkbox" name="{{ $product->id }}" id="product-checkbox-{{ $product->id }}"
+                            class="hidden" value="remove">
 
                         <td class="px-4 py-3">{{ $product->id }}</td>
                         <td class="px-4 py-3">
