@@ -11,12 +11,13 @@ use App\Http\Controllers\{
     OrderController,
     LoginController
 };
+// require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
-Route::get('/logoff', [LoginController::class, 'logoff'])->name('logoff');
+Route::get('/logoff', [LoginController::class, 'logout'])->name('logoff');
 
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
@@ -42,10 +43,10 @@ Route::prefix('pedidos')->group(function () {
     Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
-    Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
-    Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::get('admin/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
+    Route::get('admin/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
 
     Route::prefix('/usuario')->group(function () {
         Route::get('/cadastro', [UserController::class, 'create'])->name('admin.users.create');
