@@ -2,8 +2,13 @@
 $user = Auth::user();
 @endphp
 
+@push('styles')
+<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+@endpush
+
 @push('scripts')
 @vite(['resources/js/cart.js'])
+<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 @endpush
 
 <a href="/admin/produtos" class="header-nav-link">
@@ -40,7 +45,7 @@ $user->avatar = App\Models\User::getUserAvatarPath($user);
 
     <ul class="py-1 text-sm text-gray-500 hover:bg-emerald-100" aria-labelledby="dropdownUserAvatarButton">
         <li>
-            <a href="/usuario/{{ $user->id }}" title="{{ $user->name }}" class="block py-2 px-4  ">
+            <a href="{{ route('user.show', $user->id) }}" title="{{ $user->name }}" class="block py-2 px-4  ">
                 Editar
             </a>
         </li>

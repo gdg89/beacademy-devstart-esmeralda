@@ -13,7 +13,6 @@
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
     @stack('styles')
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <meta name="description" content="EstanteDev" />
@@ -32,7 +31,6 @@
     @include('shared.footer')
 
     @stack('scripts')
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </body>
 
 </html>

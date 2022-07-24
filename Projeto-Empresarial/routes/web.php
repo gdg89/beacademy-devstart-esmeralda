@@ -8,10 +8,8 @@ use App\Http\Controllers\{
     HomeController,
     UserController,
     ProductController,
-    OrderController,
     LoginController
 };
-// require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -36,10 +34,10 @@ Route::prefix('usuario')->group(function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
-    Route::get('admin/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
-    Route::get('admin/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
 
     Route::prefix('/usuario')->group(function () {
         Route::get('/cadastro', [UserController::class, 'create'])->name('admin.users.create');

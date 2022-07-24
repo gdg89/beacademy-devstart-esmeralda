@@ -2,7 +2,7 @@
 @section('title', 'Editar usuario')
 
 @php
-$title = Route::currentRouteName() === 'admin.users.create' ? 'Editar Usuário' : 'Editar perfil';
+$title = Route::currentRouteName() === 'admin.users.edit' ? 'Editar Usuário' : 'Editar perfil';
 @endphp
 
 @section('content')
