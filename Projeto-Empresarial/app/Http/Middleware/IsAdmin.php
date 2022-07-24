@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
 class IsAdmin
 {
     /**
@@ -20,6 +20,9 @@ class IsAdmin
         if(Auth::user() && Auth::user()->isAdmin == 1){
            return $next($request); 
         }
-        return redirect('home')->with('error', 'Você precisa ser admin para acessar essa aréa!');
+
+        Session::flash('alert', 'Você não tem acesso a essa aréa!');
+        return redirect()->route('home');
+        // return redirect()->route('home')->with('error', 'Você precisa ser admin para acessar essa aréa!');
     }
 }

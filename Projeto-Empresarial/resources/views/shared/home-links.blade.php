@@ -2,9 +2,12 @@
 $user = Auth::user();
 @endphp
 
+@if (isset($user->isAdmin) && $user->isAdmin)
 <a href="/admin/produtos" class="header-nav-link">
     Admin
-</a>
+</a>        
+@endif
+
 
 @if ($user)
 
@@ -17,7 +20,6 @@ $user->avatar = App\Models\User::getUserAvatarPath($user);
     <span class="sr-only">Open user menu</span>
     <img class="w-8 h-8 rounded-full" src="{{ $user->avatar }}" alt="{{ $user->name }}">
 </button>
-
 <!-- Dropdown menu -->
 <div id="dropdownAvatar" class="hidden z-10 w-44 bg-white rounded  shadow">
 
@@ -34,7 +36,7 @@ $user->avatar = App\Models\User::getUserAvatarPath($user);
     </ul>
 
     <div class="py-1 text-gray-500 hover:bg-emerald-100">
-        <a href="#" class="block py-2 px-4 text-sm  ">
+        <a href="{{route('logoff')}}" class="block py-2 px-4 text-sm  ">
             Logout
         </a>
     </div>

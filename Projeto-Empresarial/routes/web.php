@@ -11,7 +11,6 @@ use App\Http\Controllers\{
     OrderController,
     LoginController
 };
-// require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -24,7 +23,7 @@ Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
-Route::prefix('usuario')->group(function () {
+Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::get('/{user}', [UserController::class, 'show'])->name('user.show');
 
     Route::get('/editar/{user}', [UserController::class, 'edit'])->name('user.edit');
@@ -36,17 +35,17 @@ Route::prefix('usuario')->group(function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-Route::prefix('pedidos')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+Route::group(['prefix' => 'pedidos','middleware'=> ['auth']], function () {
+    Route::get('/{id}', [OrderController::class, 'index'])->name('orders.index');
 
     Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('/cadastro', [OrderController::class, 'store'])->name('orders.store');
+    Route::post('pedidos/cadastro', [OrderController::class, 'store'])->name('orders.store');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
-    Route::get('admin/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
-    Route::get('admin/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
 
     Route::prefix('/usuario')->group(function () {
         Route::get('/cadastro', [UserController::class, 'create'])->name('admin.users.create');
