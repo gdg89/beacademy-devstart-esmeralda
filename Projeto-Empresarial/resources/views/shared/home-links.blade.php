@@ -1,16 +1,13 @@
-<a href="/login" class="header-nav-link">
-    Entrar
-</a>
+@php
+$user = Auth::user();
+@endphp
 
 <a href="/admin/produtos" class="header-nav-link">
     Admin
 </a>
 
-@php
-$user = Auth::user();
-@endphp
-
 @if ($user)
+
 @php
 $user->avatar = App\Models\User::getUserAvatarPath($user);
 @endphp
@@ -58,5 +55,11 @@ $user->avatar = App\Models\User::getUserAvatarPath($user);
             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
     </div>
 </div>
+
+@else
+
+<a href="/login" class="header-nav-link">
+    Entrar
+</a>
 
 @endif
