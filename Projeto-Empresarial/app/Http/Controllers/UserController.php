@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $data['password'] = bcrypt($data['password']);
 
-        if ($data['avatar']->isValid()) {
+        if (isset($data['avatar']) && $data['avatar']->isValid()) {
             $path = $data['avatar']->store('users_avatars', 'public');
             $data['avatar'] = $path;
         }
