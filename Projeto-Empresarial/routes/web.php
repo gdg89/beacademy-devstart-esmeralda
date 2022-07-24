@@ -35,8 +35,7 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-<<<<<<< HEAD
-Route::group(['prefix' => 'pedidos','middleware'=> ['auth']], function () {
+Route::group(['prefix' => 'pedidos', 'middleware'=> ['auth']], function () {
     Route::get('/{id}', [OrderController::class, 'index'])->name('orders.index');
 
     Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
@@ -47,12 +46,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
-=======
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
-    Route::get('admin/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
-    Route::get('admin/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
->>>>>>> 131cdd8c67872b19060b4f2270a2b25570f2dde3
 
     Route::prefix('/usuario')->group(function () {
         Route::get('/cadastro', [UserController::class, 'create'])->name('admin.users.create');

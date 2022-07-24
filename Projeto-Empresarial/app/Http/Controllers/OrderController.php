@@ -14,10 +14,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $id): View
+    public function index()
     {
-        $user = User::find($id);
-        return view('order.index', compact('user'));
+        
     }
 
     /**
