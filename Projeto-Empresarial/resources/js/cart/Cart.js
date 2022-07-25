@@ -3,6 +3,17 @@ export const Cart = {
     cartList: document.getElementById("cart-list"),
     cartCount: document.getElementById("cart-count"),
     cartTotal: document.getElementById("cart-total"),
+    cartCheckoutButton: document.getElementById("cart-checkout-button"),
+
+    toggleSidebar: () => {
+        const cartContainer = document.getElementById("cart-container");
+
+        cartContainer.classList.toggle("opacity-0");
+        cartContainer.classList.toggle("opacity-100");
+
+        cartContainer.classList.toggle("translate-x-0");
+        cartContainer.classList.toggle("translate-x-full");
+    },
 
     getProducts: function () {
         if (localStorage.getItem("EstanteDev:cart")) {
@@ -10,18 +21,22 @@ export const Cart = {
         }
     },
 
-    setEmpty: function () {
+    saveProducts: function () {
+        localStorage.setItem("EstanteDev:cart", JSON.stringify(this.products));
+    },
+
+    setEmptySidebar: function () {
         this.cartTotal.innerHTML = "";
         this.cartCount.innerHTML = "";
         this.cartCount.classList.add("hidden");
         this.cartList.innerHTML = `<p class="text-center mt-4">Você não tem produtos no carrinho 🥲.</p>`;
     },
 
-    update: function () {
+    updateSidebar: function () {
         this.cartList.innerHTML = "";
 
         if (this.products.length === 0) {
-            this.setEmpty();
+            this.setEmptySidebar();
             return;
         }
 
@@ -51,20 +66,6 @@ export const Cart = {
         });
     },
 
-    toggleCartSidebar: () => {
-        const cartContainer = document.getElementById("cart-container");
-
-        cartContainer.classList.toggle("opacity-0");
-        cartContainer.classList.toggle("opacity-100");
-
-        cartContainer.classList.toggle("translate-x-0");
-        cartContainer.classList.toggle("translate-x-full");
-    },
-
-    saveProducts: function () {
-        localStorage.setItem("EstanteDev:cart", JSON.stringify(this.products));
-    },
-
     addProduct: function (product) {
         const { id, name, cover, price_sell, description } = product;
         const productExists = this.products.find((p) => p.id === id);
@@ -86,7 +87,7 @@ export const Cart = {
         }
 
         this.saveProducts();
-        this.update();
+        this.updateSidebar();
     },
 
     removeProduct: function (productId) {
@@ -95,7 +96,7 @@ export const Cart = {
         );
 
         this.saveProducts();
-        this.update();
+        this.updateSidebar();
     },
 
     getTotalPrice: function () {

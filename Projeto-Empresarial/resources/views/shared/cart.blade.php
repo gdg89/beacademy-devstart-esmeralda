@@ -33,10 +33,10 @@
                 <p id="cart-total"></p>
             </div>
             <div class="mt-6">
-                <a href="#"
+                <button id="cart-checkout-button" href="#"
                     class="flex items-center justify-center rounded-md border border-transparent bg-emerald-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-700">
                     Checkout
-                </a>
+                </button>
             </div>
 
         </div>
