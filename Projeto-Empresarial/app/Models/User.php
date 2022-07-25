@@ -36,7 +36,8 @@ class User extends Authenticatable
         'city',
         'state',
         'complement',
-        'password'
+        'password',
+        'isAdmin'
     ];
 
     public function orders()
@@ -86,7 +87,7 @@ class User extends Authenticatable
         }
 
         if (!$user->avatar) {
-            $avatar = asset('images/avatar.png');
+            $avatar = asset('images/avatar.svg');
         }
 
         return $avatar;
