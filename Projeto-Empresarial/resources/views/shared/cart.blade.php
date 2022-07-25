@@ -1,11 +1,11 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <aside id="cart-container"
-    class="bg-gray-50 max-w-md h-[calc(100vh-5rem)] opacity-0 translate-x-full pointer-events-none fixed top-20 right-0 bottom-[72px] overflow-hidden z-10 ease-in-out duration-500 sm:duration-700 flex transform transition ">
+    class="bg-gray-50 max-w-md h-[calc(100vh-5rem)] opacity-100 translate-x-0  pointer-events-none fixed top-20 right-0 bottom-[72px] overflow-hidden z-10 ease-in-out duration-500 sm:duration-700 flex transform transition ">
 
-    <div class="w-full flex h-full flex-col overflow-y-scroll pointer-events-auto">
-        <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+    <div class="w-full flex h-full flex-col pointer-events-auto ">
+        <div
+            class="flex-1 overflow-y-auto py-6 px-4 sm:px-6 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-emerald-600 scrollbar-track-gray-50 ">
             <div class="flex items-start justify-between">
-                <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Carrinho</h2>
+                <h2 class="text-lg font-medium text-gray-900">Carrinho</h2>
                 <div class="ml-3 flex h-7 items-center">
 
                     <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500" id="cart-close-button"
