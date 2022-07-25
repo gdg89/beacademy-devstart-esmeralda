@@ -13,14 +13,14 @@ use App\Http\Controllers\{
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
-Route::get('/logoff', [LoginController::class, 'logout'])->name('logoff');
+Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 
-Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/logoff', [LoginController::class, 'logout'])->name('logoff');
 
 Route::prefix('usuario')->group(function () {
     Route::get('/{user}', [UserController::class, 'show'])->name('user.show');

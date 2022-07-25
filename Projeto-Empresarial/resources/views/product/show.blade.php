@@ -1,5 +1,15 @@
 @extends('layouts.default')
 @section('title', $product->name)
+
+@push('scripts')
+
+<script type="text/javascript">
+    const product = @json($product)
+</script>
+
+@vite(['resources/js/cart/add.js'])
+@endpush
+
 @section('content')
 <section class="section-container">
     <div class="mx-auto">
@@ -40,16 +50,13 @@
                     @php
                     $btnStyles = $product->stock > 0 ?
                     "bg-emerald-400 hover:bg-emerald-600 cursor-pointer" :
-                    "bg-gray-500 hover:bg-gray-600 cursor-not-allowed";
+                    "bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled";
                     @endphp
 
-                    <a class="
-                        disabled flex ml-auto border-0 rounded
-                        text-white py-2 px-6 focus:outline-none
-                        {{ $btnStyles }}
-                    ">
+                    <button id="add-to-cart-button"
+                        class="flex ml-auto border-0 rounded text-white py-2 px-6 focus:outline-none {{ $btnStyles }}">
                         Comprar
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

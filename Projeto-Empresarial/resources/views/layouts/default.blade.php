@@ -25,8 +25,7 @@
     @include('shared.header')
 
     <main class="grow text-gray-600 py-16 relative">
-
-        @if(!str_contains(Route::currentRouteName(), 'admin'))
+        @if(Route::currentRouteName() === 'home' || Route::currentRouteName() === 'product.show' )
         @include('shared.cart')
         @endif
 
