@@ -34,8 +34,8 @@
             </div>
             <div class="mt-6">
                 <button id="cart-checkout-button" href="#"
-                    class="flex items-center justify-center rounded-md border border-transparent bg-emerald-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-700">
-                    Checkout
+                    class="w-full flex items-center justify-center rounded-md border border-transparent bg-emerald-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-700">
+                    Fechar pedido
                 </button>
             </div>
 

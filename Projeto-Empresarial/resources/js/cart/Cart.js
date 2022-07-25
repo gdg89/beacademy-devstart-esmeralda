@@ -15,6 +15,16 @@ export const Cart = {
         cartContainer.classList.toggle("translate-x-full");
     },
 
+    openSidebar: () => {
+        const cartContainer = document.getElementById("cart-container");
+
+        cartContainer.classList.add("opacity-100");
+        cartContainer.classList.remove("opacity-0");
+
+        cartContainer.classList.add("translate-x-0");
+        cartContainer.classList.remove("translate-x-full");
+    },
+
     getProducts: function () {
         if (localStorage.getItem("EstanteDev:cart")) {
             this.products = JSON.parse(localStorage.getItem("EstanteDev:cart"));
@@ -30,6 +40,22 @@ export const Cart = {
         this.cartCount.innerHTML = "";
         this.cartCount.classList.add("hidden");
         this.cartList.innerHTML = `<p class="text-center mt-4">Você não tem produtos no carrinho 🥲.</p>`;
+    },
+
+    getAddToCartButtons: function () {
+        const addToCartButtons = document.querySelectorAll(
+            ".add-to-cart-button"
+        );
+
+        addToCartButtons.forEach((addToCartButton) => {
+            addToCartButton.addEventListener("click", function () {
+                if (!addToCartButton.classList.contains("disabled")) {
+                    const product = JSON.parse(addToCartButton.dataset.product);
+
+                    Cart.addProduct(product);
+                }
+            });
+        });
     },
 
     updateSidebar: function () {
@@ -84,6 +110,8 @@ export const Cart = {
                 description,
                 quantity,
             });
+
+            this.openSidebar();
         }
 
         this.saveProducts();
@@ -126,7 +154,9 @@ export const Cart = {
                 <div>
                     <div class="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                            <a href="#">${product.name}</a>
+                            <a href="/produto/${product.id}">
+                                ${product.name}
+                            </a>
                         </h3>
                         <p class="ml-4 whitespace-nowrap">
                             R$ ${productTotal}

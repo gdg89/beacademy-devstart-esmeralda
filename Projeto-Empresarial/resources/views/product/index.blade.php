@@ -6,33 +6,48 @@
 
     @include('shared.search')
     @if(Session::has('alert'))
-        {!! Session::get('alert') !!}
+    {!! Session::get('alert') !!}
     @endif
-    <div class="flex flex-wrap my-12 w-full">
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-8 my-12">
         @if($products->isEmpty())
         @include('shared.empty-result', ['message' => 'Nenhum produto encontrado 🥲'])
         @else
 
         @foreach ($products as $product)
-        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a class="block relative h-48 rounded overflow-hidden">
-                <img alt="{{ $product->name }}" class="object-cover object-center w-full h-full block"
+        <div
+            class="block rounded-md shadow-md shadow-zinc-200 hover:shadow-zinc-400 transition duration-300 ease-in-out">
+
+            <a class=" block relative" href="{{ route('product.show', $product->id) }}" target="_blank">
+                <img alt="{{ $product->name }}"
+                    class="h-48 rounded-t-md overflow-hidden object-cover object-center w-full "
                     src="{{ $product->cover }}" />
+
+                @include('product.stock')
             </a>
-            <div class="mt-4">
-                <h2 class="text-gray-900 title-font text-lg font-medium">
-                    {{ $product->name }}
-                </h2>
-                <p class="mt-1">R$ {{ $product->price_sell }}</p>
+
+            <div class="m-4">
+                <a href="{{ route('product.show', $product->id) }}" target="_blank">
+                    <h2 class="text-gray-900 title-font text-lg font-normal hover:text-emerald-500">
+                        {{ $product->name }}
+                    </h2>
+                </a>
+
+                <div class="flex justify-between items-center">
+                    <strong class="mt-1 text-lg">R$ {{ $product->price_sell }}</strong>
+                </div>
+
+                @php
+                $btnStyles = $product->stock > 0 ?
+                "bg-emerald-400 hover:bg-emerald-600 cursor-pointer" :
+                "bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled";
+                @endphp
+
+                <button data-product="{{ $product }}"
+                    class="add-to-cart-button btn-primary w-full mt-4 {{ $btnStyles }}">
+                    Adicionar ao carrinho
+                </button>
             </div>
-            <a href="{{ route('product.show', $product->id) }}"
-                class="mt-3 text-emerald-500 hover:text-emerald-400 inline-flex items-center">
-                Ver mais
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
+
         </div>
         @endforeach
 
