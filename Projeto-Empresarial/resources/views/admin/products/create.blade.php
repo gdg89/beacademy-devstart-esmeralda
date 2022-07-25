@@ -5,7 +5,7 @@
 
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">
+        <h1 class="title mb-8">
             Adicionar produto
         </h1>
 

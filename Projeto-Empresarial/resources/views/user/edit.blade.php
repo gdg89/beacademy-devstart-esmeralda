@@ -10,7 +10,7 @@ $title = Route::currentRouteName() === 'admin.users.edit' ? 'Editar Usuário' : 
 
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">
+        <h1 class="title mb-4">
             {{ $title }}
         </h1>
 

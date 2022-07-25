@@ -8,7 +8,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 @section('content')
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">
+        <h1 class="title mb-8">
             {{ $title }}
         </h1>
 
