@@ -5,7 +5,9 @@
 <section class="section-container">
 
     @include('shared.search')
-
+    @if(Session::has('alert'))
+        {!! Session::get('alert') !!}
+    @endif
     <div class="flex flex-wrap my-12 w-full">
         @if($products->isEmpty())
         @include('shared.empty-result', ['message' => 'Nenhum produto encontrado 🥲'])

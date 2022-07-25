@@ -22,7 +22,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logoff', [LoginController::class, 'logout'])->name('logoff');
 
-Route::prefix('usuario')->group(function () {
+Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::get('/{user}', [UserController::class, 'show'])->name('user.show');
 
     Route::get('/editar/{user}', [UserController::class, 'edit'])->name('user.edit');
@@ -34,7 +34,14 @@ Route::prefix('usuario')->group(function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+Route::group(['prefix' => 'pedidos', 'middleware' => ['auth']], function () {
+    Route::get('/{id}', [OrderController::class, 'index'])->name('orders.index');
+
+    Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('pedidos/cadastro', [OrderController::class, 'store'])->name('orders.store');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/usuarios', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::get('/produtos', [AdminProductController::class, 'index'])->name('admin.products.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders.index');
