@@ -161,5 +161,3 @@ export const Cart = {
         return Number(price.replace(",", "."));
     },
 };
-
-Cart.getProducts();

@@ -111,7 +111,7 @@
                         <td class="text-center px-4 py-3">{{ $order->quantity }}</td>
                         <td class="text-center px-4 py-3">{{ $order->total }}</td>
                         <td class="px-4 py-3">
-                            @include('shared.status')
+                            @include('shared.status.badge')
                         </td>
                         <td class="px-4 py-3 text-sm text-right">
                             <a href="{{ route('user.order', ['user' => $user->id, 'order' => $order->id]) }}"

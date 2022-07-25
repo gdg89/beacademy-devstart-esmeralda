@@ -13,7 +13,7 @@
             </h1>
 
             <div class="ml-2">
-                @include('shared.status')
+                @include('shared.status.badge')
             </div>
 
         </div>

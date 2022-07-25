@@ -29,7 +29,7 @@ $dataTypes = [
         ">
 
         @if (Route::currentRouteName() === 'admin.orders.index')
-        @include('shared.status-select')
+        @include('shared.status.select')
         @endif
 
         <button type="submit" class="btn-primary">
