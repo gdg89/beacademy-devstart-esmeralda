@@ -22,7 +22,7 @@
 
 <body>
 
-    @include('shared.header')
+    @include('shared.header.index')
 
     <main class="grow text-gray-600 py-16 relative">
         @if(Route::currentRouteName() === 'home' || Route::currentRouteName() === 'product.show' )
