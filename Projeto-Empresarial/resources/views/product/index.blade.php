@@ -36,14 +36,8 @@
                     <strong class="mt-1 text-lg">R$ {{ $product->price_sell }}</strong>
                 </div>
 
-                @php
-                $btnStyles = $product->stock > 0 ?
-                "bg-emerald-400 hover:bg-emerald-600 cursor-pointer" :
-                "bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled";
-                @endphp
-
                 <button data-product="{{ $product }}"
-                    class="add-to-cart-button btn-primary w-full mt-4 {{ $btnStyles }}">
+                    class="add-to-cart-button btn-primary w-full mt-4 @if($product->stock <= 0) bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled @endif">
                     Adicionar ao carrinho
                 </button>
             </div>

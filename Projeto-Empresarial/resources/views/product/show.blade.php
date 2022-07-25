@@ -38,13 +38,8 @@
                         R$ {{ $product->price_sell }}
                     </span>
 
-                    @php
-                    $btnStyles = $product->stock > 0 ?
-                    "bg-emerald-400 hover:bg-emerald-600 cursor-pointer" :
-                    "bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled";
-                    @endphp
-
-                    <button id="add-to-cart-button" class="btn-primary ml-auto {{ $btnStyles }}">
+                    <button id="add-to-cart-button"
+                        class="btn-primary ml-auto @if($product->stock <= 0) bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled @endif">
                         Comprar
                     </button>
                 </div>
