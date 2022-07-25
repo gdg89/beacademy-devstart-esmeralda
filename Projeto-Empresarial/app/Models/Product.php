@@ -47,7 +47,7 @@ class Product extends Model
 
         $products = $products
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(12);
 
         foreach ($products as $product) {
             $product->price_sell = Product::format_price($product->price_sell);

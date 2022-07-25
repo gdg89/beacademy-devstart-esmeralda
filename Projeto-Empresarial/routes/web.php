@@ -11,7 +11,7 @@ use App\Http\Controllers\{
     LoginController
 };
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
 
