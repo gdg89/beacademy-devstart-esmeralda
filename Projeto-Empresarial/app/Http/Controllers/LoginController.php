@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 use App\Http\Requests\LoginFormRequest;
+
 class LoginController extends Controller
 {
     public function login(): View
@@ -16,15 +17,14 @@ class LoginController extends Controller
 
     public function authenticate(LoginFormRequest $request)
     {
-        
         $credentials = $request->validated();
-        
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
+
             return redirect()->intended('/');
         }
-        
+
         return back()->withErrors([
             'error' => 'Credenciais Invalidas!',
         ]);
@@ -37,6 +37,4 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
-
-
 }
