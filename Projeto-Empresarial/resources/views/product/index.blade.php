@@ -15,29 +15,31 @@
 
         @foreach ($products as $product)
         <div
-            class="block rounded-md shadow-md shadow-zinc-200 hover:shadow-zinc-400 transition duration-300 ease-in-out">
+            class="flex flex-col justify-between rounded-md shadow-md shadow-zinc-200 hover:shadow-zinc-400 transition duration-300 ease-in-out">
 
-            <a class=" block relative" href="{{ route('product.show', $product->id) }}" target="_blank">
-                <img alt="{{ $product->name }}"
-                    class="h-48 rounded-t-md overflow-hidden object-cover object-center w-full "
-                    src="{{ $product->cover }}" />
+            <div>
+                <a class=" block relative" href="{{ route('product.show', $product->slug) }}">
+                    <img alt="{{ $product->name }}"
+                        class="h-48 rounded-t-md overflow-hidden object-cover object-center w-full "
+                        src="{{ $product->cover }}" />
 
-                @include('product.stock')
-            </a>
-
-            <div class="m-4">
-                <a href="{{ route('product.show', $product->id) }}" target="_blank">
-                    <h2 class="text-gray-900 title-font text-lg font-normal hover:text-emerald-500">
-                        {{ $product->name }}
-                    </h2>
+                    @include('product.stock')
                 </a>
 
-                <div class="flex justify-between items-center">
-                    <strong class="mt-1 text-lg">R$ {{ $product->price_sell }}</strong>
-                </div>
+                <div class="mx-4 mt-4">
+                    <a href="{{ route('product.show', $product->slug) }}">
+                        <h2 class="text-gray-900 title-font text-lg font-normal hover:text-emerald-500">
+                            {{ $product->name }}
+                        </h2>
+                    </a>
 
+                    <strong class="block mt-2 text-lg">R$ {{ $product->price_sell }}</strong>
+                </div>
+            </div>
+
+            <div class="m-4">
                 <button data-product="{{ $product }}"
-                    class="add-to-cart-button btn-primary w-full mt-4 @if($product->stock <= 0) bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled @endif">
+                    class="add-to-cart-button btn-primary w-full @if($product->stock <= 0) bg-gray-500 hover:bg-gray-600 cursor-not-allowed disabled @endif">
                     Adicionar ao carrinho
                 </button>
             </div>
