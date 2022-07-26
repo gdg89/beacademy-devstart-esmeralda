@@ -1,5 +1,5 @@
 <aside id="cart-container"
-    class="bg-gray-50 max-w-md h-[calc(100vh-5rem)] opacity-0 translate-x-full  pointer-events-none fixed top-20 right-0 bottom-[72px] overflow-hidden z-10 ease-in-out duration-500 sm:duration-700 flex transform transition ">
+    class="bg-gray-50 max-w-md h-[calc(100vh-5rem)] opacity-0 translate-x-full pointer-events-none fixed top-20 right-0 bottom-[72px] overflow-hidden z-10 ease-in-out duration-500 sm:duration-700 flex transform transition ">
 
     <div class="w-full flex h-full flex-col pointer-events-auto ">
         <div
