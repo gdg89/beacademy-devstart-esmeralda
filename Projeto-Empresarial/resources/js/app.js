@@ -1,7 +1,6 @@
 import "./bootstrap";
 
 const flashMessages = document.querySelectorAll(".flash-message");
-console.log("🚀 ~ flashMessages", flashMessages);
 
 const showFlashMessage = (flashMessage) => {
     flashMessage.classList.remove("opacity-0");
@@ -20,13 +19,7 @@ const hiddeFlashMessage = (flashMessage) => {
 };
 
 if (flashMessages.length > 0) {
-    flashMessages.forEach((flashMessage) => {
-        flashMessage.classList.remove("opacity-0");
-        flashMessage.classList.add("opacity-100");
-
-        flashMessage.classList.remove("translate-x-full");
-        flashMessage.classList.add("translate-x-0");
-    });
+    flashMessages.forEach((flashMessage) => showFlashMessage(flashMessage));
 
     setTimeout(() => {
         flashMessages.forEach((flashMessage) =>
