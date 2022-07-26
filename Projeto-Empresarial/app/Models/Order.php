@@ -67,15 +67,7 @@ class Order extends Model
 
     static public function getStatusList()
     {
-        $orders = Order::all();
-
-        $statusList = [];
-
-        foreach ($orders as $order) {
-            if (!in_array($order->status, $statusList)) {
-                $statusList[] = $order->status;
-            }
-        }
+        $statusList = ['Processando', 'Aprovado', 'Recusado'];
 
         return $statusList;
     }

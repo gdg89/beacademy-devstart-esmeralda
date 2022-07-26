@@ -37,6 +37,8 @@ class AdminOrderController extends Controller
     {
         Order::updateProductsAndStatus($request, $order);
 
-        return redirect()->route('admin.orders.show', $order);
+        return redirect()
+            ->route('admin.orders.show', $order)
+            ->with('edit', "Pedido {$order->id} atualizado com sucesso!");
     }
 }
