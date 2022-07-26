@@ -2,6 +2,10 @@
 @section('title', 'Home')
 @section('content')
 
+@if (session()->has('login-success'))
+@include('shared.notifications.success', ['message' => session('login-success')])
+@endif
+
 <section class="section-container">
 
     @include('shared.search')

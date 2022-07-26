@@ -7,10 +7,14 @@
 @include('shared.notifications.success', ['message' => session('create')])
 @endif
 
+@if (session()->has('error'))
+@include('shared.notifications.error', ['message' => session('error')])
+@endif
+
 <div
     class="h-screen w-screen grow flex flex-col items-center justify-center bg-gradient-to-r from-cyan-300 to-emerald-300">
 
-    <div class="px-5 py-6 mt-4 bg-white shadow-lg rounded-lg z-10">
+    <div class="px-5 py-6 mt-4 bg-white min-w-[360px]  shadow-lg rounded-lg z-10">
         <div class="flex flex-col gap-4">
 
             <h3 class="text-2xl font-bold">Fazer login</h3>
@@ -26,9 +30,11 @@
             @csrf
             <div class="mt-4">
                 <div>
+
                     @error('error')
-                    <p class="msg-error">{{ $message }}</p>
+                    <p class="msg-error mb-4">{{ $message }}</p>
                     @enderror
+
                     <label class="block" for="email">
                         Email
                         <label>
