@@ -3,6 +3,10 @@
 
 @section('content')
 
+@if (session()->has('edit'))
+@include('shared.notifications.info', ['message' => session('edit')])
+@endif
+
 <section class="section-container">
 
     <div class="inline-flex flex-col">

@@ -2,6 +2,11 @@
 @section('title', 'Login')
 
 @section('content')
+
+@if (session()->has('create'))
+@include('shared.notifications.success', ['message' => session('create')])
+@endif
+
 <div
     class="h-screen w-screen grow flex flex-col items-center justify-center bg-gradient-to-r from-cyan-300 to-emerald-300">
 

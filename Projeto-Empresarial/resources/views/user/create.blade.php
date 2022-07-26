@@ -6,6 +6,15 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 @endphp
 
 @section('content')
+
+@if (session()->has('create'))
+<div class="absolute top-0 max-w-md bg-emerald-300 opacity-75 flex items-center justify-center">
+    <div class="text-center text-gray-700 text-2xl">
+        <p>{{ session('create') }}</p>
+    </div>
+</div>
+@endif
+
 <section class="section-container">
     <div class="form-container">
         <h1 class="title mb-8">

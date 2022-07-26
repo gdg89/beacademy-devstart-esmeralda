@@ -3,8 +3,19 @@
 
 @section('content')
 
-<section class="section-container">
+@if (session()->has('create'))
+@include('shared.notifications.success', ['message' => session('create')])
+@endif
 
+@if (session()->has('edit'))
+@include('shared.notifications.info', ['message' => session('edit')])
+@endif
+
+@if (session()->has('destroy'))
+@include('shared.notifications.error', ['message' => session('destroy')])
+@endif
+
+<section class="section-container">
     @include('shared.search')
 
     <div class="flex items-center justify-between mt-12 mb-8">
