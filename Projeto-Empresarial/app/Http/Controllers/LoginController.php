@@ -24,12 +24,12 @@ class LoginController extends Controller
 
             return redirect()
                 ->route('home')
-                ->with('login-success', 'Bem vindo(a) ' . Auth::user()->name);
+                ->with('login', 'Bem vindo(a) ' . Auth::user()->name);
         }
 
         return back()->withErrors([
             'error' => 'Credenciais invalidas!',
-        ])->with('error', 'Credenciais invalidas!');;
+        ])->with('error', 'Credenciais invalidas!');
     }
 
     public function logout(Request $request)
@@ -37,6 +37,8 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()
+            ->route('home')
+            ->with('logout', 'Logout realizado com sucesso');
     }
 }
