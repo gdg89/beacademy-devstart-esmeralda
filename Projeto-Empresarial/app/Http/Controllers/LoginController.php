@@ -24,7 +24,7 @@ class LoginController extends Controller
 
             return redirect()
                 ->route('home')
-                ->with('login', 'Bem vindo(a) ' . Auth::user()->name);
+                ->with('login', 'Bem vindo(a) ' . Auth::user()->name . '.');
         }
 
         return back()->withErrors([
@@ -39,6 +39,6 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect()
             ->route('home')
-            ->with('logout', 'Logout realizado com sucesso');
+            ->with('logout', 'Logout realizado com sucesso!');
     }
 }
