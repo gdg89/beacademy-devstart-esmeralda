@@ -100,3 +100,27 @@ body {
 .input-group {
     @apply w-full flex flex-col sm:flex-row gap-2 sm:gap-4;
 }
+
+/* FLASH MESSAGES */
+.flash-message {
+    @apply p-5 max-w-md rounded-l-md text-white font-bold
+    absolute top-8 right-0 z-10
+    flex items-center justify-center
+    ease-in-out duration-500 transform transition;
+}
+
+.success {
+    @apply bg-green-500;
+}
+
+.error {
+    @apply bg-red-500;
+}
+
+.warning {
+    @apply bg-orange-500;
+}
+
+.info {
+    @apply bg-blue-500;
+}
