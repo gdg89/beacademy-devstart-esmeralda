@@ -51,9 +51,11 @@ class AdminProductController extends Controller
             $input['cover'] = $path;
         }
 
-        Product::create($input);
+        $product = Product::create($input);
 
-        return Redirect::route('admin.products.index');
+        return redirect()
+            ->route('admin.products.index')
+            ->with('create', "Produto {$product->id} cadastrado com sucesso!");
     }
 
     /**
@@ -89,7 +91,9 @@ class AdminProductController extends Controller
         $product->fill($input);
         $product->save();
 
-        return Redirect::route('admin.products.index');
+        return redirect()
+            ->route('admin.products.index')
+            ->with('edit', "Produto {$product->id} atualizado com sucesso!");
     }
 
     /**
@@ -103,7 +107,9 @@ class AdminProductController extends Controller
         Storage::delete("public/{$product->cover}" ?? '');
         $product->delete();
 
-        return Redirect::route('admin.products.index');
+        return redirect()
+            ->route('admin.products.index')
+            ->with('destroy', "Produto {$product->id} excluído com sucesso!");
     }
 
     /**
@@ -118,6 +124,7 @@ class AdminProductController extends Controller
         $product->cover = null;
         $product->save();
 
-        return Redirect::back();
+        return back()
+            ->with('destroyImage', "Imagem do Produto {$product->id} excluído com sucesso!");
     }
 }

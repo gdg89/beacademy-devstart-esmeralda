@@ -5,7 +5,6 @@ use App\Http\Controllers\{
     AdminOrderController,
     AdminProductController,
     AdminUserController,
-    HomeController,
     UserController,
     ProductController,
     LoginController

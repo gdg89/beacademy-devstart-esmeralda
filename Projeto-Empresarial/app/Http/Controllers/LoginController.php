@@ -22,12 +22,14 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()
+                ->route('home')
+                ->with('login', 'Bem vindo(a) ' . Auth::user()->name . '.');
         }
 
         return back()->withErrors([
-            'error' => 'Credenciais Invalidas!',
-        ]);
+            'error' => 'Credenciais invalidas!',
+        ])->with('error', 'Credenciais invalidas!');
     }
 
     public function logout(Request $request)
@@ -35,6 +37,8 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()
+            ->route('home')
+            ->with('logout', 'Logout realizado com sucesso!');
     }
 }

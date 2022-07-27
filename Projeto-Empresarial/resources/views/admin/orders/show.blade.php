@@ -2,6 +2,10 @@
 @section('title', "Pedido #{$order->id}")
 @section('content')
 
+@if (session()->has('edit'))
+@include('shared.notifications.info', ['message' => session('edit')])
+@endif
+
 <section class="section-container">
 
     <div class="flex items-start justify-between">

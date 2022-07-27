@@ -53,7 +53,7 @@ class StoreUserFormRequest extends FormRequest
             'street' => 'required|string',
             'city' => 'required|string',
             'district' => 'required|string',
-            'number' => 'required|string',
+            'number' => 'required|integer',
             'complement' => 'nullable|string',
             'birthday' => 'required'
         ];

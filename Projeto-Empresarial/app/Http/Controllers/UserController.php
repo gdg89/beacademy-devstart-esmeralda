@@ -66,10 +66,14 @@ class UserController extends Controller
         User::create($data);
 
         if ($request->origin === 'admin.users.create') {
-            return redirect()->route('admin.users.index');
+            return redirect()
+                ->route('admin.users.index')
+                ->with('create', 'Usuário criado com sucesso!');
         }
 
-        return redirect()->route('login');
+        return redirect()
+            ->route('login')
+            ->with('create', 'Cadastro realizado com sucesso!');
     }
 
     public function edit(User $user)
@@ -102,16 +106,22 @@ class UserController extends Controller
         $user->update($data);
 
         if ($request->origin === 'admin.users.edit') {
-            return redirect()->route('admin.users.index');
+            return redirect()
+                ->route('admin.users.index')
+                ->with('edit', "Usuário {$user->id} atualizado com sucesso!");
         }
 
-        return redirect()->route('user.show', $user->id);
+        return redirect()
+            ->route('user.show', $user->id)
+            ->with('edit', "Usuário {$user->id} atualizado com sucesso!");
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('admin.users.index');
+        return redirect()
+            ->route('admin.users.index')
+            ->with('destroy', "Usuário #{$user->id} exclluido com sucesso!");
     }
 }
