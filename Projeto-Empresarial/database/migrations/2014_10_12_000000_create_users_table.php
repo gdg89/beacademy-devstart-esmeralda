@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('number');
             $table->string('city');
             $table->string('state');
-            $table->string('complement');
+            $table->string('complement')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

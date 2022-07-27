@@ -7,8 +7,17 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function index(Request $request)
+    {
+        $products = Product::getAllFormatted($request);
+
+        return view('product.index', [
+            'products' => $products
+        ]);
+    }
+
     /**
-     * Display the specified resource.
+     * Display single product.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response

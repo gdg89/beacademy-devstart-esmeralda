@@ -2,7 +2,7 @@
 @section('title', 'Editar usuario')
 
 @php
-$title = Route::currentRouteName() === 'admin.users.create' ? 'Editar Usuário' : 'Editar perfil';
+$title = Route::currentRouteName() === 'admin.users.edit' ? 'Editar Usuário' : 'Editar perfil';
 @endphp
 
 @section('content')
@@ -10,7 +10,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Editar Usuário' 
 
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">
+        <h1 class="title mb-4">
             {{ $title }}
         </h1>
 

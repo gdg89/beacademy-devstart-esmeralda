@@ -31,6 +31,11 @@ class StoreUserFormRequest extends FormRequest
                 'email',
                 'unique:users,email,{$id},id',
             ],
+            'password' => [
+                'required',
+                'min:6',
+                'max:30'
+            ],
             'avatar' => [
                 'required',
                 'file',
@@ -49,13 +54,8 @@ class StoreUserFormRequest extends FormRequest
             'city' => 'required|string',
             'district' => 'required|string',
             'number' => 'required|string',
-            'complement' => 'required|string',
-            'birthday' => 'required',
-            'password' => [
-                'required',
-                'min:6',
-                'max:30'
-            ]
+            'complement' => 'nullable|string',
+            'birthday' => 'required'
         ];
 
         if ($this->method('PUT')) {
@@ -81,6 +81,7 @@ class StoreUserFormRequest extends FormRequest
 
             $rules['password'] = [
                 'nullable',
+                'string',
                 'min:6',
                 'max:30'
             ];

@@ -1,5 +1,6 @@
 <header class="text-white body-font bg-emerald-400 sticky top-0 z-50">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+
         <a href="@if(Route::currentRouteName() === 'home') # @else / @endif"
             class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-emerald-400 p-2 bg-white rounded-full"
@@ -9,11 +10,12 @@
             </svg>
             <span class="ml-3 text-xl text-white">EstanteDev</span>
         </a>
+
         <nav class="md:ml-auto flex flex-wrap gap-4 items-center text-emerald-700 justify-center">
             @if(str_contains(Route::currentRouteName(), 'admin'))
-            @include('shared.admin-links')
+            @include('shared.header.admin')
             @else
-            @include('shared.home-links')
+            @include('shared.header.home')
             @endif
         </nav>
     </div>

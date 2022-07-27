@@ -8,20 +8,19 @@ use App\Http\Controllers\{
     HomeController,
     UserController,
     ProductController,
-    OrderController,
     LoginController
 };
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [ProductController::class, 'index'])->name('home');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
-Route::get('/logoff', [LoginController::class, 'logout'])->name('logoff');
+Route::get('/produto/{product:slug}', [ProductController::class, 'show'])->name('product.show');
 
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/cadastro', [UserController::class, 'store'])->name('user.store');
 
-Route::get('/produto/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/logoff', [LoginController::class, 'logout'])->name('logoff');
 
 Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::get('/{user}', [UserController::class, 'show'])->name('user.show');
@@ -35,7 +34,7 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-Route::group(['prefix' => 'pedidos', 'middleware'=> ['auth']], function () {
+Route::group(['prefix' => 'pedidos', 'middleware' => ['auth']], function () {
     Route::get('/{id}', [OrderController::class, 'index'])->name('orders.index');
 
     Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');

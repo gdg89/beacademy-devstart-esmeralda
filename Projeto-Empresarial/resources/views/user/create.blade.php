@@ -8,7 +8,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 @section('content')
 <section class="section-container">
     <div class="form-container">
-        <h1 class="title">
+        <h1 class="title mb-8">
             {{ $title }}
         </h1>
 
@@ -27,7 +27,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 
             <div class="input-container">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-input" />
+                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-input" required />
 
                 @error('name')
                 <p class="msg-error">{{ $message }}</p>
@@ -36,7 +36,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 
             <div class="input-container">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-input" />
+                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-input" required />
 
                 @error('email')
                 <p class="msg-error">{{ $message }}</p>
@@ -45,7 +45,8 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 
             <div class="input-container">
                 <label for="password" class="form-label">Senha</label>
-                <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-input" />
+                <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-input"
+                    required />
 
                 @error('password')
                 <p class="msg-error">{{ $message }}</p>
@@ -56,7 +57,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
             <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" class="form-input" />
+                    <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" class="form-input" required />
 
                     @error('cpf')
                     <p class="msg-error">{{ $message }}</p>
@@ -65,7 +66,7 @@ $title = Route::currentRouteName() === 'admin.users.create' ? 'Cadastrar Usuári
 
                 <div class="input-container sm:w-1/2">
                     <label for="phone" class="form-label">Telefone</label>
-                    <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="form-input" />
+                    <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="form-input" required />
 
                     @error('phone')
                     <p class="msg-error">{{ $message }}</p>
