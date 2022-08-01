@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class ProductControllerTest extends TestCase
+class AdminProductControllerTest extends TestCase
 {
     /**
      * A basic unit test example.
