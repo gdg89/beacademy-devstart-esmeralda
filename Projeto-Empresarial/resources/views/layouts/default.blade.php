@@ -1,3 +1,11 @@
+@php
+$cartPaths = [
+'home',
+'product.show',
+];
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="light">
 
@@ -25,7 +33,7 @@
     @include('shared.header.index')
 
     <main class="grow text-gray-600 py-16 relative">
-        @if(Route::currentRouteName() === 'home' || Route::currentRouteName() === 'product.show' )
+        @if(in_array(Route::currentRouteName(), $cartPaths))
         @include('shared.cart')
         @endif
 

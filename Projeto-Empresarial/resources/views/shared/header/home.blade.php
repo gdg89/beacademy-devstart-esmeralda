@@ -1,5 +1,10 @@
 @php
 $user = Auth::user();
+
+$cartPaths = [
+'home',
+'product.show'
+];
 @endphp
 
 @if (isset($user->isAdmin) && $user->isAdmin)
@@ -8,7 +13,7 @@ $user = Auth::user();
 </a>
 @endif
 
-@if(Route::currentRouteName() === 'home' || Route::currentRouteName() === 'product.show' )
+@if(in_array(Route::currentRouteName(), $cartPaths))
 @include('shared.header.cartButton')
 @endif
 

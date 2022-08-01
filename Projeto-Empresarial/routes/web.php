@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     AdminUserController,
     UserController,
     ProductController,
-    LoginController
+    LoginController,
+    OrderController
 };
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
@@ -28,16 +29,11 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::put('/editar/{user}', [UserController::class, 'update'])->name('user.update');
 
     Route::get('/{user}/pedido/{order}', [UserController::class, 'order'])->name('user.order');
-
-    Route::get('/carrinho', [UserController::class, 'cart'])->name('user.cart');
-    Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
 Route::group(['prefix' => 'pedidos', 'middleware' => ['auth']], function () {
-    Route::get('/{id}', [OrderController::class, 'index'])->name('orders.index');
-
-    Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('pedidos/cadastro', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/checkout', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/checkout', [OrderController::class, 'store'])->name('orders.store');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
