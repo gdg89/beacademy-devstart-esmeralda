@@ -43,7 +43,7 @@
             <tbody class="divide-y">
 
                 @foreach ($orders as $order)
-                <tr class="even:bg-gray-100 odd:bg-white">
+                <tr class="table-tr">
                     <td class="px-4 py-3">{{ $order->id }}</td>
                     <td class="px-4 py-3">{{ $order->user->email }}</td>
                     <td class="text-center px-4 py-3">{{ $order->quantity }}</td>

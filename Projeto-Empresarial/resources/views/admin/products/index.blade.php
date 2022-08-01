@@ -29,7 +29,6 @@
     </div>
 
     <div class="w-full mx-auto overflow-auto">
-
         <table class="table-auto w-full text-left whitespace-no-wrap">
             <thead>
                 <tr>
@@ -59,7 +58,7 @@
             <tbody class="divide-y">
 
                 @foreach ($products as $product)
-                <tr class="even:bg-gray-100 odd:bg-white">
+                <tr class="table-tr">
                     <td class="px-4 py-3">{{ $product->id }}</td>
                     <td class="px-4 py-3">
                         <img alt="{{ $product->name }}" class="object-cover object-center w-full h-[80px] block"

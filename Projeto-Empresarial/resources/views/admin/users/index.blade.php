@@ -55,7 +55,7 @@
             <tbody class="divide-y">
 
                 @foreach ($users as $user)
-                <tr class="even:bg-gray-100 odd:bg-white">
+                <tr class="table-tr">
                     <td class="px-4 py-3">{{ $user->id }}</td>
                     <td class="px-4 py-3">
                         <img alt="{{ $user->name }}" class="avatar w-12 h-12" src="{{ $user->avatar }}"

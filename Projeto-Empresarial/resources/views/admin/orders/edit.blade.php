@@ -74,7 +74,7 @@
                 <tbody class="divide-y">
 
                     @foreach ($order->uniqueProducts as $product)
-                    <tr class="even:bg-gray-100 odd:bg-white" id="product-{{ $product->id }}">
+                    <tr class="table-tr" id="product-{{ $product->id }}">
 
                         <input type="checkbox" name="{{ $product->id }}" id="product-checkbox-{{ $product->id }}"
                             class="hidden" value="remove">
