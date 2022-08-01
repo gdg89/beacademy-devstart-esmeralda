@@ -2,16 +2,21 @@ import { Cart } from "./Cart";
 
 Cart.getProducts();
 
-console.log("CART PRODUCTS: ", Cart.products);
+// console.log("CART PRODUCTS: ", Cart.products);
 
 const cartProducts = Cart.products;
 
 const table = document.getElementById("checkout-cart-tbody");
 const cartTotal = document.getElementById("cart-total");
+const transactionAmountInput = document.getElementById("transaction_amount");
+const transactionTypeInput = document.getElementById("transaction_type");
+
 const transactionInstallments = document.getElementById(
     "transaction_installments"
 );
-console.log("🚀 ~ table", table);
+
+transactionAmountInput.value = Cart.getTotalPrice();
+transactionTypeInput.value = "card";
 
 const cartTotalPrice = Cart.formatPriceToString(Cart.getTotalPrice());
 

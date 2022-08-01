@@ -41,8 +41,12 @@
     <div class="w-full flex flex-col items-center justify-center">
         <h1 class="title mb-8">Checkout</h1>
 
-        <form class="flex flex-col gap-4 w-full max-w-xl" method="POST" action="{{ route("order.store") }}">
+        <form method="POST" action="{{ route("order.store") }}"
+            class="flex flex-col gap-4 w-full max-w-xl shadow-xl py-8 px-5 rounded-md">
             @csrf
+
+            <input type="hidden" name="transaction_amount" id="transaction_amount">
+            <input type="hidden" name="transaction_type" id="transaction_type">
 
             <div class="input-container w-full">
                 <label for="card_holder_name" class="form-label">Nome do títular</label>
@@ -80,8 +84,8 @@
             <div class="input-group">
                 <div class="input-container sm:w-1/2">
                     <label for="card_cvv" class="form-label">CVV</label>
-                    <input type="number" id="card_cvv" name="card_cvv" value="{{ old('card_cvv') }}" class="form-input"
-                        placeholder="***" required />
+                    <input type="number" min="100" max="999" id="card_cvv" name="card_cvv" value="{{ old('card_cvv') }}"
+                        class="form-input" placeholder="***" required />
 
                     @error('card_cvv')
                     <p class="msg-error">{{ $message }}</p>
@@ -105,11 +109,6 @@
         </form>
 
     </div>
-
-
-
-
-
 </section>
 
 @endsection

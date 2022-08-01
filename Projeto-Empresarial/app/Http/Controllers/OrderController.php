@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderFormRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -25,8 +26,10 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderFormRequest $request)
     {
-        //
+        $input = $request->validated();
+
+        dd($input);
     }
 }
