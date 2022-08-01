@@ -33,7 +33,7 @@
                 <p id="cart-total"></p>
             </div>
             <div class="mt-6">
-                <a id="cart-checkout-button" href="{{ route('orders.create') }}" class="w-full btn-primary text-lg">
+                <a id="cart-checkout-button" href="{{ route('order.create') }}" class="w-full btn-primary text-lg">
                     Fechar pedido
                 </a>
             </div>

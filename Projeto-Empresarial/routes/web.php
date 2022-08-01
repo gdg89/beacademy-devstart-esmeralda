@@ -31,9 +31,9 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::get('/{user}/pedido/{order}', [UserController::class, 'order'])->name('user.order');
 });
 
-Route::group(['prefix' => 'pedidos', 'middleware' => ['auth']], function () {
-    Route::get('/checkout', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('/checkout', [OrderController::class, 'store'])->name('orders.store');
+Route::group(['prefix' => 'pedido', 'middleware' => ['auth']], function () {
+    Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
+    Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
