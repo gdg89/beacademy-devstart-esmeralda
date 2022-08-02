@@ -13,7 +13,7 @@ class StoreOrderTicketFormRquest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class StoreOrderTicketFormRquest extends FormRequest
             "transaction_installments" => "required|integer|min:1|max:12",
             "customer_name" => "required|string|min:3|max:255",
             "customer_document" => "required|string|min:11|max:14",
-            "customer_postcode" => "required|string|size:8",
+            "customer_postcode" => "required|string|size:9",
             "customer_address_street" => "required|string|min:3|max:255",
             "customer_andress_number" => "required|integer|min:0",
             "customer_address_neighborhood" => "required|string|min:3|max:255",

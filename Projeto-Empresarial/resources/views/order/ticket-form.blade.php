@@ -16,32 +16,49 @@
 
     <h2 class="title">Dados do pagador</h2>
 
+    @if ($errors->any())
+
+    <div class="msg-error">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+
+    @endif
+
+    <select name="transaction_installments" id="transaction_installments" class="select-status">
+    </select>
+
     <ul>
-        <li>
+        <li class="pb-4">
             <strong>Nome:</strong> {{ $user->name }}
         </li>
-        <li>
+        <li class="pb-4">
             <strong>CPF:</strong> {{ $user->cpf }}
         </li>
-        <li>
+        <li class="pb-4">
             <strong>País:</strong> Brasil
         </li>
-        <li>
-            <strong>Rua:</strong> {{ $user->street }}
+        <li class="pb-4">
+            <strong>CEP:</strong> {{ $user->cep }}
         </li>
-        <li>
-            <strong>Número:</strong> {{ $user->number }}
-        </li>
-        <li>
-            <strong>Bairro:</strong> {{ $user->district }}
-        </li>
-        <li>
-            <strong>Cidade:</strong> {{ $user->city }}
-        </li>
-        <li>
+        <li class="pb-4">
             <strong>Estado:</strong> {{ $user->state }}
         </li>
-
+        <li class="pb-4">
+            <strong>Cidade:</strong> {{ $user->city }}
+        </li>
+        <li class="pb-4">
+            <strong>Rua:</strong> {{ $user->street }}
+        </li>
+        <li class="pb-4">
+            <strong>Número:</strong> {{ $user->number }}
+        </li>
+        <li class="pb-4">
+            <strong>Bairro:</strong> {{ $user->district }}
+        </li>
     </ul>
 
 
