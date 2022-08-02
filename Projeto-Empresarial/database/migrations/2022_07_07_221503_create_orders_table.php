@@ -19,7 +19,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-            $table->string('status', 30);
+            $table->string('status', 30)->default('Processando');
             $table->timestamps();
         });
     }

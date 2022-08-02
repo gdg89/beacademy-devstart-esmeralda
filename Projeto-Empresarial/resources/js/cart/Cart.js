@@ -58,12 +58,28 @@ export const Cart = {
         });
     },
 
+    disableCheckoutButton: function () {
+        this.cartCheckoutButton.classList.add("disabled");
+        this.cartCheckoutButton.classList.add("cursor-not-allowed");
+        this.cartCheckoutButton.href = "#";
+    },
+
+    enableCheckoutButton: function () {
+        this.cartCheckoutButton.classList.remove("disabled");
+        this.cartCheckoutButton.classList.remove("cursor-not-allowed");
+        this.cartCheckoutButton.href = "/pedido/checkout";
+    },
+
     updateSidebar: function () {
         this.cartList.innerHTML = "";
 
         if (this.products.length === 0) {
             this.setEmptySidebar();
+            this.disableCheckoutButton();
+
             return;
+        } else {
+            this.enableCheckoutButton();
         }
 
         this.cartCount.classList.remove("hidden");
