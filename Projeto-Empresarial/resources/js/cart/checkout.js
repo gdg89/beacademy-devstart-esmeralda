@@ -11,13 +11,21 @@ const cartTotal = document.getElementById("cart-total");
 const transactionAmountInput = document.getElementById("transaction_amount");
 const transactionTypeInput = document.getElementById("transaction_type");
 
+if (route === "order.create.card") {
+    transactionTypeInput.value = "card";
+}
+
+if (route === "order.create.ticket") {
+    transactionTypeInput.value = "ticket";
+}
+
 const transactionInstallments = document.getElementById(
     "transaction_installments"
 );
 
 transactionAmountInput.value = Cart.getTotalPrice();
-transactionTypeInput.value = "card";
 
+/* CART */
 const cartTotalPrice = Cart.formatPriceToString(Cart.getTotalPrice());
 
 cartTotal.innerHTML = `Total R$ ${cartTotalPrice}`;

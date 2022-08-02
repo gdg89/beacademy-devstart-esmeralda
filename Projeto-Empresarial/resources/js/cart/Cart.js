@@ -67,7 +67,7 @@ export const Cart = {
     enableCheckoutButton: function () {
         this.cartCheckoutButton.classList.remove("disabled");
         this.cartCheckoutButton.classList.remove("cursor-not-allowed");
-        this.cartCheckoutButton.href = "/pedido/checkout";
+        this.cartCheckoutButton.href = "/pedido/checkout/cartao";
     },
 
     updateSidebar: function () {

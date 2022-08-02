@@ -32,8 +32,11 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
 });
 
 Route::group(['prefix' => 'pedido', 'middleware' => ['auth']], function () {
-    Route::get('/checkout', [OrderController::class, 'create'])->name('order.create');
-    Route::post('/checkout', [OrderController::class, 'store'])->name('order.store');
+    Route::get('/checkout/cartao', [OrderController::class, 'createWithCard'])->name('order.create.card');
+    Route::get('/checkout/boleto', [OrderController::class, 'createWithTicket'])->name('order.create.ticket');
+
+    Route::post('/checkout/cartao', [OrderController::class, 'storeWithCard'])->name('order.store.card');
+    Route::post('/checkout/boleto', [OrderController::class, 'storeWithTicket'])->name('order.store.ticket');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
