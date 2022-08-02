@@ -5,6 +5,10 @@
 
 @if (session()->has('create-order'))
 @include('shared.notifications.success', ['message' => session('create-order')])
+
+@push('scripts')
+@vite(['resources/js/cart/clearCart.js'])
+@endpush
 @endif
 
 <section class="section-container">

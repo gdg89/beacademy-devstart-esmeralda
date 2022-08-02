@@ -62,7 +62,6 @@ cartProducts.forEach((cartProduct) => {
 });
 
 /* PRODUTOS PARA PEDIDO */
-
 cartProducts.forEach((cartProduct) => {
     for (let i = 0; i < cartProduct.quantity; i++) {
         const productItem = `<input type="hidden" name="products[]" value="${cartProduct.id}" />`;

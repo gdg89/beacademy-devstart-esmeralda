@@ -15,6 +15,10 @@ export const Cart = {
         cartContainer.classList.toggle("translate-x-full");
     },
 
+    clear: () => {
+        localStorage.removeItem("EstanteDev:cart");
+    },
+
     openSidebar: () => {
         const cartContainer = document.getElementById("cart-container");
 
