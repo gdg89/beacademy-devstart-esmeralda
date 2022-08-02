@@ -3,6 +3,8 @@
 
 @php
 $user = Auth::user();
+
+$isCardForm = Route::currentRouteName() === 'order.create.card';
 @endphp
 
 
@@ -24,10 +26,15 @@ $user = Auth::user();
         <h1 class="title mb-8">Checkout</h1>
 
         <div class="flex flex-col sm:flex-row items-center gap-8 w-full sm:max-w-[400px] mb-8">
-            <a href="{{ route('order.create.card') }}" id="card-btn" class="btn-primary w-full sm:w-1/2">Cartão de
-                crédito</a>
+            <a href="{{ route('order.create.card') }}#checkout-form" id="card-btn"
+                class="w-full sm:w-1/2 @if($isCardForm) btn-primary @else btn-outline @endif">
+                Cartão de crédito
+            </a>
 
-            <a href="{{ route('order.create.ticket') }}" id="ticket-btn" class="btn-primary w-full sm:w-1/2">Boleto</a>
+            <a href="{{ route('order.create.ticket') }}#checkout-form" id="ticket-btn"
+                class=" w-full sm:w-1/2 @if($isCardForm) btn-outline @else btn-primary @endif">
+                Boleto
+            </a>
         </div>
 
         @if (Route::currentRouteName() === "order.create.card")

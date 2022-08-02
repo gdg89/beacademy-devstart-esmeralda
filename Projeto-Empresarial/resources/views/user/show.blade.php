@@ -17,7 +17,7 @@
 
                 <div class="pl-4 flex flex-col gap-2">
                     <h1 class="title">{{ $user->name }}</h1>
-                    <span class="text-sm">Criado em {{  $user->created_at->format('d/m/Y - H:i:s') }}</span>
+                    <span class="text-sm">Cadastrado em {{  $user->created_at->format('d/m/Y') }}</span>
                 </div>
             </div>
 
