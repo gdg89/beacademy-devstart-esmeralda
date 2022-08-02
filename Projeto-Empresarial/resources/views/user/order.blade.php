@@ -3,6 +3,10 @@
 
 @section('content')
 
+@if (session()->has('create-order'))
+@include('shared.notifications.success', ['message' => session('create-order')])
+@endif
+
 <section class="section-container">
 
     <div class="flex items-start justify-between">

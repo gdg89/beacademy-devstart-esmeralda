@@ -17,6 +17,9 @@ $user = Auth::user();
 @section('content')
 
 <section class="section-container">
+
+    @include('order.cart-table')
+
     <div class="w-full flex flex-col items-center justify-start">
         <h1 class="title mb-8">Checkout</h1>
 
@@ -35,8 +38,6 @@ $user = Auth::user();
         @include('order.ticket-form')
         @endif
     </div>
-
-    @include('order.cart-table')
 
 </section>
 

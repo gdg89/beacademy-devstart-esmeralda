@@ -24,6 +24,7 @@ class StoreOrderTicketFormRquest extends FormRequest
     public function rules()
     {
         return [
+            "products" => "required|array",
             "transaction_type" => "required|in:ticket",
             "transaction_amount" => "required|numeric",
             "transaction_installments" => "required|integer|min:1|max:12",

@@ -24,14 +24,15 @@ class StoreOrderCardFormRequest extends FormRequest
     public function rules()
     {
         return [
+            "products" => "required|array",
             "transaction_type" => "required|in:card",
             "transaction_amount" => "required|numeric",
             "transaction_installments" => "required|integer|min:1|max:12",
-            "card_holder_name" => "required|string|min:3|max:255",
-            "card_holder_cpf" => "required|string|min:11|max:14",
-            "card_number" => "required|string|min:16|max:19",
-            "card_cvv" => "required|string|size:3",
-            "card_expiration_date" => "required|string|size:7",
+            "customer_name" => "required|string|min:3|max:255",
+            "customer_document" => "required|string|min:11|max:14",
+            "customer_card_number" => "required|string|min:16|max:19",
+            "customer_card_cvv" => "required|string|size:3",
+            "customer_card_expiration_date" => "required|string|size:7",
         ];
     }
 }
