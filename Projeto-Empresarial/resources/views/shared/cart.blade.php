@@ -33,9 +33,9 @@
                 <p id="cart-total"></p>
             </div>
             <div class="mt-6">
-                <button id="cart-checkout-button" href="#" class="w-full btn-primary text-lg">
+                <a id="cart-checkout-button" href="{{ route('order.create.card') }}" class="w-full btn-primary text-lg">
                     Fechar pedido
-                </button>
+                </a>
             </div>
 
         </div>

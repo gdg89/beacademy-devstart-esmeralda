@@ -16,6 +16,7 @@
     @if(Session::has('alert'))
     {!! Session::get('alert') !!}
     @endif
+
     <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-8 my-12">
         @if($products->isEmpty())
         @include('shared.empty-result', ['message' => 'Nenhum produto encontrado 🥲'])

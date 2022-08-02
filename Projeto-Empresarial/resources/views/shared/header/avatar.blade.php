@@ -23,7 +23,7 @@
     <ul class="py-1 text-sm text-gray-500 hover:bg-emerald-100" aria-labelledby="dropdownUserAvatarButton">
         <li>
             <a href="/usuario/{{ $user->id }}" title="{{ $user->name }}" class="block py-2 px-4  ">
-                Editar
+                Dashboard
             </a>
         </li>
     </ul>

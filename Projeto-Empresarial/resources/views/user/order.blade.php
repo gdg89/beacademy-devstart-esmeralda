@@ -3,6 +3,14 @@
 
 @section('content')
 
+@if (session()->has('create-order'))
+@include('shared.notifications.success', ['message' => session('create-order')])
+
+@push('scripts')
+@vite(['resources/js/cart/clearCart.js'])
+@endpush
+@endif
+
 <section class="section-container">
 
     <div class="flex items-start justify-between">
@@ -72,7 +80,7 @@
             <tbody class="divide-y">
 
                 @foreach ($order->uniqueProducts as $product)
-                <tr class="even:bg-gray-100 odd:bg-white">
+                <tr class="table-tr">
                     <td class="px-4 py-3">{{ $product->id }}</td>
                     <td class="px-4 py-3">
                         <img alt="{{ $product->name }}" class="object-cover object-center w-full h-[80px] block"

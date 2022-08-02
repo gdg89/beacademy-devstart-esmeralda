@@ -31,6 +31,7 @@ class UserFactory extends Factory
             'complement' => $this->faker->text(10),
             'birthday' => $this->faker->date(),
             'cpf' => $this->faker->cpf(false),
+            'cep' => $this->faker->numerify('#####-###'),
             'password' => bcrypt(now()),
         ];
     }

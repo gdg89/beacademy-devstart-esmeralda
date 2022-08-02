@@ -122,6 +122,6 @@ class UserController extends Controller
 
         return redirect()
             ->route('admin.users.index')
-            ->with('destroy', "Usuário #{$user->id} exclluido com sucesso!");
+            ->with('destroy', "Usuário #{$user->id} excluído com sucesso!");
     }
 }

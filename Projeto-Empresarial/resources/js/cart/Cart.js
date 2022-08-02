@@ -15,6 +15,10 @@ export const Cart = {
         cartContainer.classList.toggle("translate-x-full");
     },
 
+    clear: () => {
+        localStorage.removeItem("EstanteDev:cart");
+    },
+
     openSidebar: () => {
         const cartContainer = document.getElementById("cart-container");
 
@@ -58,12 +62,28 @@ export const Cart = {
         });
     },
 
+    disableCheckoutButton: function () {
+        this.cartCheckoutButton.classList.add("disabled");
+        this.cartCheckoutButton.classList.add("cursor-not-allowed");
+        this.cartCheckoutButton.href = "#";
+    },
+
+    enableCheckoutButton: function () {
+        this.cartCheckoutButton.classList.remove("disabled");
+        this.cartCheckoutButton.classList.remove("cursor-not-allowed");
+        this.cartCheckoutButton.href = "/pedido/checkout/cartao";
+    },
+
     updateSidebar: function () {
         this.cartList.innerHTML = "";
 
         if (this.products.length === 0) {
             this.setEmptySidebar();
+            this.disableCheckoutButton();
+
             return;
+        } else {
+            this.enableCheckoutButton();
         }
 
         this.cartCount.classList.remove("hidden");

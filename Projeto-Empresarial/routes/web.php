@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     AdminUserController,
     UserController,
     ProductController,
-    LoginController
+    LoginController,
+    OrderController
 };
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
@@ -28,16 +29,14 @@ Route::group(['prefix' => 'usuario', 'middleware' => ['auth']], function () {
     Route::put('/editar/{user}', [UserController::class, 'update'])->name('user.update');
 
     Route::get('/{user}/pedido/{order}', [UserController::class, 'order'])->name('user.order');
-
-    Route::get('/carrinho', [UserController::class, 'cart'])->name('user.cart');
-    Route::post('/carrinho', [UserController::class, 'checkout'])->name('user.checkout');
 });
 
-Route::group(['prefix' => 'pedidos', 'middleware' => ['auth']], function () {
-    Route::get('/{id}', [OrderController::class, 'index'])->name('orders.index');
+Route::group(['prefix' => 'pedido', 'middleware' => ['auth']], function () {
+    Route::get('/checkout/cartao', [OrderController::class, 'createWithCard'])->name('order.create.card');
+    Route::get('/checkout/boleto', [OrderController::class, 'createWithTicket'])->name('order.create.ticket');
 
-    Route::get('/cadastro', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('pedidos/cadastro', [OrderController::class, 'store'])->name('orders.store');
+    Route::post('/checkout/cartao', [OrderController::class, 'storeWithCard'])->name('order.store.card');
+    Route::post('/checkout/boleto', [OrderController::class, 'storeWithTicket'])->name('order.store.ticket');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
