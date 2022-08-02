@@ -52,22 +52,35 @@ $title = Route::currentRouteName() === 'admin.users.edit' ? 'Editar Usuário' : 
                 @enderror
             </div>
 
-            <div class="input-container">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-input" />
-
-                @error('password')
-                <p class="msg-error">{{ $message }}</p>
-                @enderror
-            </div>
-
-
             <div class="input-group">
+                <div class="input-container sm:w-1/2">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" id="password" name="password" value="{{ old('password') }}"
+                        class="form-input" />
+
+                    @error('password')
+                    <p class="msg-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="input-container sm:w-1/2">
                     <label for="cpf" class="form-label">CPF</label>
                     <input type="text" id="cpf" name="cpf" value="{{ old('cpf', $user->cpf) }}" class="form-input" />
 
                     @error('cpf')
+                    <p class="msg-error">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+
+            <div class="input-group">
+                <div class="input-container sm:w-1/2">
+                    <label for="birthday" class="form-label">Data de nascimento</label>
+                    <input type="date" id="birthday" name="birthday" value="{{ old('birthday', $user->birthday) }}"
+                        class="form-input" />
+
+                    @error('birthday')
                     <p class="msg-error">{{ $message }}</p>
                     @enderror
                 </div>
@@ -85,15 +98,17 @@ $title = Route::currentRouteName() === 'admin.users.edit' ? 'Editar Usuário' : 
             </div>
 
             <div class="input-group">
-                <div class="input-container sm:w-1/2">
-                    <label for="birthday" class="form-label">Data de nascimento</label>
-                    <input type="date" id="birthday" name="birthday" value="{{ old('birthday', $user->birthday) }}"
-                        class="form-input" />
 
-                    @error('birthday')
+                <div class="input-container sm:w-1/2">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" id="cep" name="cep" value="{{ old('cep', $user->cep) }}" class="form-input"
+                        placeholder="xxxxx-xxx" />
+
+                    @error('cep')
                     <p class="msg-error">{{ $message }}</p>
                     @enderror
                 </div>
+
 
                 <div class="input-container sm:w-1/2">
                     <label for="state" class="form-label">Estado</label>

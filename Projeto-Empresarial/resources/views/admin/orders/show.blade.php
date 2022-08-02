@@ -58,6 +58,11 @@
             </p>
 
             <p>
+                <strong>CEP:</strong>
+                <span>{{ $order->user->cep }}</span>
+            </p>
+
+            <p>
                 <strong>Endereço:</strong>
                 <span>{{ $order->user->street }}, {{ $order->user->number }}, {{ $order->user->complement }},
                     {{ $order->user->district }}, {{ $order->user->city }} - {{ $order->user->state }}</span>

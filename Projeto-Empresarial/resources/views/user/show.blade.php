@@ -9,7 +9,7 @@
 
 <section class="section-container">
 
-    <div class="flex flex-col lg:flex-row gap-8">
+    <div class="flex flex-col lg:flex-row gap-8 items-start">
 
         <div class="inline-flex flex-col p-5 shadow-xl py-8 px-5 rounded-md w-full lg:w-1/2 lg:max-w-[350px]">
             <div class="flex items-center">
@@ -48,6 +48,14 @@
             <p>
                 <strong>Telefone:</strong>
                 <span>{{ $user->phone }}</span>
+            </p>
+            <p>
+                <strong>País:</strong>
+                <span>Brasil</span>
+            </p>
+            <p>
+                <strong>CEP:</strong>
+                <span>{{ $user->cep }}</span>
             </p>
             <p>
                 <strong>Cidade:</strong>

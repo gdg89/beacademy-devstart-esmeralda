@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('phone', 15);
             $table->string('cpf', 11)->unique();
+            $table->string('cep', 9);
             $table->string('password');
             $table->string('street');
             $table->string('district');

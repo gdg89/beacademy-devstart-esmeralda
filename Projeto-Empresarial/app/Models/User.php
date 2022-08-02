@@ -30,6 +30,7 @@ class User extends Authenticatable
         'phone',
         'birthday',
         'cpf',
+        'cep',
         'street',
         'number',
         'district',
