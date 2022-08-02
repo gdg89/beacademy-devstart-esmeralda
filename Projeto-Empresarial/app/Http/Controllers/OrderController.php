@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderCardFormRequest;
 use App\Http\Requests\StoreOrderTicketFormRquest;
+use App\Mail\OrderCreated;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
@@ -105,8 +108,28 @@ class OrderController extends Controller
 
         $order->products()->attach($input['products']);
 
+        $this->sendOrderCreatedMail($order);
+
         return redirect()
             ->route('user.order', ["user" => auth()->id(), "order" => $order->id])
             ->with('create-order', "Seu pedido #{$order->id} foi criado com sucesso!");
+    }
+
+    public function sendOrderCreatedMail(Order $order)
+    {
+        $mailInfo = [
+            'title' => "Seu Pedido #{$order->id} foi criado!",
+            'subject' => "EstanteDev - Pedido #{$order->id} criado! ⚠️",
+            'url' => 'https://www.estantedev.com.br',
+            'message' => "{$order->user->name}, seu pedido foi criado com sucesso! Em breve seus livros estarão contigo!",
+            'status' => "Seu pedido está com status {$order->status}",
+        ];
+
+        Mail::to($order->user->email)
+            ->send(new OrderCreated($mailInfo));
+
+        return response()->json([
+            'message' => 'Mail has sent.'
+        ], Response::HTTP_OK);
     }
 }

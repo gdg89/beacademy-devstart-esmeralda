@@ -3,7 +3,6 @@ import { Cart } from "./Cart";
 Cart.getProducts();
 
 const cartProducts = Cart.products;
-console.log("🚀 ~ cartProducts", cartProducts);
 
 const table = document.getElementById("checkout-cart-tbody");
 const cartTotal = document.getElementById("cart-total");
