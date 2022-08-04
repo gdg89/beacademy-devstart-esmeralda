@@ -18,7 +18,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'isAdmin'=>$this->faker->numberBetween($min = 1, $max = 1),
+            'isAdmin' => 0,
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'avatar' => $this->faker->imageUrl(100, 100),
