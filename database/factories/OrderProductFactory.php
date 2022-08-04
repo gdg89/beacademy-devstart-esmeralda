@@ -19,8 +19,8 @@ class OrderProductFactory extends Factory
     public function definition()
     {
         return [
-            'order_id' => Order::all()->random()->id,
-            'product_id' => Product::all()->random()->id,
+            'order_id' => $this->faker->numberBetween(1, Order::count()),
+            'product_id' => $this->faker->numberBetween(1, Product::count()),
         ];
     }
 }

@@ -19,7 +19,7 @@ class OrderFactory extends Factory
     {
         return [
             'status' => $this->faker->randomElement(['Processando', 'Aprovado', 'Recusado']),
-            'user_id' => User::all()->random()->id,
+            'user_id' => $this->faker->numberBetween(1, User::count()),
         ];
     }
 }
