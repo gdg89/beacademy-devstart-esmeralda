@@ -20,7 +20,15 @@ export default defineConfig({
         manifest: true,
         outDir: "public/build",
         rollupOptions: {
-            input: "resources/js/app.js",
+            input: [
+                "resources/js/app.js",
+                "resources/js/cart/add.js",
+                "resources/js/cart/Cart.js",
+                "resources/js/cart/checkout.js",
+                "resources/js/cart/clearCart.js",
+                "resources/js/cart/sidebar.js",
+                "resources/js/orders/edit.js",
+            ],
         },
     },
 });

@@ -6,5 +6,47 @@
     "css": [
       "assets/app.e165afde.css"
     ]
+  },
+  "resources/js/cart/add.js": {
+    "file": "assets/add.177763eb.js",
+    "src": "resources/js/cart/add.js",
+    "isEntry": true,
+    "imports": [
+      "_Cart.f6b664de.js"
+    ]
+  },
+  "resources/js/cart/Cart.js": {
+    "file": "assets/Cart.0e025d3b.js",
+    "src": "resources/js/cart/Cart.js",
+    "isEntry": true
+  },
+  "resources/js/cart/checkout.js": {
+    "file": "assets/checkout.2b166b76.js",
+    "src": "resources/js/cart/checkout.js",
+    "isEntry": true,
+    "imports": [
+      "_Cart.f6b664de.js"
+    ]
+  },
+  "resources/js/cart/clearCart.js": {
+    "file": "assets/clearCart.27695191.js",
+    "src": "resources/js/cart/clearCart.js",
+    "isEntry": true
+  },
+  "resources/js/cart/sidebar.js": {
+    "file": "assets/sidebar.06e8464d.js",
+    "src": "resources/js/cart/sidebar.js",
+    "isEntry": true,
+    "imports": [
+      "_Cart.f6b664de.js"
+    ]
+  },
+  "resources/js/orders/edit.js": {
+    "file": "assets/edit.b2331e52.js",
+    "src": "resources/js/orders/edit.js",
+    "isEntry": true
+  },
+  "_Cart.f6b664de.js": {
+    "file": "assets/Cart.f6b664de.js"
   }
 }
