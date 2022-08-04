@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductFormRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 
 class AdminProductController extends Controller
@@ -47,8 +48,10 @@ class AdminProductController extends Controller
         $input['slug'] = Str::slug($input['name']);
 
         if ($input['cover']->isValid()) {
-            $path = $input['cover']->store('products_covers', 'public');
-            $input['cover'] = $path;
+            $coverUrl = ($input['cover'])
+                ->storeOnCloudinary('devstart/covers')
+                ->getSecurePath();
+            $input['cover'] = $coverUrl;
         }
 
         $product = Product::create($input);
@@ -83,9 +86,10 @@ class AdminProductController extends Controller
         $input = $request->validated();
 
         if (!empty($input['cover']) && $input['cover']->isValid()) {
-            Storage::delete("public/{$product->cover}" ?? '');
-            $path = $input['cover']->store('products_covers', 'public');
-            $input['cover'] = $path;
+            $coverUrl = ($input['cover'])
+                ->storeOnCloudinary('devstart/covers')
+                ->getSecurePath();
+            $input['cover'] = $coverUrl;
         }
 
         $product->fill($input);

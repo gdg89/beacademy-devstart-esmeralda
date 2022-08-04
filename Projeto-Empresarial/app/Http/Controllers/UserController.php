@@ -59,8 +59,10 @@ class UserController extends Controller
         $data['password'] = bcrypt($data['password']);
 
         if (isset($data['avatar']) && $data['avatar']->isValid()) {
-            $path = $data['avatar']->store('users_avatars', 'public');
-            $data['avatar'] = $path;
+            $avatarUrl = ($data['avatar'])
+                ->storeOnCloudinary('devstart/avatars')
+                ->getSecurePath();
+            $data['avatar'] = $avatarUrl;
         }
 
         User::create($data);
@@ -90,9 +92,10 @@ class UserController extends Controller
         $data = $request->validated();
 
         if (!empty($data['avatar']) && $data['avatar']->isValid()) {
-            Storage::delete("public/{$user->avatar}" ?? '');
-            $path = $data['avatar']->store('users_avatars', 'public');
-            $data['avatar'] = $path;
+            $avatarUrl = ($data['avatar'])
+                ->storeOnCloudinary('devstart/avatars')
+                ->getSecurePath();
+            $data['avatar'] = $avatarUrl;
         }
 
         if ($request->password) {

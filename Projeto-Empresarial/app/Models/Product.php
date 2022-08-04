@@ -76,9 +76,9 @@ class Product extends Model
     static public function getProductCoverPath(Product|Builder $product)
     {
         if ($product->cover) {
-            $isPlaceholder = Str::contains($product->cover, 'https');
+            $isUrl = Str::contains($product->cover, 'https');
 
-            $cover = $isPlaceholder ?
+            $cover = $isUrl ?
                 $product->cover :
                 Storage::url($product->cover);
         }
