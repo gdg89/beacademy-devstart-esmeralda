@@ -1,3 +1,4 @@
+import "../css/app.css";
 import "./bootstrap";
 
 const flashMessages = document.querySelectorAll(".flash-message");
