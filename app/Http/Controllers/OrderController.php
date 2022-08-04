@@ -120,7 +120,7 @@ class OrderController extends Controller
         $mailInfo = [
             'title' => "Seu Pedido #{$order->id} foi criado!",
             'subject' => "EstanteDev - Pedido #{$order->id} criado! ⚠️",
-            'url' => 'https://www.estantedev.com.br',
+            'url' => 'https://devstart-esmeralda.herokuapp.com',
             'message' => "{$order->user->name}, seu pedido foi criado com sucesso! Em breve seus livros estarão contigo!",
             'status' => "Seu pedido está com status {$order->status}",
         ];
