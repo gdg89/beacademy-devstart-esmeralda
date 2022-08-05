@@ -32,7 +32,7 @@ $cartPaths = [
 
     @include('shared.header.index')
 
-    <main class="grow text-gray-600 py-16 relative">
+    <main class="grow text-gray-600 py-16 relative max-w-screen overflow-hidden">
         @if(in_array(Route::currentRouteName(), $cartPaths))
         @include('shared.cart')
         @endif
