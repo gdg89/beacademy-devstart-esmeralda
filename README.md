@@ -1,12 +1,21 @@
-# Projeto EstanteDev - Squad Esmeralda
-
-E-commerce de livros sobre programação, feito com Laravel 9, TailwindCSS e MySQL.
-
+<div align="center">
+<h1>Projeto EstanteDev - Squad Esmeralda</h1>
+<h3>
+    Demo:
+    <a href="https://devstart-esmeralda.herokuapp.com">
+        https://devstart-esmeralda.herokuapp.com
+    </a>
+</h3>
 <img src=".github/capa.png" alt="EstanteDev - Capa" />
+</div>
+
+## Descrição
+
+Projeto de caráter educacional, feito no programa `DevStart - Paylivre`, de um E-commerce de livros sobre programação, feito com Laravel 9, TailwindCSS e MySQL, com upload de imagens na [Cloudinary][cloudinary]
 
 ## Instalação
 
-Dentro da pasta `Projeto-Empresarial`,crie um arquivo `.env` igual ao `.env.example`, ajustando as configurações conforme o seu ambiente, após isso instale as dependências com os seguintes comandos:
+Dentro da pasta `Projeto-Empresarial`, crie um arquivo `.env` igual ao `.env.example`, ajustando as configurações conforme o seu ambiente e banco de dados MySQL, após isso instale as dependências com os seguintes comandos:
 
 ```bash
 # Instale as dependências do composer e npm
@@ -18,7 +27,12 @@ php artisan storage:link
 
 # Instale os estilos para a paginação
 php artisan vendor:publish --tag=laravel-pagination
+
+# Rode as migrations e seeders (pode demorar um pouco)
+php artisan migrate --seed
 ```
+
+> Observação: Você deve ter uma conta e um upload preset na Cloudinary para configurar as variáveis de ambiente no arquivo .env e poder fazer upload de imagens
 
 ## Execução
 
@@ -34,11 +48,11 @@ yarn dev
 
 ## Tech
 
--   [Laravel 9][laravel]
--   [TailwindCSS][tailwind]
--   [MySQL][mysql]
+- [Laravel 9][laravel]
+- [TailwindCSS][tailwind]
+- [MySQL][mysql]
 
-## Squad Members
+## Membros da Squad
 
 <table>
   <tr>
@@ -86,13 +100,13 @@ Este checkout será criado em PHP, utilizando o Framework Laravel.
 
 # Requisitos
 
--   Banco de dados Mysql
--   Autenticação e Cadastro de Usuários
--   Cadastro de Produtos
--   Cadastro de Pedidos
--   Checkout
--   Api de **Paylivre** para efetivação dos pagamentos (anexar documentação)
--   Criação de testes unitários para todas as regras de negócio
+- Banco de dados Mysql
+- Autenticação e Cadastro de Usuários
+- Cadastro de Produtos
+- Cadastro de Pedidos
+- Checkout
+- Api de **Paylivre** para efetivação dos pagamentos (anexar documentação)
+- Criação de testes unitários para todas as regras de negócio
 
 # Regras de negocio
 
@@ -102,30 +116,30 @@ Deverá possuir 2 tipos de cadastro.
 
 Um “Administrador” que será responsável por
 
--   Realizar o cadastro de produtos na plataforma,
--   Visualizar e gerenciar os pedidos de todos os usuários.
+- Realizar o cadastro de produtos na plataforma,
+- Visualizar e gerenciar os pedidos de todos os usuários.
 
 Para o usuário “Padrão” este poderá apenas escolher os produtos desejados e realizar a compra na plataforma, em sua área restrita poderá ver os próprios pedidos.
 
 Os dados básicos de cadastro de usuários são:
 
--   Nome
--   E-mail
--   Telefone
--   Endereço
--   Data de nascimento
--   CPF
+- Nome
+- E-mail
+- Telefone
+- Endereço
+- Data de nascimento
+- CPF
 
 ## Cadastro de Produtos
 
 Para o cadastro de produtos, deverá ser possível cadastrar as seguintes informações
 
--   Nome do produto
--   Descrição do produto
--   Quantidade
--   Preço de custo
--   Preço de venda
--   Foto principal
+- Nome do produto
+- Descrição do produto
+- Quantidade
+- Preço de custo
+- Preço de venda
+- Foto principal
 
 ## Cadastro de Pedidos
 
@@ -135,9 +149,9 @@ Será importante registrar para o Cadastro de Pedidos os **produtos que foram ad
 
 ### Status do pedido
 
--   Processando → `processing`
--   Aprovado → `approved`
--   Recusado → `refused`
+- Processando → `processing`
+- Aprovado → `approved`
+- Recusado → `refused`
 
 ## Checkout
 
@@ -151,9 +165,10 @@ Utilizaremos o serviço de webhook da Paylivre.
 
 **Notificações**
 
--   O cliente recebe um e-mail toda vez que um novo pedido é realizado
--   O cliente recebe um e-mail toda vez que algum pedido sofre alteração de status
+- O cliente recebe um e-mail toda vez que um novo pedido é realizado
+- O cliente recebe um e-mail toda vez que algum pedido sofre alteração de status
 
 [laravel]: https://laravel.com
 [tailwind]: https://tailwindcss.com
 [mysql]: https://www.mysql.com
+[cloudinary]: https://cloudinary.com
