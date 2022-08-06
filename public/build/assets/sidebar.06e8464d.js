@@ -1,0 +1,1 @@
+import{C as t}from"./Cart.f6b664de.js";t.getProducts();t.updateSidebar();t.getAddToCartButtons();const e=document.getElementById("cart-button"),o=document.getElementById("cart-close-button");e.addEventListener("click",t.toggleSidebar);o.addEventListener("click",t.toggleSidebar);

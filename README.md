@@ -1,12 +1,21 @@
-# Projeto EstanteDev - Squad Esmeralda
-
-E-commerce de livros sobre programação, feito com Laravel 9, TailwindCSS e MySQL.
-
+<div align="center">
+<h1>Projeto EstanteDev - Squad Esmeralda</h1>
+<h3>
+    Demo:
+    <a href="https://devstart-esmeralda.herokuapp.com">
+        https://devstart-esmeralda.herokuapp.com
+    </a>
+</h3>
 <img src=".github/capa.png" alt="EstanteDev - Capa" />
+</div>
+
+## Descrição
+
+Projeto de caráter educacional, feito no programa `DevStart - Paylivre`, de um E-commerce de livros sobre programação, feito com Laravel 9, TailwindCSS e MySQL, com upload de imagens na [Cloudinary][cloudinary]
 
 ## Instalação
 
-Dentro da pasta `Projeto-Empresarial`,crie um arquivo `.env` igual ao `.env.example`, ajustando as configurações conforme o seu ambiente, após isso instale as dependências com os seguintes comandos:
+Dentro da pasta `Projeto-Empresarial`, crie um arquivo `.env` igual ao `.env.example`, ajustando as configurações conforme o seu ambiente e banco de dados MySQL, após isso instale as dependências com os seguintes comandos:
 
 ```bash
 # Instale as dependências do composer e npm
@@ -18,7 +27,12 @@ php artisan storage:link
 
 # Instale os estilos para a paginação
 php artisan vendor:publish --tag=laravel-pagination
+
+# Rode as migrations e seeders (pode demorar um pouco)
+php artisan migrate --seed
 ```
+
+> Observação: Você deve ter uma conta e um upload preset na Cloudinary para configurar as variáveis de ambiente no arquivo .env e poder fazer upload de imagens
 
 ## Execução
 
@@ -38,7 +52,7 @@ yarn dev
 - [TailwindCSS][tailwind]
 - [MySQL][mysql]
 
-## Squad Members
+## Membros da Squad
 
 <table>
   <tr>
@@ -66,15 +80,6 @@ yarn dev
         <br>
         <sub>
           <b>Mateus Figueredo</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/vinic-alves">
-        <img src="https://github.com/vinic-alves.png" width="100px;" alt="Vinicius Alves"/>
-        <br>
-        <sub>
-          <b>Vinicius Alves</b>
         </sub>
       </a>
     </td>
@@ -166,3 +171,4 @@ Utilizaremos o serviço de webhook da Paylivre.
 [laravel]: https://laravel.com
 [tailwind]: https://tailwindcss.com
 [mysql]: https://www.mysql.com
+[cloudinary]: https://cloudinary.com
